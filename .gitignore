@@ -1,14 +1,11 @@
 # Logs
 *.log
-strategy_*.log
+strategy_daemon.log
 app.log
 
 # Temporary files
 *.pid
 temp.txt
-*.json
-!package.json
-!system_config.json
 
 # Python
 __pycache__/
