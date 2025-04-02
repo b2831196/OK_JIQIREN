@@ -1,0 +1,26 @@
+{
+  "DOGE-USDT-SWAP": {
+    "status": "active",
+    "order_id": "2379847397968515072",
+    "direction": "buy",
+    "margin_value": 20.0,
+    "contract_size": 1,
+    "time": "2025-03-31 21:23:00"
+  },
+  "X-USDT-SWAP": {
+    "status": "active",
+    "order_id": "2379847497524514816",
+    "direction": "buy",
+    "margin_value": 20.0,
+    "contract_size": 1,
+    "time": "2025-03-31 21:23:03"
+  },
+  "LTC-USDT-SWAP": {
+    "status": "active",
+    "order_id": "2379845320378748928",
+    "direction": "buy",
+    "margin_value": 10.0,
+    "contract_size": 1,
+    "time": "2025-03-31 21:21:59"
+  }
+}

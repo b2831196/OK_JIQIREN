@@ -1,0 +1,9 @@
+{
+  "1": {
+    "running": true,
+    "trade_pair": "BTC-USDT",
+    "trade_direction": "buy",
+    "margin": 100,
+    "start_time": "2025-03-29 11:34:34"
+  }
+}
