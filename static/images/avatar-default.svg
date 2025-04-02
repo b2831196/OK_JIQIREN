@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>默认头像</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#3366FF" offset="0%"></stop>
+            <stop stop-color="#5B8FF9" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="头像" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="背景" fill="url(#linearGradient-1)" cx="100" cy="100" r="100"></circle>
+        <path d="M100,50 C117.614,50 132,64.3858 132,82 C132,99.6142 117.614,114 100,114 C82.3858,114 68,99.6142 68,82 C68,64.3858 82.3858,50 100,50 Z M100,124 C134.804,124 163,140.088 163,160 L163,170 C163,173.866 159.866,177 156,177 L44,177 C40.134,177 37,173.866 37,170 L37,160 C37,140.088 65.1964,124 100,124 Z" id="形状结合" fill="#FFFFFF"></path>
+    </g>
+</svg> 

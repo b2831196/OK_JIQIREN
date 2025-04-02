@@ -1,0 +1,6892 @@
+==================================================
+## 交易数据记录 ## 2024-03-31 19:30:00
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+>> 文本框的交易对和金额:
+   [无数据]
+>> 保证金金额: 100 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2024-03-31 19:31:00
+>> 前端提交的交易对: ETH-USDT
+>> 规范化后的交易对: ETH-USDT-SWAP
+>> 文本框的交易对和金额:
+   [无数据]
+>> 保证金金额: 200 USDT
+>> 交易方向: buy
+>> 币种名称: ETH
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 18:12:46
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  }
+]
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 币种名称: LTC
+
+==================================================
+## 交易数据记录 ## 2025-03-31 18:13:01
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  }
+]
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 币种名称: LTC
+
+==================================================
+## 交易数据记录 ## 2025-03-31 18:13:16
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  }
+]
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 币种名称: LTC
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:03:19
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "pair": "X-USDT-SWAP",
+    "displayName": "X/USDT",
+    "amount": "20",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 币种名称: X
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:18:07
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 币种名称: X
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:18:22
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 币种名称: X
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:20:59
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:21:14
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:21:29
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:21:44
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:21:59
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:22:14
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:22:29
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:22:44
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:22:59
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:23:14
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:23:29
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:23:44
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:23:59
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:24:14
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 19:24:29
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:26:31
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:26:46
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:27:01
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:27:16
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:27:31
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:27:46
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:28:01
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:28:16
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:28:31
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:28:46
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:29:01
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:29:16
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:29:31
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:29:46
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:30:01
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 币种名称: LTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:30:16
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 币种名称: LTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:30:31
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 币种名称: LTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:30:46
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:24"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "timestamp": "2025/3/31 17:51:32"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "timestamp": "2025/3/31 19:03:02"
+  }
+]
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 币种名称: LTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:32:37
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379745953693110272
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:33:20
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379747379320262656
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:34:24
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379749524186664960
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:35:26
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379751651906752512
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:38:59
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379758785780322304
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:39:02
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379758879598514176
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:40:02
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379760894105948160
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:40:06
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379760993292849152
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:40:35
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379761983953899520
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:40:42
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379762228397936640
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:40:46
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379762297654284288
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:41:04
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379762979849441280
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:41:38
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379764115532746752
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:41:45
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379764339240144896
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:41:48
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379764467753619456
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:42:07
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379765093845766144
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:42:40
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379766193424502784
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:42:48
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379766493770223616
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:42:52
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379766613525991424
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:43:12
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379767254348533760
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:43:42
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379768272725544960
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:43:51
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379768587734552576
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:43:55
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379768685344395264
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:44:14
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379769337676107776
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:44:44
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379770362126471168
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:44:54
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379770693845585920
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:44:57
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379770796958355456
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:45:19
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379771496132055040
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:45:47
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379772458338947072
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:45:58
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379772828041678848
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:46:00
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379772905921515520
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:46:24
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379773697739001856
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:46:49
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379774575455834112
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:47:00
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379774931669684224
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:47:02
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379775002570199040
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:47:25
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379775782207426560
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:47:55
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379776648482197504
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:48:02
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379777024493162496
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:48:03
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379777066503311360
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:48:32
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379778006631387136
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:48:58
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379778887602999296
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:49:06
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379779157615513600
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:49:06
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379779148018946048
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:49:35
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379780133915267072
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:50:00
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379780972373413888
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:50:10
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379781277685190656
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:50:12
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379781360229093376
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:50:38
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379782223282638848
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:51:02
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379783052613980160
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:51:12
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379783381749403648
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:51:15
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379783464427524096
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:51:40
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379784319696441344
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:52:05
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379785133928288256
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:52:16
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379785519300939776
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:52:17
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379785558089863168
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:52:44
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379786460100104192
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:53:07
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379787227859062784
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:53:18
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379787605044432896
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:53:19
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379787644236009472
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:53:47
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379788559668023296
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:54:10
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379789353398112256
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:54:24
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379789789907718144
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:54:28
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379789838595198976
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 20:54:49
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379790665376403456
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:24:17
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379849974479130624
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:24:19
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379850059908714496
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:24:19
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379850054573559808
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:24:26
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379850305862701056
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:25:19
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379852078006472704
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:25:22
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379852161523453952
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:25:23
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379852184306913280
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:25:30
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379852391673303040
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:26:22
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379854179050786816
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:26:25
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379854272701206528
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:26:27
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379854330179948544
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:26:33
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379854574221332480
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:49:15
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379900253010464768
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:49:16
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379900243615223808
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:49:47
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379901328866217984
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:49:54
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379901564720320512
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:50:20
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379902341606084608
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:50:20
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379902425794154496
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:50:50
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379903407697498112
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:50:56
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379903659221520384
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:51:24
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379904564050333696
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:51:25
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379904618072969216
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:51:52
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379905532498350080
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 21:51:59
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379905740837818368
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:10:52
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379943771833700352
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:10:52
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:11:01
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379944094660890624
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:11:02
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379944085433421824
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:11:07
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:11:09
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379943889307766784
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:11:22
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:11:30
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379945053109686272
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:11:37
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:11:52
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  }
+]
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 币种名称: LTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:12:03
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379946162821861376
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:12:04
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379946205503098880
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:12:07
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  }
+]
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 币种名称: LTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:12:11
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379946426157043712
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:12:22
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  }
+]
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 币种名称: LTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:12:36
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379947137947209728
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:12:37
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  }
+]
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 币种名称: LTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:12:52
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  }
+]
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 币种名称: LTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:13:07
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  }
+]
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 币种名称: LTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:13:14
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379948522637955072
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:13:22
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  }
+]
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 币种名称: LTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:13:38
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379949358076203008
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:13:51
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  }
+]
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 币种名称: LTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:13:52
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  }
+]
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 币种名称: LTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:14:18
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379950649317855234
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:14:41
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379951440799797251
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:15:21
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379952796902166529
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:15:45
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379953591840215042
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:16:23
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379954887443943430
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:16:47
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379955678187687941
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:17:25
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379956958859694080
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:17:52
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379957860635054081
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:18:28
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379959064635183104
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:18:55
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379959955840897024
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:19:35
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379961273624104962
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:20:00
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379962151106056203
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:20:40
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379963466775334921
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:21:17
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379964255640031232
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:21:42
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379965592851255296
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:22:22
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379966939390611456
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:22:46
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379967693190926336
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:23:26
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379969058051002368
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:23:52
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379969931640639488
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:24:30
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379971179664183296
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:24:56
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379972062682615808
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:25:38
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379973450024161280
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:26:01
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379974235936067584
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:26:40
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379975579153534976
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:27:05
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379976416168841216
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:27:45
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379977749521305600
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:28:07
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379978520803479552
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:28:47
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379979840365072384
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:29:11
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379980594702258176
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:29:51
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379981988754690048
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:30:16
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379982775404793856
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:30:56
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379984126775988224
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:31:19
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379984929062457345
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:32:22
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379987073358434305
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:32:39
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:32:54
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-03-31 21:54:46"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:33:25
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379989163195568128
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:34:28
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379991282795483136
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:35:31
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379993404710653963
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:36:35
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379995522767065088
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:37:38
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379997627737247744
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:38:40
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2379999753209188352
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-03-31 22:39:43
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2380001852139573248
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:02:29
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "pair": "BTC-USDT",
+    "displayName": "BTC/USDT",
+    "amount": "1000",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:02:44
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:02:59
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:03:15
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:03:30
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:03:45
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:04:00
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:04:32
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:05:32
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:06:32
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:07:32
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:08:32
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:09:32
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:10:32
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:11:32
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:12:32
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:13:32
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:14:32
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT-SWAP
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": false,
+    "traded_time": ""
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:25:54
+>> 前端提交的交易对: LTC-USDT-SWAP
+>> 规范化后的交易对: LTC-USDT-SWAP
+>> 保证金金额: 10.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2381544334212014080
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:26:12
+>> 前端提交的交易对: DOGE-USDT-SWAP
+>> 规范化后的交易对: DOGE-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2381544931313131520
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-04-01 11:26:30
+>> 前端提交的交易对: X-USDT-SWAP
+>> 规范化后的交易对: X-USDT-SWAP
+>> 保证金金额: 20.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2381545544621039616
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:01:05
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:01:05
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:01:20
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:01:20
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:01:35
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:01:35
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  },
+  {
+    "amount": "1000",
+    "displayName": "BTC/USDT",
+    "pair": "BTC-USDT",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/4/1 11:02:11"
+  }
+]
+>> 保证金金额: 1000 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:02:09
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:02:09
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  }
+]
+>> 保证金金额: 1000 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:02:24
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:02:24
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  }
+]
+>> 保证金金额: 1000 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:02:39
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:02:39
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  }
+]
+>> 保证金金额: 1000 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:02:54
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:02:54
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  }
+]
+>> 保证金金额: 1000 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:03:09
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:03:09
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  }
+]
+>> 保证金金额: 1000 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:03:24
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:03:24
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  }
+]
+>> 保证金金额: 1000 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:03:39
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:03:39
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  }
+]
+>> 保证金金额: 1000 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:03:54
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:03:54
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  }
+]
+>> 保证金金额: 1000 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:04:09
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:04:09
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  }
+]
+>> 保证金金额: 1000 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:04:24
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:04:24
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  }
+]
+>> 保证金金额: 1000 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:04:39
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:04:39
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  }
+]
+>> 保证金金额: 1000 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:05:48
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 合约张数: 1
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+>> 订单ID: 2381624674830065664
+>> 自动交易: 是
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:06:20
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:06:20
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  }
+]
+>> 保证金金额: 4 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:06:34
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:06:34
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  }
+]
+>> 保证金金额: 4 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:06:49
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:06:49
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  }
+]
+>> 保证金金额: 4 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:07:04
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:07:04
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  }
+]
+>> 保证金金额: 4 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:07:19
+>> 交易处理完成
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:07:19
+>> 前端提交的交易对: BTC-USDT
+>> 规范化后的交易对: BTC-USDT
+
+>> 文本框的交易对和金额:
+[
+  {
+    "amount": "10",
+    "displayName": "LTC/USDT",
+    "order_id": "2381544334212014080",
+    "pair": "LTC-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:24",
+    "traded": true,
+    "traded_time": "2025-04-01 11:25:54"
+  },
+  {
+    "amount": "20",
+    "displayName": "DOGE/USDT",
+    "order_id": "2381544931313131520",
+    "pair": "DOGE-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 17:51:32",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:12"
+  },
+  {
+    "amount": "20",
+    "displayName": "X/USDT",
+    "order_id": "2381545544621039616",
+    "pair": "X-USDT-SWAP",
+    "program_marker": "OKX_AUTO_TRADE_PROGRAM",
+    "timestamp": "2025/3/31 19:03:02",
+    "traded": true,
+    "traded_time": "2025-04-01 11:26:30"
+  }
+]
+>> 保证金金额: 4 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+>> 程序标记: OKX_AUTO_TRADE_PROGRAM
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:08:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 4.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:09:21
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 4.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:10:22
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 4.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:11:22
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 4.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:12:00
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:12:15
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:12:30
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:12:45
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:59:37
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 12:59:52
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:00:07
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:00:23
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:00:38
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:00:53
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:01:08
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:01:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:02:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:03:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:04:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:05:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:06:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:07:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:08:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:09:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:10:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:11:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:12:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:13:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:14:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:15:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:16:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:17:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:18:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:19:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:20:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:21:32
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:25:26
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:26:03
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:26:18
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:26:33
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:26:48
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 13:27:03
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:25:49
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:27:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:27:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:27:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:28:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:28:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:28:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:28:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:29:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:29:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:29:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:29:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:30:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:30:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:30:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:30:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:31:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:31:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:31:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 19:31:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:07:38
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:07:53
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:08:08
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:08:23
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:08:38
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:08:53
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:09:08
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:09:23
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:09:38
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:09:53
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:10:08
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:10:23
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:11:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:11:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:11:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:11:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:12:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:12:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:12:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:12:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:13:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:13:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:13:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:13:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:14:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:14:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:14:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:14:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:15:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:15:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:15:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:15:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:16:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:16:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:16:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:16:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:17:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:17:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:17:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:17:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:18:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:18:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:18:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:18:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:19:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:19:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:19:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:19:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:20:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:20:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:20:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:20:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:21:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:21:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:21:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:21:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:22:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:22:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:22:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:22:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:23:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:23:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:23:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:23:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:24:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:24:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:24:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:24:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:25:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:25:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:25:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:25:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:26:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:26:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:26:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:26:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:27:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:27:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:27:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:27:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:28:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:28:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:28:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:28:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:29:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:29:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:29:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:29:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:30:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:30:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:30:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:30:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:31:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:31:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:31:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:31:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:32:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:32:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:32:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:32:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:33:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:33:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:33:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:33:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:34:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:34:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:34:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:34:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:35:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:35:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:35:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:35:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:36:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:36:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:36:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:36:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:37:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:37:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:37:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:37:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:38:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:38:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:38:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:38:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:39:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:39:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:39:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:39:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:40:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:40:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:40:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:40:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:41:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:41:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:41:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:41:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:42:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:42:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:42:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:42:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:43:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:43:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:43:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:43:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:44:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:44:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:44:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:44:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:45:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:45:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:45:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:45:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:46:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:46:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:46:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:46:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:47:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:47:20
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:47:35
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:47:50
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:48:05
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:48:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:49:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:50:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:51:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:52:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:53:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:54:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:55:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:56:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:57:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:58:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 20:59:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 21:00:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 21:01:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 21:02:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 21:03:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 21:04:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 21:05:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 21:06:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 21:07:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 21:08:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 21:09:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 21:10:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 21:11:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 21:12:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 21:12:53
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 21:13:31
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC
+
+==================================================
+## 交易数据记录 ## 2025-04-01 21:15:01
+>> 交易对: BTC-USDT-SWAP
+>> 保证金金额: 1000.0 USDT
+>> 交易方向: buy
+>> 币种名称: BTC

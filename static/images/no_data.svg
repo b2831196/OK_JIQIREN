@@ -1,0 +1,18 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- 背景圆形 -->
+    <circle cx="100" cy="100" r="95" fill="#F5F7FA"/>
+    
+    <!-- 顶部用户信息圆形图标 -->
+    <circle cx="100" cy="55" r="25" fill="#3366FF" opacity="0.9"/>
+    <path d="M100 45C97.3 45 95 47.3 95 50C95 52.7 97.3 55 100 55C102.7 55 105 52.7 105 50C105 47.3 102.7 45 100 45Z" fill="white"/>
+    <path d="M110 65H90C90 60 94.5 55 100 55C105.5 55 110 60 110 65Z" fill="white"/>
+    
+    <!-- 中间空数据标志 -->
+    <rect x="65" y="95" width="70" height="10" rx="5" fill="#C9D1D9"/>
+    <rect x="75" y="115" width="50" height="10" rx="5" fill="#C9D1D9"/>
+    <rect x="85" y="135" width="30" height="10" rx="5" fill="#C9D1D9"/>
+    
+    <!-- 底部圆形检查标记 -->
+    <circle cx="100" cy="165" r="15" fill="#3366FF" opacity="0.2"/>
+    <path d="M93 165L98 170L108 160" stroke="#3366FF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> 

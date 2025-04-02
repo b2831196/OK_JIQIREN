@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>用户图标</title>
+    <g id="用户" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M12,2 C14.7614,2 17,4.23858 17,7 C17,9.76142 14.7614,12 12,12 C9.23858,12 7,9.76142 7,7 C7,4.23858 9.23858,2 12,2 Z M12,14 C16.9706,14 21,16.0147 21,18.5 L21,20 C21,21.1046 20.1046,22 19,22 L5,22 C3.89543,22 3,21.1046 3,20 L3,18.5 C3,16.0147 7.02944,14 12,14 Z" id="形状结合" fill="#000000"></path>
+    </g>
+</svg> 

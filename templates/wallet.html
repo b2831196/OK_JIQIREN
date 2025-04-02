@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的资产</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/crypto-theme.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/wallet.css">
+    <style>
+        /* CSS变量定义 */
+        :root {
+            --vh: 1vh;
+            --bottom-nav-height: 56px;
+            --primary-color: #3366FF;
+            --secondary-color: #5B8FF9;
+            --accent-color: #FF6B6B;
+            --bg-color: #F5F7FA;
+            --card-bg: #FFFFFF;
+            --text-color: #333333;
+            --text-secondary: #777E90;
+            --border-color: #E0E0E0;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --border-radius: 12px;
+            --wallet-gradient: linear-gradient(135deg, #FF5722, #FF9800);
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            padding-bottom: var(--bottom-nav-height);
+        }
+        
+        /* 页面结构样式 */
+        .page-container {
+            max-width: 768px;
+            margin: 0 auto;
+            padding-top: 60px; /* 为固定头部留出空间 */
+            padding-bottom: 80px; /* 为底部导航留出空间 */
+        }
+        
+        .page-content {
+            padding: 0 15px;
+        }
+
+        /* 导航栏样式 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            height: 50px;
+            padding: 0 15px;
+        }
+        
+        .navbar-back {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--text-color);
+        }
+        
+        .navbar-title {
+            flex: 1;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .navbar-actions {
+            width: 40px;
+        }
+        
+        /* 钱包页面头部样式 */
+        .wallet-header {
+            background: var(--wallet-gradient);
+            color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 6px 15px rgba(255, 87, 34, 0.3);
+            margin-bottom: 20px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .wallet-header:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+            animation: rotate 15s linear infinite;
+            z-index: 0;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .header-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-icon {
+            margin-right: 10px;
+            font-size: 24px;
+            color: #FFEB3B;
+        }
+        
+        .header-balance {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .header-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .badge-premium {
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            color: #8B4513;
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 20px;
+            margin-left: 10px;
+            display: inline-flex;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        /* 底部导航栏样式 */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            background-color: var(--card-bg);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            border-top: 1px solid var(--border-color);
+            z-index: 1000;
+            height: var(--bottom-nav-height);
+        }
+        
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 12px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-icon {
+            font-size: 20px;
+            margin-bottom: 4px;
+            transition: transform 0.2s ease;
+        }
+        
+        .nav-item:hover .nav-icon, .nav-item.active .nav-icon {
+            transform: scale(1.1);
+        }
+        
+        .nav-item.active:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 3px;
+            bottom: 4px;
+        }
+        
+        .nav-label {
+            line-height: 1.2;
+        }
+        
+        /* 快捷操作区域样式 */
+        .action-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .action-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+        
+        .action-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.08);
+        }
+        
+        .action-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+        
+        .deposit-icon {
+            background-color: rgba(33, 150, 83, 0.1);
+            color: #219653;
+        }
+        
+        .withdraw-icon {
+            background-color: rgba(235, 87, 87, 0.1);
+            color: #EB5757;
+        }
+        
+        .transfer-icon {
+            background-color: rgba(61, 118, 250, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .api-icon {
+            background-color: rgba(153, 102, 255, 0.1);
+            color: #9966FF;
+        }
+        
+        .action-label {
+            font-size: 12px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        
+        /* 资产列表样式 */
+        .asset-section {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        
+        .section-header {
+            padding: 15px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .asset-search {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background-color: rgba(51, 102, 255, 0.05);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 8px 10px;
+            font-size: 14px;
+            color: var(--text-color);
+            outline: none;
+        }
+        
+        .search-icon {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        .asset-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.2s ease;
+        }
+        
+        .asset-item:last-child {
+            border-bottom: none;
+        }
+        
+        .asset-item:hover {
+            background-color: rgba(51, 102, 255, 0.05);
+        }
+        
+        .asset-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(51, 102, 255, 0.1);
+            color: var(--primary-color);
+            font-size: 16px;
+            margin-right: 15px;
+        }
+        
+        .asset-btc-icon {
+            background-color: rgba(247, 147, 26, 0.1);
+            color: #F7931A;
+        }
+        
+        .asset-eth-icon {
+            background-color: rgba(98, 126, 234, 0.1);
+            color: #627EEA;
+        }
+        
+        .asset-bnb-icon {
+            background-color: rgba(243, 186, 47, 0.1);
+            color: #F3BA2F;
+        }
+        
+        .asset-usdt-icon {
+            background-color: rgba(38, 161, 123, 0.1);
+            color: #26A17B;
+        }
+        
+        .asset-sol-icon {
+            background-color: rgba(0, 0, 128, 0.1);
+            color: #000080;
+        }
+        
+        .asset-doge-icon {
+            background-color: rgba(195, 158, 94, 0.1);
+            color: #C39E5E;
+        }
+        
+        .asset-info {
+            flex: 1;
+        }
+        
+        .asset-name {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 3px;
+            color: var(--text-color);
+        }
+        
+        .asset-amount {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        .asset-value {
+            text-align: right;
+        }
+        
+        .asset-value-usdt {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 3px;
+            color: var(--text-color);
+        }
+        
+        .asset-change {
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background-color: rgba(33, 150, 83, 0.1);
+            color: #219653;
+        }
+        
+        .asset-change.negative {
+            background-color: rgba(235, 87, 87, 0.1);
+            color: #EB5757;
+        }
+        
+        /* 媒体查询 - 适配小屏幕设备 */
+        @media (max-width: 576px) {
+            .action-cards {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .wallet-header {
+                padding: 15px;
+            }
+            
+            .header-balance {
+                font-size: 24px;
+            }
+            
+            .asset-item {
+                padding: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="navbar">
+        <div class="navbar-back" id="backButton">
+            <i class="fas fa-arrow-left"></i>
+        </div>
+        <h1 class="navbar-title">我的资产</h1>
+        <div class="navbar-actions"></div>
+    </div>
+    
+    <!-- 页面主体内容 -->
+    <div class="page-container">
+        <div class="page-content">
+            <!-- 钱包头部信息 -->
+            <div class="wallet-header">
+                <div class="header-content">
+                    <div class="header-title">
+                        <i class="fas fa-wallet header-icon"></i>
+                        <span>总资产</span>
+                    </div>
+                    <div class="header-balance">{{ wallet.total_balance }} USDT</div>
+                    <div class="header-subtitle">≈ {{ wallet.btc_equivalent }} BTC</div>
+                </div>
+            </div>
+        
+            <!-- 快捷操作区域 -->
+            <div class="action-cards">
+                <div class="action-card">
+                    <div class="action-icon deposit-icon">
+                        <i class="fas fa-arrow-down"></i>
+                    </div>
+                    <div class="action-label">充值</div>
+                </div>
+                
+                <div class="action-card">
+                    <div class="action-icon withdraw-icon">
+                        <i class="fas fa-arrow-up"></i>
+                    </div>
+                    <div class="action-label">提现</div>
+                </div>
+                
+                <div class="action-card">
+                    <div class="action-icon transfer-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="action-label">划转</div>
+                </div>
+                
+                <div class="action-card" onclick="window.location.href='/api_auth'">
+                    <div class="action-icon api-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div class="action-label">API授权</div>
+                </div>
+            </div>
+        
+            <!-- 资产列表 -->
+            <div class="asset-section">
+                <div class="section-header">
+                    资产列表
+                    <i class="fas fa-sync-alt" style="font-size: 14px; color: var(--text-secondary);"></i>
+                </div>
+                
+                <div class="asset-search">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="search-input" placeholder="搜索币种">
+                </div>
+                
+                {% if wallet and wallet.assets %}
+                    {% for asset in wallet.assets %}
+                    <div class="asset-item">
+                        <div class="asset-icon asset-{{ asset.symbol|lower }}-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="asset-info">
+                            <div class="asset-name">{{ asset.name }}</div>
+                            <div class="asset-amount">{{ asset.amount }} {{ asset.symbol }}</div>
+                        </div>
+                        <div class="asset-value">
+                            <div class="asset-value-usdt">${{ asset.value_usd }}</div>
+                            <div class="asset-change {% if asset.change < 0 %}negative{% endif %}">
+                                {% if asset.change > 0 %}+{% endif %}{{ asset.change }}%
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-state" style="padding: 40px 20px; text-align: center;">
+                        <img src="/static/images/no_data.svg" style="width: 150px; height: 150px; margin-bottom: 15px;">
+                        <div style="color: var(--text-secondary); font-size: 15px;">暂无资产数据</div>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <!-- 近期交易记录 -->
+            <div class="asset-section">
+                <div class="section-header">
+                    近期交易记录
+                </div>
+                
+                {% if wallet and wallet.records %}
+                    {% for record in wallet.records %}
+                    <div class="asset-item">
+                        <div class="asset-icon {% if record.type == '充值' %}deposit-icon{% elif record.type == '提现' %}withdraw-icon{% else %}transfer-icon{% endif %}">
+                            <i class="fas {% if record.type == '充值' %}fa-arrow-down{% elif record.type == '提现' %}fa-arrow-up{% else %}fa-exchange-alt{% endif %}"></i>
+                        </div>
+                        <div class="asset-info">
+                            <div class="asset-name">{{ record.type }}</div>
+                            <div class="asset-amount">{{ record.time }}</div>
+                        </div>
+                        <div class="asset-value">
+                            <div class="asset-value-usdt" style="{% if record.type == '提现' or record.type == '划转' and record.amount.startswith('-') %}color: #EB5757;{% elif record.type == '充值' %}color: #219653;{% endif %}">
+                                {{ record.amount }} {{ record.symbol }}
+                            </div>
+                            <div class="asset-amount">{{ record.status }}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-state" style="padding: 40px 20px; text-align: center;">
+                        <img src="/static/images/no_data.svg" style="width: 150px; height: 150px; margin-bottom: 15px;">
+                        <div style="color: var(--text-secondary); font-size: 15px;">暂无交易记录</div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <div class="nav-item" onclick="window.location.href='/dashboard'">
+            <i class="fas fa-home nav-icon"></i>
+            <div class="nav-label">首页</div>
+        </div>
+        <div class="nav-item" onclick="window.location.href='/strategy'">
+            <i class="fas fa-chart-line nav-icon"></i>
+            <div class="nav-label">策略</div>
+        </div>
+        <div class="nav-item" onclick="window.location.href='/spot'">
+            <i class="fas fa-exchange-alt nav-icon"></i>
+            <div class="nav-label">交易</div>
+        </div>
+        <div class="nav-item active">
+            <i class="fas fa-wallet nav-icon"></i>
+            <div class="nav-label">资产</div>
+        </div>
+        <div class="nav-item" onclick="window.location.href='/user/profile'">
+            <i class="fas fa-user nav-icon"></i>
+            <div class="nav-label">我的</div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 处理返回按钮点击事件
+        document.getElementById('backButton').addEventListener('click', function() {
+            window.location.href = '/dashboard';
+        });
+    </script>
+</body>
+</html> 

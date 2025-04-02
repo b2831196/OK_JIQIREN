@@ -1,0 +1,3764 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能交易 - 策略设置</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/crypto-theme.css">
+    <link rel="stylesheet" href="/static/css/strategy_settings.css">
+    
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="u-navbar">
+        <div class="u-navbar__content">
+            <div class="u-navbar__content__left">
+                <i class="fas fa-arrow-left u-icon__icon" onclick="window.history.back()"></i>
+            </div>
+            <div class="u-navbar__content__title">{{ strategy.name }}</div>
+            <div class="u-navbar__content__right"></div>
+        </div>
+        </div>
+        
+    <div class="robot-settings">
+        <!-- 顶部资产信息 -->
+        <div class="forms box box-card margin_t2 hover-glow">
+            <div class="top-box">
+                <div class="top-left">
+                    <div class="flex-x">
+                        <span class="available-m">可用资产</span>
+                        <img src="/static/newimg/refresh.png" class="refresh-img" alt="刷新">
+                    </div>
+                    <span class="now-money">{{ strategy.invested }} USDT</span>
+                </div>
+                <div class="top-right">
+                    <img src="https://newrobot.idyyvv.top/image/20210823/ff380e5a4eac6a36fbf7dde5ed153745.png" class="coin-img" alt="交易所">
+                    <div class="flex-x">
+                        <img src="/static/newimg/change.png" class="change-img" alt="切换">
+                        <span class="now-money">Binance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 表单内容 -->
+        <div class="self-forms">
+            <!-- 币种选择 -->
+            <div class="forms-item f-1 box2 hover-glow" id="crypto-selector">
+                <div class="form-item-label flexs" style="width: auto;">
+                    <div class="label flexs">
+                        <span>币种选择</span>
+                        <div class="premium-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-input flexs theme-border-color input-border">
+                    <div class="flexs f-1 theme-border-color2">
+                        <div class="input f-1">
+                            <div class="robot-info f-s">
+                                <img id="selected-crypto-icon" src="https://ai.hkd.red/symbolImage/{{ strategy.trade_pair.split('-')[0] }}.png" style="height: 32px; width: 32px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 6px rgba(0,0,0,0.08);" alt="币种图标">
+                                <div id="selected-crypto-name" class="robot-name">{{ strategy.trade_pair.split('-')[0] }}/{{ strategy.trade_pair.split('-')[1] }}</div>
+                                <input type="hidden" id="selected-crypto-pair" value="{{ strategy.trade_pair }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-right">
+                        <div>
+                            <span class="margin_r1" style="color: #1a6aff;"></span>
+                            <span class="myicon icon-Choose" style="color: #1a6aff;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 交易对选择弹窗 -->
+            <div id="crypto-selection-modal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>选择交易对</h3>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-search">
+                        <input type="text" id="crypto-search" placeholder="搜索币种...">
+                    </div>
+                    <div class="modal-body">
+                        <div class="crypto-list">
+                            {% for pair in trading_pairs %}
+                            <div class="crypto-item" data-original="{{ pair.original }}" data-symbol="{{ pair.symbol }}" data-display="{{ pair.display }}">
+                                <img src="{{ pair.icon_url }}" alt="{{ pair.symbol }}" onerror="this.src='/static/images/default-coin.svg'">
+                                <span>{{ pair.display }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 币种选择（隐藏） -->
+            <div class="forms-item f-1 box2" style="display: none;">
+                <div class="form-item-label flexs" style="width: auto;">
+                    <div class="label flexs">
+                        <span>币种选择</span>
+                    </div>
+                    </div>
+                <div class="form-item-input flexs theme-border-color input-border">
+                    <div class="flexs f-1 theme-border-color2">
+                        <div class="input f-1">
+                            <div class="robot-info f-s">
+                                <div class="robot-name">币种</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-right">
+                        <div class="flex-x">
+                            <span>请选择币种</span>
+                            <div class="u-icon u-icon--right">
+                                <span class="u-icon__icon uicon-arrow-right" style="font-size: 14px; line-height: 14px; font-weight: normal; top: 1px; color: rgb(200, 200, 200);"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 预设策略 -->
+            <div class="flex-y margin_b1">
+                <span class="lable-name">预设策略</span>
+                <div class="type-scroll">
+                    <div class="scroll-li-types type-actives">
+                        <div class="li-type-center flex-x-c">保守型</div>
+                    </div>
+                    <div class="scroll-li-types premium-strategy">
+                        <div class="li-type-center flex-x-c">稳健型</div>
+                </div>
+                    <div class="scroll-li-types">
+                        <div class="li-type-center flex-x-c">激进型</div>
+                    </div>
+                    <div class="scroll-li-types">
+                        <div class="li-type-center flex-x-c">自定义</div>
+                </div>
+                    </div>
+            </div>
+            
+            <!-- 策略方向 -->
+            <div class="forms-item f-1 box2 hover-glow">
+                <div class="form-item-label flexs" style="width: auto;">
+                    <div class="label flexs">
+                        <span>策略方向</span>
+                    </div>
+                </div>
+                <div class="form-item-input flexs theme-border-color" style="padding: 0px;">
+                    <div class="flexs f-1 theme-border-color2">
+                        <div class="input f-1">
+                            <div class="type-box flex-x-b box-bg1" style="width: 176px;">
+                                <span class="type-li type-active">做多</span>
+                                <span class="type-li">做空</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-right"></div>
+                </div>
+            </div>
+            
+            <!-- 杠杆调整 -->
+            <div class="forms-item f-1 box2 hover-glow" id="leverage-selector">
+                <div class="form-item-label flexs" style="width: auto;">
+                    <div class="label flexs">
+                        <span>杠杆调整</span>
+                        <div class="icon-box">
+                            <div class="u-icon u-icon--right">
+                                <span class="u-icon__icon uicon-question-circle" style="font-size: 16px; line-height: 16px; font-weight: normal; top: 0px; color: rgb(96, 98, 102);"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="label-right"></div>
+                </div>
+                <div class="form-item-input flexs theme-border-color input-border">
+                    <div class="flexs f-1 theme-border-color2">
+                        <div class="input f-1">
+                            <div class="uni-input-wrapper">
+                                <input disabled="disabled" placeholder="选择杠杆倍数" maxlength="140" step="" enterkeyhint="done" autocomplete="off" type="text" class="uni-input-input" id="leverage-input" value="10X">
+                                <input type="hidden" id="leverage-value" value="10">
+                                <!-- 预先加载杠杆数据到HTML -->
+                                <input type="hidden" id="default-leverage-options" value="{{ default_leverages|tojson }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-right">
+                        <div>
+                            <div class="u-icon u-icon--right">
+                                <span class="u-icon__icon uicon-arrow-down-fill" style="font-size: 16px; line-height: 16px; font-weight: normal; top: 0px; color: #1a6aff;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 杠杆选择下拉面板 (改为内联显示而不是模态框) -->
+                <div id="leverage-dropdown" class="leverage-dropdown" style="display: none;">
+                    <div class="leverage-dropdown-header">
+                        <h3>选择杠杆倍数</h3>
+                        <span class="close-dropdown">&times;</span>
+                    </div>
+                    <div class="leverage-dropdown-body">
+                        <div class="leverage-list" id="leverage-options-list">
+                            <!-- 杠杆选项将由JavaScript动态生成 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 杠杆选择弹窗 (作为备用保留，但不再使用) -->
+            <div id="leverage-selection-modal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>选择杠杆倍数</h3>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="leverage-list" id="leverage-modal-options-list">
+                            <!-- 杠杆选项将由JavaScript动态生成 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 预计投入 -->
+            <div class="forms-item f-1 box2" id="margin-input-container">
+                <div class="form-item-label flexs" style="width: auto;">
+                    <div class="label flexs">
+                        <span>预计投入（保证金）</span>
+                        <div class="icon-box">
+                            <div class="u-icon u-icon--right">
+                                <span class="u-icon__icon uicon-question-circle" style="font-size: 16px; line-height: 16px; font-weight: normal; top: 0px; color: rgb(96, 98, 102);"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="label-right"></div>
+                </div>
+                <div class="form-item-input flexs theme-border-color input-border margin-input">
+                    <div class="flexs f-1 theme-border-color2">
+                        <div class="input f-1">
+                            <div class="uni-input-wrapper">
+                                <input placeholder="输入投入金额" maxlength="140" step="0.01" enterkeyhint="done" autocomplete="off" type="number" class="uni-input-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-right">
+                        <div class="margin-value-container">
+                            <span style="font-weight: 500; color: #1a6aff;">USDT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 策略参数设置 -->
+            <div class="settings-card box hover-glow">
+                <div class="settings-title">参数设置 <small style="font-size: 12px; color: #999; font-weight: normal; margin-left: 5px;">专业版</small></div>
+                <div class="settings-row">
+                    <div class="setting-label">网格数量</div>
+                    <div class="setting-value">
+                        <span style="font-weight: 500; color: #262626; margin-right: 5px;">{{ strategy.grid_count }}</span>
+                        <i class="fas fa-chevron-right arrow-right"></i>
+                    </div>
+                </div>
+                <div class="settings-row">
+                    <div class="setting-label">价格区间</div>
+                    <div class="setting-value">
+                        <span style="font-weight: 500; color: #262626; margin-right: 5px;">{{ strategy.price_range }}</span>
+                        <i class="fas fa-chevron-right arrow-right"></i>
+                    </div>
+                </div>
+                <div class="settings-row">
+                    <div class="setting-label">风险等级</div>
+                    <div class="setting-value">
+                        <span style="font-weight: 500; color: #262626; margin-right: 5px;">{{ strategy.risk_level }}</span>
+                        <i class="fas fa-chevron-right arrow-right"></i>
+                    </div>
+                </div>
+
+                <!-- 添加仓位比例控制 -->
+                <div class="settings-row">
+                    <div class="setting-label">仓位比例控制</div>
+                    <div class="setting-value">
+                        <span id="position-value-percent" style="font-weight: 600; color: #1a6aff;">100%</span>
+                    </div>
+                </div>
+                <div class="settings-row position-slider-container">
+                    <div class="gress-box">
+                        <div class="sunny-sliderBar" style="width: 100%; --sliderBarbgc:#f0f0f0; --primaryColor:#1a6aff;">
+                            <div class="sliderBar" style="width: 100%;">
+                                <div class="img-box">
+                                    <div class="move-img" style="left: 0%;">
+                                        <div class="dot-indicator"></div>
+                                        <span class="bili-text">0</span>
+            </div>
+                                    <div class="move-img" style="left: 25%;">
+                                        <div class="dot-indicator"></div>
+                                        <span class="bili-text">25</span>
+                </div>
+                                    <div class="move-img" style="left: 50%;">
+                                        <div class="dot-indicator"></div>
+                                        <span class="bili-text">50</span>
+                    </div>
+                                    <div class="move-img" style="left: 75%;">
+                                        <div class="dot-indicator"></div>
+                                        <span class="bili-text">75</span>
+                        </div>
+                                    <div class="move-img" style="left: 100%;">
+                                        <div class="dot-indicator"></div>
+                                        <span class="bili-text">100</span>
+                        </div>
+                    </div>
+                                <div class="gone" style="width: 100%;"></div>
+                                <div class="slider" id="position-slider-percent" style="transform: translateY(-50%) translateX(100%);">
+                                    <span class="count">100%</span>
+                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+
+
+                <div class="settings-row">
+                    <div class="setting-label">续下单</div>
+                    <div class="setting-value">
+                        <button id="continue-order-btn" class="confirm-btn hover-glow" style="background: linear-gradient(135deg, #1a6aff, #3f87ff); padding: 8px 16px; border-radius: 8px; color: white; border: none; font-size: 14px; font-weight: 500; box-shadow: 0 4px 10px rgba(26, 106, 255, 0.3); transition: all 0.3s ease;">
+                            <i class="fas fa-sync-alt" style="margin-right: 5px;"></i> 续下单
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 添加交易对和金额保存区域 -->
+    <div class="settings-card box hover-glow" style="margin-top: 15px;">
+        <div class="settings-title">已保存的交易对和金额 <small style="font-size: 12px; color: #999; font-weight: normal; margin-left: 5px;">方便查看和管理</small></div>
+        
+        <!-- 隐藏文本框，但保留供代码使用 -->
+        <textarea id="saved-pairs-amounts" style="display: none;"></textarea>
+        
+        <!-- 添加提示信息 -->
+        <div style="margin: 5px 0 10px; padding: 8px; background-color: #e6f7ff; border-radius: 4px; border-left: 3px solid #1a6aff; color: #1a6aff;">
+            <i class="fas fa-info-circle" style="margin-right: 5px;"></i> 
+            <span style="font-size: 14px;">点击记录可以快速填充交易对和金额，方便复用常用配置</span>
+        </div>
+        
+        <!-- 添加可交互的记录容器 -->
+        <div id="saved-pairs-container" style="max-height: 250px; overflow-y: auto; margin-bottom: 10px; padding: 4px;">
+            <!-- 记录将通过JavaScript动态添加 -->
+        </div>
+        
+        <div class="settings-row" style="display: flex; justify-content: space-between;">
+            <button id="save-pair-amount-btn" class="confirm-btn hover-glow" style="background: linear-gradient(135deg, #52c41a, #73d13d); padding: 8px 16px; border-radius: 8px; color: white; border: none; font-size: 14px; font-weight: 500; box-shadow: 0 4px 10px rgba(82, 196, 26, 0.3); transition: all 0.3s ease; flex: 1; margin-right: 10px;">
+                <i class="fas fa-save" style="margin-right: 5px;"></i> 保存当前交易对和金额
+            </button>
+            <button id="clear-pairs-btn" class="confirm-btn hover-glow" style="background: linear-gradient(135deg, #ff4d4f, #ff7875); padding: 8px 16px; border-radius: 8px; color: white; border: none; font-size: 14px; font-weight: 500; box-shadow: 0 4px 10px rgba(255, 77, 79, 0.3); transition: all 0.3s ease; flex: 1;">
+                <i class="fas fa-trash-alt" style="margin-right: 5px;"></i> 清除所有记录
+            </button>
+        </div>
+    </div>
+    
+    <!-- 添加策略控制按钮区域 -->
+    <div class="strategy-controls" style="margin-top: 15px; display: flex; flex-direction: row; justify-content: center;">
+        <button class="confirm-btn hover-glow" id="toggle-strategy-btn" style="background-color: #52c41a; min-width: 120px;">运行</button>
+    </div>
+    <div id="strategy-status" style="margin-top: 10px; text-align: center; font-size: 14px; color: #8c8c8c;"></div>
+    
+    <!-- 添加自动刷新状态显示区域 -->
+    <div id="auto-refresh-status" style="display: flex; align-items: center; justify-content: center; margin-top: 10px; font-size: 12px; color: #8c8c8c;">
+        <div id="refresh-indicator" style="width: 8px; height: 8px; background-color: #52c41a; border-radius: 50%; margin-right: 5px;"></div>
+        <span>自动刷新已开启 (10秒/次)</span>
+    </div>
+    <div id="last-refresh-time" style="text-align: center; font-size: 12px; color: #8c8c8c; margin-top: 5px;"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 全局变量
+        let strategyRunning = false;
+        let strategyInterval = null;
+        let chichang = false;
+        let autoRefreshInterval = null;
+        
+        // 从localStorage获取策略运行状态
+        function getStrategyRunningState() {
+            const savedState = localStorage.getItem('strategyRunningState');
+            return savedState === 'true';
+        }
+        
+        // 保存策略运行状态到localStorage
+        function saveStrategyRunningState(isRunning) {
+            localStorage.setItem('strategyRunningState', isRunning.toString());
+            console.log(`策略运行状态已保存: ${isRunning}`);
+        }
+        
+        // 保存交易对和金额到localStorage
+        function savePairAndAmount() {
+            const tradePair = document.getElementById('selected-crypto-pair').value;
+            const tradePairDisplay = document.getElementById('selected-crypto-name').textContent;
+            const amountInput = document.querySelector('.uni-input-input[placeholder="输入投入金额"]');
+            const amount = amountInput.value;
+            
+            if (!tradePair || !amount || isNaN(amount) || parseFloat(amount) <= 0) {
+                showToast('请输入有效的金额');
+                return;
+            }
+            
+            // 获取已保存的交易对和金额
+            let savedPairsAmounts = [];
+            try {
+                const savedData = localStorage.getItem('savedPairsAmounts');
+                if (savedData) {
+                    savedPairsAmounts = JSON.parse(savedData);
+                }
+            } catch (e) {
+                console.error('解析已保存的交易对数据出错:', e);
+                savedPairsAmounts = [];
+            }
+            
+            // 检查是否已存在该交易对，有则更新，无则添加
+            const existingIndex = savedPairsAmounts.findIndex(item => item.pair === tradePair);
+            const timestamp = new Date().toLocaleString();
+            
+            if (existingIndex >= 0) {
+                // 更新现有交易对的金额
+                savedPairsAmounts[existingIndex].amount = amount;
+                savedPairsAmounts[existingIndex].displayName = tradePairDisplay;
+                savedPairsAmounts[existingIndex].timestamp = timestamp;
+            } else {
+                // 添加新交易对和金额
+                savedPairsAmounts.push({
+                    pair: tradePair,
+                    displayName: tradePairDisplay,
+                    amount: amount,
+                    timestamp: timestamp
+                });
+            }
+            
+            // 保存更新后的列表
+            localStorage.setItem('savedPairsAmounts', JSON.stringify(savedPairsAmounts));
+            
+            // 更新显示
+            updateSavedPairsDisplay();
+            
+            showToast(`已保存: ${tradePairDisplay} - ${amount} USDT`);
+        }
+        
+        // 更新保存的交易对显示
+        function updateSavedPairsDisplay() {
+            const textArea = document.getElementById('saved-pairs-amounts');
+            const container = document.getElementById('saved-pairs-container');
+            
+            try {
+                const savedData = localStorage.getItem('savedPairsAmounts');
+                if (savedData) {
+                    const savedPairsAmounts = JSON.parse(savedData);
+                    
+                    if (savedPairsAmounts.length > 0) {
+                        // 排序：最新保存的在最上面
+                        savedPairsAmounts.sort((a, b) => {
+                            return new Date(b.timestamp) - new Date(a.timestamp);
+                        });
+                        
+                        // 生成文本内容
+                        let content = '';
+                        savedPairsAmounts.forEach((item, index) => {
+                            content += `${index + 1}. ${item.displayName} - ${item.amount} USDT (${item.timestamp})\n`;
+                        });
+                        
+                        textArea.value = content;
+                        
+                        // 清除容器内容
+                        if (container) {
+                            container.innerHTML = '';
+                            
+                            // 创建可点击的记录
+                            savedPairsAmounts.forEach((item, index) => {
+                                const recordDiv = document.createElement('div');
+                                recordDiv.className = 'saved-pair-record';
+                                recordDiv.style.padding = '8px';
+                                recordDiv.style.margin = '5px 0';
+                                recordDiv.style.borderRadius = '4px';
+                                recordDiv.style.backgroundColor = '#f0f8ff';
+                                recordDiv.style.border = '1px solid #e6f7ff';
+                                recordDiv.style.cursor = 'pointer';
+                                recordDiv.style.transition = 'all 0.3s ease';
+                                recordDiv.style.display = 'flex';
+                                recordDiv.style.justifyContent = 'space-between';
+                                recordDiv.style.alignItems = 'center';
+                                
+                                // 悬停效果
+                                recordDiv.addEventListener('mouseover', function() {
+                                    this.style.backgroundColor = '#e6f7ff';
+                                    this.style.boxShadow = '0 2px 8px rgba(24, 144, 255, 0.15)';
+                                });
+                                
+                                recordDiv.addEventListener('mouseout', function() {
+                                    this.style.backgroundColor = '#f0f8ff';
+                                    this.style.boxShadow = 'none';
+                                });
+                                
+                                // 左侧显示交易对和金额
+                                const infoDiv = document.createElement('div');
+                                infoDiv.innerHTML = `
+                                    <div style="font-weight: 500;">${item.displayName} - ${item.amount} USDT</div>
+                                    <div style="font-size: 12px; color: #8c8c8c;">${item.timestamp}</div>
+                                `;
+                                
+                                // 右侧显示按钮
+                                const buttonsDiv = document.createElement('div');
+                                buttonsDiv.style.display = 'flex';
+                                buttonsDiv.style.gap = '8px';
+                                
+                                // 应用按钮
+                                const applyButton = document.createElement('button');
+                                applyButton.className = 'confirm-btn hover-glow';
+                                applyButton.style.padding = '4px 8px';
+                                applyButton.style.backgroundColor = '#1a6aff';
+                                applyButton.style.color = 'white';
+                                applyButton.style.border = 'none';
+                                applyButton.style.borderRadius = '4px';
+                                applyButton.style.fontSize = '12px';
+                                applyButton.innerHTML = '<i class="fas fa-sync-alt" style="margin-right: 4px;"></i>应用';
+                                
+                                // 删除按钮
+                                const deleteButton = document.createElement('button');
+                                deleteButton.className = 'confirm-btn hover-glow';
+                                deleteButton.style.padding = '4px 8px';
+                                deleteButton.style.backgroundColor = '#ff4d4f';
+                                deleteButton.style.color = 'white';
+                                deleteButton.style.border = 'none';
+                                deleteButton.style.borderRadius = '4px';
+                                deleteButton.style.fontSize = '12px';
+                                deleteButton.innerHTML = '<i class="fas fa-trash" style="margin-right: 4px;"></i>删除';
+                                
+                                // 应用按钮点击事件
+                                applyButton.addEventListener('click', function(e) {
+                                    e.stopPropagation(); // 阻止事件冒泡
+                                    applyPairAmount(item.pair, item.displayName, item.amount);
+                                });
+                                
+                                // 删除按钮点击事件
+                                deleteButton.addEventListener('click', function(e) {
+                                    e.stopPropagation(); // 阻止事件冒泡
+                                    deleteSavedPair(item.pair);
+                                });
+                                
+                                // 整个记录的点击事件
+                                recordDiv.addEventListener('click', function() {
+                                    applyPairAmount(item.pair, item.displayName, item.amount);
+                                });
+                                
+                                buttonsDiv.appendChild(applyButton);
+                                buttonsDiv.appendChild(deleteButton);
+                                
+                                recordDiv.appendChild(infoDiv);
+                                recordDiv.appendChild(buttonsDiv);
+                                
+                                container.appendChild(recordDiv);
+                            });
+                        }
+                    } else {
+                        textArea.value = '暂无保存的交易对和金额';
+                        if (container) {
+                            container.innerHTML = '<div style="padding: 15px; text-align: center; color: #8c8c8c;">暂无保存的交易对和金额</div>';
+                        }
+                    }
+                } else {
+                    textArea.value = '暂无保存的交易对和金额';
+                    if (container) {
+                        container.innerHTML = '<div style="padding: 15px; text-align: center; color: #8c8c8c;">暂无保存的交易对和金额</div>';
+                    }
+                }
+            } catch (e) {
+                console.error('更新交易对显示出错:', e);
+                textArea.value = '加载已保存的交易对出错';
+                if (container) {
+                    container.innerHTML = '<div style="padding: 15px; text-align: center; color: #ff4d4f;">加载已保存的交易对出错</div>';
+                }
+            }
+        }
+        
+        // 应用保存的交易对和金额
+        function applyPairAmount(pair, displayName, amount) {
+            // 设置交易对
+            document.getElementById('selected-crypto-pair').value = pair;
+            document.getElementById('selected-crypto-name').textContent = displayName;
+            
+            // 设置图标
+            const symbol = pair.split('-')[0];
+            document.getElementById('selected-crypto-icon').src = `https://ai.hkd.red/symbolImage/${symbol}.png`;
+            
+            // 设置金额
+            const amountInput = document.querySelector('.uni-input-input[placeholder="输入投入金额"]');
+            if (amountInput) {
+                amountInput.value = amount;
+            }
+            
+            showToast(`已应用: ${displayName} - ${amount} USDT`);
+        }
+        
+        // 删除单个保存的交易对
+        function deleteSavedPair(pair) {
+            try {
+                const savedData = localStorage.getItem('savedPairsAmounts');
+                if (savedData) {
+                    let savedPairsAmounts = JSON.parse(savedData);
+                    
+                    // 找到并删除特定交易对
+                    const index = savedPairsAmounts.findIndex(item => item.pair === pair);
+                    if (index >= 0) {
+                        const deletedPair = savedPairsAmounts[index];
+                        savedPairsAmounts.splice(index, 1);
+                        
+                        // 保存更新后的列表
+                        localStorage.setItem('savedPairsAmounts', JSON.stringify(savedPairsAmounts));
+                        
+                        // 更新显示
+                        updateSavedPairsDisplay();
+                        
+                        showToast(`已删除: ${deletedPair.displayName}`);
+                    }
+                }
+            } catch (e) {
+                console.error('删除交易对出错:', e);
+                showToast('删除交易对失败');
+            }
+        }
+        
+        // 清除所有保存的交易对和金额
+        function clearAllSavedPairs() {
+            localStorage.removeItem('savedPairsAmounts');
+            document.getElementById('saved-pairs-amounts').value = '暂无保存的交易对和金额';
+            showToast('已清除所有保存的交易对和金额');
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化页面
+            initSettingsPage();
+            
+            // 从localStorage获取已保存的策略运行状态
+            strategyRunning = getStrategyRunningState();
+            console.log(`页面加载，从localStorage读取策略运行状态: ${strategyRunning}`);
+            
+            // 添加页面加载动画
+            document.body.classList.add('page-loaded');
+            
+            // 初始化币种选择功能
+            initCryptoSelector();
+            
+            // 创建一个隐藏的保存按钮，保持功能但不显示
+            const hiddenSaveBtn = document.createElement('button');
+            hiddenSaveBtn.id = 'save-strategy-btn';
+            hiddenSaveBtn.style.display = 'none';
+            document.querySelector('.strategy-controls').appendChild(hiddenSaveBtn);
+            
+            // 为保存按钮添加点击事件
+            document.getElementById('save-strategy-btn').addEventListener('click', function() {
+                // 用户手动点击按钮，传递true表示允许下单
+                saveStrategySettings(true);
+            });
+            
+            // 立即检查持仓状态，优先处理buy_flag
+            checkInitialPositionStatus();
+            
+            // 初始化策略状态指示器的动画
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes blink {
+                    0% { opacity: 0.3; }
+                    50% { opacity: 1; }
+                    100% { opacity: 0.3; }
+                }
+                @keyframes spin {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // 获取刷新指示灯元素
+            const refreshIndicator = document.getElementById('refresh-indicator');
+            // 添加自动刷新定时器 - 即使没有点击运行按钮也会自动刷新
+            const autoRefreshInterval = setInterval(function() {
+                console.log("自动刷新检查持仓状态...");
+                
+                // 每次刷新前，更新指示灯颜色为黄色，表示正在刷新
+                if (refreshIndicator) {
+                    refreshIndicator.style.backgroundColor = '#faad14';
+                }
+                
+                // 检查状态，传入false参数表示只检查状态，不触发下单
+                checkPositionStatus(false);
+                
+                // 刷新完成后，延迟将颜色改回绿色
+                setTimeout(function() {
+                    if (refreshIndicator) {
+                        refreshIndicator.style.backgroundColor = '#52c41a';
+                    }
+                }, 1000);
+            }, 10000); // 每10秒自动刷新一次
+            
+            // 将自动刷新定时器保存到window对象，以便可以在需要时停止
+            window.autoRefreshInterval = autoRefreshInterval;
+            
+            // 当页面关闭或刷新时，清除定时器
+            window.addEventListener('beforeunload', function() {
+                clearAllIntervals();
+                console.log('页面卸载，已清理所有定时器');
+            });
+            
+            // 初始化策略切换按钮
+            document.getElementById('toggle-strategy-btn').addEventListener('click', function() {
+                if (strategyRunning) {
+                    // 如果策略正在运行，则停止
+                    clearAllIntervals(); // 使用清理所有定时器的函数
+                    strategyRunning = false;
+                    
+                    // 保存停止状态到localStorage
+                    saveStrategyRunningState(false);
+                    
+                    const statusElement = document.getElementById('strategy-status');
+                    statusElement.textContent = '策略已停止';
+                    statusElement.style.color = '#8c8c8c';
+                    
+                    // 移除循环状态指示器
+                    const loopIndicator = document.getElementById('loop-status-indicator');
+                    if (loopIndicator) {
+                        loopIndicator.remove();
+                    }
+                    
+                    // 显示通知
+                    showToast('策略已立即停止');
+                    
+                    // 更新按钮状态为"运行"
+                    this.textContent = '运行';
+                    this.style.backgroundColor = '#52c41a';
+                    this.disabled = false;
+                    
+                    console.log('已停止所有策略定时器');
+                } else {
+                    // 如果策略未运行，则启动
+                    // 先清除可能存在的旧定时器
+                    if (strategyInterval) {
+                        clearInterval(strategyInterval);
+                        strategyInterval = null;
+                    }
+                    
+                    // 将策略状态设置为运行中
+                    strategyRunning = true;
+                    
+                    // 保存运行状态到localStorage
+                    saveStrategyRunningState(true);
+                    
+                    // 显示正在运行状态
+                    const statusElement = document.getElementById('strategy-status');
+                    statusElement.textContent = '策略正在运行中...';
+                    statusElement.style.color = '#1a6aff';
+                    
+                    // 更新按钮状态为"停止策略"
+                    this.textContent = '停止策略';
+                    this.style.backgroundColor = '#ff4d4f';
+                    
+                    // 立即检查一次持仓状态
+                    checkPositionStatus(true);
+                    
+                    // 启动策略定时器，每15秒检查一次持仓状态并考虑下单
+                    strategyInterval = setInterval(function() {
+                        // 确保策略仍在运行中
+                        if (!strategyRunning) {
+                            clearInterval(strategyInterval);
+                            return;
+                        }
+                        
+                        // 传递true参数，表示可以触发下单操作
+                        checkPositionStatus(true);
+                        
+                        // 如果没有持仓，可以尝试下单
+                        if (!chichang) {
+                            // 模拟点击保存按钮，触发下单逻辑
+                            saveStrategySettings(true);
+                        }
+                    }, 15000); // 15秒检查一次
+                    
+                    // 保存定时器引用到全局变量
+                    window.strategyInterval = strategyInterval;
+                }
+                
+                // 更新按钮状态显示
+                updateButtonStatus(chichang, strategyRunning);
+            });
+            
+            // 为续下单按钮添加点击事件
+            document.getElementById('continue-order-btn').addEventListener('click', function() {
+                // 显示加载动画
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 下单中...';
+                this.disabled = true;
+                
+                // 调用下单功能
+                saveStrategySettings(true);
+                
+                // 3秒后恢复按钮状态
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-sync-alt" style="margin-right: 5px;"></i> 续下单';
+                    this.disabled = false;
+                }, 3000);
+            });
+
+            // 初始化交易对和金额保存功能
+            document.getElementById('save-pair-amount-btn').addEventListener('click', function() {
+                savePairAndAmount();
+                // 添加点击动画效果
+                this.classList.add('btn-clicked');
+                setTimeout(() => {
+                    this.classList.remove('btn-clicked');
+                }, 300);
+            });
+            
+            document.getElementById('clear-pairs-btn').addEventListener('click', function() {
+                // 确认是否清除
+                showConfirmDialog(
+                    '确认清除',
+                    '确定要清除所有保存的交易对和金额记录吗？此操作不可恢复。',
+                    '确定清除',
+                    '取消',
+                    function() {
+                        clearAllSavedPairs();
+                    },
+                    function() {
+                        // 取消操作
+                    }
+                );
+                
+                // 添加点击动画效果
+                this.classList.add('btn-clicked');
+                setTimeout(() => {
+                    this.classList.remove('btn-clicked');
+                }, 300);
+            });
+            
+            // 页面加载时更新显示
+            updateSavedPairsDisplay();
+        });
+        
+        // 页面加载时检查持仓状态并更新按钮
+        function checkPositionStatusOnLoad() {
+            // 获取当前URL中的策略ID和交易对
+            const urlParams = new URLSearchParams(window.location.search);
+            const strategyId = urlParams.get('id') || '1';
+            
+            // 获取交易对（根据策略ID设置不同的默认交易对）
+            let tradePair = 'BTC-USDT';
+            if (strategyId === '2') {
+                tradePair = 'ETH-USDT';
+            } else if (strategyId === '3') {
+                tradePair = 'SOL-USDT';
+            } else if (strategyId === '4') {
+                tradePair = 'BNB-USDT';
+            } else if (strategyId === '5') {
+                tradePair = 'DOT-USDT';
+            } else if (strategyId === '6') {
+                tradePair = 'ADA-USDT';
+            }
+            
+            // 获取选中的交易方向
+            const directionElements = document.querySelectorAll('.type-box .type-li');
+            let tradeDirection = 'buy'; // 默认做多
+            
+            directionElements.forEach(function(el) {
+                if (el.classList.contains('type-active')) {
+                    tradeDirection = el.textContent.trim() === '做多' ? 'buy' : 'sell';
+                }
+            });
+            
+            // 显示加载状态
+            const statusElement = document.getElementById('strategy-status');
+            statusElement.textContent = '正在检查持仓状态...';
+            
+            // 向后端发送请求获取持仓状态
+            fetch('/api/position/check', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    tradePair: tradePair,
+                    tradeDirection: tradeDirection
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.code === 200) {
+                    // 更新持仓状态
+                    const hasBuyPosition = data.positionStatus && data.positionStatus.buy_flag;
+                    const hasSellPosition = data.positionStatus && data.positionStatus.sell_flag;
+                    chichang = hasBuyPosition || hasSellPosition;
+                    
+                    // 记录状态
+                    console.log(`[策略状态结果] 多头持仓: ${hasBuyPosition ? '激活' : '未激活'}, 空头持仓: ${hasSellPosition ? '激活' : '未激活'}`);
+                    
+                    // 更新策略运行状态指示器
+                    const statusIndicator = document.getElementById('key-status-indicator');
+                            const statusIcon = document.getElementById('status-icon');
+                    const statusText = document.getElementById('status-text');
+                    
+                    // 如果有持仓，更新续下单按钮样式
+                    if (chichang) {
+                        continueOrderBtn.innerHTML = '<i class="fas fa-clock"></i> 已持仓';
+                        continueOrderBtn.style.background = 'linear-gradient(135deg, #1890ff, #40a9ff)';
+                        continueOrderBtn.classList.add('position-active');
+                        continueOrderBtn.disabled = true;
+                    } else {
+                        // 检查是否有订单正在执行
+                        if (data.hasOrder) {
+                            continueOrderBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 处理中';
+                            continueOrderBtn.style.background = 'linear-gradient(135deg, #faad14, #ffc53d)';
+                            continueOrderBtn.disabled = true;
+                        } else {
+                            continueOrderBtn.innerHTML = '<i class="fas fa-sync-alt"></i> 续下单';
+                            continueOrderBtn.style.background = 'linear-gradient(135deg, #1a6aff, #3f87ff)';
+                            continueOrderBtn.classList.remove('position-active');
+                            continueOrderBtn.disabled = false;
+                        }
+                    }
+                    
+                    // 显示状态指示器
+                    statusIndicator.style.display = 'block';
+                    
+                    // 更新状态文本和图标
+                    if (chichang) {
+                        statusText.innerHTML = `多头持仓: ${hasBuyPosition ? '<span style="color:#52c41a">激活</span>' : '<span style="color:#bfbfbf">未激活</span>'}, 空头持仓: ${hasSellPosition ? '<span style="color:#52c41a">激活</span>' : '<span style="color:#bfbfbf">未激活</span>'}`;
+                        statusIcon.innerHTML = '🔄';
+                        statusIcon.style.animation = 'spin 5s linear infinite';
+                        statusIndicator.style.backgroundColor = '#e6f7ff';
+                        statusIndicator.style.borderColor = '#91d5ff';
+                    } else if (data.hasOrder) {
+                        statusText.innerHTML = '有订单正在处理中';
+                        statusIcon.innerHTML = '⏳';
+                        statusIcon.style.animation = 'blink 1.5s ease infinite';
+                        statusIndicator.style.backgroundColor = '#fffbe6';
+                        statusIndicator.style.borderColor = '#ffe58f';
+                    } else {
+                        statusText.innerHTML = '当前无持仓，可以下单';
+                        statusIcon.innerHTML = '✅';
+                        statusIcon.style.animation = 'none';
+                        statusIndicator.style.backgroundColor = '#f6ffed';
+                        statusIndicator.style.borderColor = '#b7eb8f';
+                    }
+                    
+                    // 更新按钮状态
+                    updateButtonStatus(chichang, strategyRunning);
+                    
+                    } else {
+                    console.error('检查持仓状态失败:', data.message);
+                    showToast(`检查持仓状态失败: ${data.message}`, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('请求出错:', error);
+                showToast('网络请求失败，请检查网络连接', 'error');
+            });
+        }
+        
+        // 保存策略设置函数
+        function saveStrategySettings(shouldManuallyOrder = true) {
+            // 获取当前URL中的策略ID
+            const urlParams = new URLSearchParams(window.location.search);
+            const strategyId = urlParams.get('id') || '1';
+            
+            // 检查是否允许下单 - 只有当shouldManuallyOrder为true或者strategyRunning为true时才允许下单
+            const shouldProceed = shouldManuallyOrder || strategyRunning;
+            
+            // 如果不允许下单，则记录日志并直接返回
+            if (!shouldProceed) {
+                console.log("自动检查状态，跳过下单操作");
+                return;
+            }
+            
+            // 获取保证金输入值
+            const marginInput = document.querySelector('.forms-item .uni-input-input[placeholder="输入投入金额"]');
+            const marginValue = marginInput.value || '0';
+            
+            // 获取选中的交易方向
+            const directionElements = document.querySelectorAll('.type-box .type-li');
+            let tradeDirection = 'buy'; // 默认做多
+
+            directionElements.forEach(function(el) {
+                if (el.classList.contains('type-active')) {
+                    tradeDirection = el.textContent.trim() === '做多' ? 'buy' : 'sell';
+                }
+            });
+            
+            // 获取交易对 - 使用用户选择的交易对，而不是默认值
+            const tradePair = document.getElementById('selected-crypto-pair').value || 'BTC-USDT';
+            
+            // 在按钮上显示加载状态
+            const saveBtn = document.getElementById('save-strategy-btn');
+            const originalBtnText = saveBtn.textContent;
+            saveBtn.textContent = '处理中...';
+            saveBtn.disabled = true;
+            
+            // 发送AJAX请求
+            fetch('/api/strategy/save', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    strategyId: strategyId,
+                    marginValue: marginValue,
+                    tradePair: tradePair,
+                    tradeDirection: tradeDirection,
+                    leverage: parseInt(document.getElementById('leverage-value').value || '10') // 添加杠杆倍数
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 恢复按钮状态
+                saveBtn.disabled = false;
+                
+                if (data.code === 200) {
+                    // 检查持仓状态，只有在有订单结果且没有已存在的相同方向的持仓时才显示"已下单"
+                    if (data.orderResult) {
+                        // 获取当前交易方向
+                        const dirElements = document.querySelectorAll('.type-box .type-li');
+                        let currentDirection = 'buy'; // 默认方向
+                        dirElements.forEach(function(el) {
+                            if (el.classList.contains('type-active')) {
+                                currentDirection = el.textContent.trim() === '做多' ? 'buy' : 'sell';
+                            }
+                        });
+                        
+                        // 检查是否已经有相同方向的持仓
+                        const hasSameDirectionPosition = 
+                            (currentDirection === 'buy' && data.positionStatus && data.positionStatus.buy_flag) || 
+                            (currentDirection === 'sell' && data.positionStatus && data.positionStatus.sell_flag);
+                        
+                        if (hasSameDirectionPosition) {
+                            // 已有相同方向持仓，显示为"已持仓中"
+                            saveBtn.textContent = '已持仓中';
+                            saveBtn.classList.add('position-active');
+                        } else {
+                            // 无相同方向持仓，显示为"已下单，执行中"
+                            saveBtn.textContent = '已下单，执行中';
+                            saveBtn.classList.add('order-success');
+                        }
+                        
+                        showToast(`策略保存成功! 合约张数: ${data.contractSize}`);
+                        showOrderResultModal(data.orderResult, tradePair);
+                    } else {
+                        // 没有下单，仅保存设置
+                        saveBtn.textContent = '保存设置';
+                        saveBtn.classList.remove('order-success');
+                        saveBtn.classList.remove('position-active');
+                        showToast('设置已成功保存');
+                    }
+                } else if (data.code === 503 || data.code === 504) {
+                    // 网络错误处理
+                    showNetworkErrorModal(data.message);
+                } else {
+                    // 处理错误，保持原有按钮文本
+                    saveBtn.textContent = originalBtnText;
+                    saveBtn.classList.remove('order-success');
+                    saveBtn.classList.remove('position-active');
+                    showNetworkErrorModal(data.message || '保存策略出错，请稍后再试');
+                }
+            })
+            .catch(error => {
+                // 恢复按钮状态
+                saveBtn.disabled = false;
+                
+                // 显示错误提示
+                console.error('请求错误:', error);
+                showNetworkErrorModal('网络请求失败，请检查网络连接');
+            });
+        }
+        
+        function initSettingsPage() {
+            console.log('策略设置页面初始化');
+            
+            // 调整页面标题策略名称显示
+            const urlParams = new URLSearchParams(window.location.search);
+            const strategyId = urlParams.get('id') || '1';
+            let strategyName = '智能网格策略'; // 默认
+            
+            // 根据ID设置不同的策略名称
+            if (strategyId === '1') {
+                strategyName = '智能网格策略';
+            } else if (strategyId === '2') {
+                strategyName = '趋势跟踪策略';
+            } else if (strategyId === '3') {
+                strategyName = 'AI智能预测策略';
+            } else if (strategyId === '4') {
+                strategyName = '蓝龙综合策略';
+            } else if (strategyId === '5') {
+                strategyName = '蓝龙出海';
+            } else if (strategyId === '6') {
+                strategyName = '网格量化';
+            }
+            
+            // 更新页面标题
+            const titleElement = document.querySelector('.u-navbar__content__title');
+            titleElement.textContent = strategyName;
+            
+            // 标题动画效果
+            setTimeout(() => {
+                document.querySelector('.u-navbar').style.transform = 'translateY(0)';
+            }, 100);
+            
+            // 为交易方向选择器添加点击事件
+            const directionButtons = document.querySelectorAll('.type-box .type-li');
+            directionButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // 移除所有按钮的活动状态
+                    directionButtons.forEach(btn => btn.classList.remove('type-active'));
+                    // 添加当前按钮的活动状态
+                    this.classList.add('type-active');
+                    
+                    // 显示反馈
+                    const direction = this.textContent.trim();
+                    showToast(`已选择${direction}方向`);
+                    
+                    // 更新按钮状态
+                    checkPositionStatusOnLoad();
+                });
+            });
+            
+            // 设置状态开关点击事件 - 检查元素是否存在
+            const statusToggle = document.querySelector('.toggle-wrapper');
+            if (statusToggle) {
+                statusToggle.addEventListener('click', function() {
+                    this.classList.toggle('active-lis');
+                    const indicator = this.querySelector('.toggle-indicator');
+                    
+                    if (this.classList.contains('active-lis')) {
+                        indicator.style.transform = 'translateX(28px)';
+                        showToast('策略已启动');
+                    } else {
+                        indicator.style.transform = 'translateX(0px)';
+                        showToast('策略已暂停');
+                    }
+                });
+            }
+            
+            // 设置预设策略点击事件
+            const strategyTypes = document.querySelectorAll('.scroll-li-types');
+            strategyTypes.forEach(type => {
+                type.addEventListener('click', function() {
+                    // 先移除所有active类
+                    strategyTypes.forEach(t => {
+                        t.classList.remove('type-actives');
+                        // 添加淡出效果
+                        t.style.opacity = '0.7';
+                    });
+                    
+                    // 给当前点击元素添加active类
+                    this.classList.add('type-actives');
+                    this.style.opacity = '1';
+                    
+                    // 显示选择了什么策略
+                    const strategyType = this.querySelector('.li-type-center').textContent;
+                    showToast(`已选择${strategyType}策略`);
+                    
+                    // 恢复其他元素的透明度
+                    setTimeout(() => {
+                        strategyTypes.forEach(t => {
+                            t.style.opacity = '1';
+                        });
+                    }, 300);
+                });
+            });
+            
+            // 添加做多做空按钮点击事件
+            const typeLiButtons = document.querySelectorAll('.type-box .type-li');
+            typeLiButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 移除所有按钮的active类
+                    typeLiButtons.forEach(btn => {
+                        btn.classList.remove('type-active');
+                    });
+                    
+                    // 给当前点击按钮添加active类
+                    this.classList.add('type-active');
+                    
+                    // 显示消息
+                    showToast(`已选择${this.textContent}策略`);
+                });
+            });
+            
+            // 添加杠杆调整点击事件
+            const leverageInput = document.querySelector('.forms-item .uni-input-input[placeholder="选择杠杆倍数"]');
+            const leverageContainer = leverageInput.closest('.form-item-input');
+            leverageContainer.addEventListener('click', function() {
+                // 模拟杠杆倍数选择弹窗
+                const leverageOptions = [1, 2, 3, 5, 10, 20, 50, 100];
+                let selectedLeverage = 10; // 默认选择
+                
+                // 创建杠杆选择对话框
+                const createLeverageDialog = () => {
+                    // 如果页面上已有对话框，先移除
+                    const existingDialog = document.querySelector('.leverage-dialog');
+                    if (existingDialog) {
+                        existingDialog.remove();
+                    }
+                    
+                    // 创建对话框容器
+                    const dialog = document.createElement('div');
+                    dialog.className = 'leverage-dialog';
+                    dialog.style.position = 'fixed';
+                    dialog.style.top = '50%';
+                    dialog.style.left = '50%';
+                    dialog.style.transform = 'translate(-50%, -50%)';
+                    dialog.style.width = '80%';
+                    dialog.style.maxWidth = '320px';
+                    dialog.style.backgroundColor = '#fff';
+                    dialog.style.borderRadius = '12px';
+                    dialog.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+                    dialog.style.zIndex = '9999';
+                    dialog.style.overflow = 'hidden';
+                    
+                    // 创建对话框标题
+                    const dialogTitle = document.createElement('div');
+                    dialogTitle.textContent = '选择杠杆倍数';
+                    dialogTitle.style.padding = '16px';
+                    dialogTitle.style.borderBottom = '1px solid #f0f0f0';
+                    dialogTitle.style.fontSize = '16px';
+                    dialogTitle.style.fontWeight = '600';
+                    dialogTitle.style.textAlign = 'center';
+                    dialogTitle.style.color = '#262626';
+                    dialog.appendChild(dialogTitle);
+                    
+                    // 创建选项容器
+                    const optionsContainer = document.createElement('div');
+                    optionsContainer.style.padding = '10px 0';
+                    optionsContainer.style.maxHeight = '300px';
+                    optionsContainer.style.overflowY = 'auto';
+                    dialog.appendChild(optionsContainer);
+                    
+                    // 添加杠杆选项
+                    leverageOptions.forEach(leverage => {
+                        const option = document.createElement('div');
+                        option.className = 'leverage-option';
+                        option.textContent = `${leverage}X`;
+                        option.style.padding = '12px 16px';
+                        option.style.transition = 'all 0.2s ease';
+                        option.style.cursor = 'pointer';
+                        option.style.fontSize = '15px';
+                        
+                        // 高亮当前选中的选项
+                        if (leverage === selectedLeverage) {
+                            option.style.color = '#1a6aff';
+                            option.style.fontWeight = '600';
+                            option.style.backgroundColor = '#f0f7ff';
+                        }
+                        
+                        option.addEventListener('mouseenter', function() {
+                            if (leverage !== selectedLeverage) {
+                                this.style.backgroundColor = '#f9fafc';
+                            }
+                        });
+                        
+                        option.addEventListener('mouseleave', function() {
+                            if (leverage !== selectedLeverage) {
+                                this.style.backgroundColor = 'transparent';
+                            }
+                        });
+                        
+                        option.addEventListener('click', function() {
+                            selectedLeverage = leverage;
+                            leverageInput.value = `${leverage}X`;
+                            
+                            // 更新页面上的保证金值
+                            updateMarginFromLeverage(leverage);
+                            
+                            dialog.remove();
+                            
+                            // 显示杠杆设置消息
+                            showToast(`已设置杠杆倍数: ${leverage}X`);
+                            
+                            // 添加点击动画效果
+                            leverageContainer.classList.add('row-clicked');
+                            setTimeout(() => {
+                                leverageContainer.classList.remove('row-clicked');
+                            }, 300);
+                        });
+                        
+                        optionsContainer.appendChild(option);
+                    });
+                    
+                    // 创建取消按钮
+                    const cancelButton = document.createElement('div');
+                    cancelButton.textContent = '取消';
+                    cancelButton.style.padding = '14px';
+                    cancelButton.style.borderTop = '1px solid #f0f0f0';
+                    cancelButton.style.textAlign = 'center';
+                    cancelButton.style.color = '#8c8c8c';
+                    cancelButton.style.fontSize = '15px';
+                    cancelButton.style.cursor = 'pointer';
+                    cancelButton.style.transition = 'all 0.2s ease';
+                    
+                    cancelButton.addEventListener('mouseenter', function() {
+                        this.style.backgroundColor = '#f9fafc';
+                    });
+                    
+                    cancelButton.addEventListener('mouseleave', function() {
+                        this.style.backgroundColor = 'transparent';
+                    });
+                    
+                    cancelButton.addEventListener('click', function() {
+                        dialog.remove();
+                    });
+                    
+                    dialog.appendChild(cancelButton);
+                    
+                    // 创建遮罩层
+                    const overlay = document.createElement('div');
+                    overlay.className = 'leverage-overlay';
+                    overlay.style.position = 'fixed';
+                    overlay.style.top = '0';
+                    overlay.style.left = '0';
+                    overlay.style.right = '0';
+                    overlay.style.bottom = '0';
+                    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                    overlay.style.zIndex = '9998';
+                    
+                    overlay.addEventListener('click', function() {
+                        dialog.remove();
+                        overlay.remove();
+                    });
+                    
+                    // 将对话框和遮罩添加到页面
+                    document.body.appendChild(overlay);
+                    document.body.appendChild(dialog);
+                    
+                    // 添加动画
+                    dialog.style.opacity = '0';
+                    dialog.style.transform = 'translate(-50%, -60%)';
+                    dialog.style.transition = 'all 0.3s ease';
+                    overlay.style.opacity = '0';
+                    overlay.style.transition = 'opacity 0.3s ease';
+                    
+                    setTimeout(() => {
+                        dialog.style.opacity = '1';
+                        dialog.style.transform = 'translate(-50%, -50%)';
+                        overlay.style.opacity = '1';
+                    }, 10);
+                };
+                
+                // 显示杠杆选择对话框
+                createLeverageDialog();
+            });
+            
+            // 设置币种选择点击事件
+            document.querySelector('.robot-info').parentElement.addEventListener('click', function() {
+                showToast('币种选择功能正在开发中...');
+            });
+            
+            // 设置设置项点击事件
+            const settingItems = document.querySelectorAll('.setting-value .arrow-right');
+            settingItems.forEach(item => {
+                item.parentElement.parentElement.addEventListener('click', function() {
+                    const settingName = this.querySelector('.setting-label').textContent;
+                    showToast(`${settingName}设置页面正在开发中...`);
+                    
+                    // 添加点击动画效果
+                    this.classList.add('row-clicked');
+                    setTimeout(() => {
+                        this.classList.remove('row-clicked');
+                    }, 300);
+                });
+            });
+            
+            // 设置保存按钮事件
+            const saveButton = document.querySelector('.confirm-btn');
+            saveButton.addEventListener('click', function() {
+                // 添加按钮动画
+                this.classList.add('btn-clicked');
+                
+                // 获取保证金值和交易对信息
+                const marginInput = document.querySelector('.uni-input-input[placeholder="输入投入金额"]');
+                const marginValue = marginInput.value;
+                
+                // 获取URL中的策略ID
+                const urlParams = new URLSearchParams(window.location.search);
+                const strategyId = urlParams.get('id') || '1';
+                
+                // 从隐藏字段获取用户选择的交易对
+                const tradePair = document.getElementById('selected-crypto-pair').value || 'BTC-USDT';
+                
+                // 获取交易方向（做多/做空）
+                const dirElements = document.querySelectorAll('.type-box .type-li');
+                let tradeDirection = 'buy'; // 默认做多
+                dirElements.forEach(function(el) {
+                    if (el.classList.contains('type-active')) {
+                        tradeDirection = el.textContent.trim() === '做多' ? 'buy' : 'sell';
+                    }
+                });
+                
+                // 发送AJAX请求到后端
+                fetch('/api/strategy/save', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        strategyId: strategyId,
+                        marginValue: marginValue,
+                        tradePair: tradePair,
+                        tradeDirection: tradeDirection,
+                        leverage: parseInt(document.getElementById('leverage-value').value || '10') // 添加杠杆倍数
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.code === 200) {
+                        // 仅保存设置成功的默认消息
+                        showToast('设置已成功保存');
+                        
+                        // 显示后端返回的合约张数
+                        if (data.contractSize) {
+                            showToast(`相当于 ${data.contractSize} 张合约`);
+                        }
+                        
+                        // 显示订单结果（如果有）
+                        if (data.orderResult) {
+                            // 创建订单结果弹窗
+                            showOrderResultModal(data.orderResult, tradePair);
+                            
+                            // 检查是否已经有相同方向的持仓
+                            const hasSameDirectionPosition = 
+                                (tradeDirection === 'buy' && data.positionStatus && data.positionStatus.buy_flag) || 
+                                (tradeDirection === 'sell' && data.positionStatus && data.positionStatus.sell_flag);
+                            
+                            if (hasSameDirectionPosition) {
+                                // 已有相同方向持仓，显示为"已持仓中"
+                                this.textContent = '已持仓中';
+                                this.classList.add('position-active');
+                            } else {
+                                // 无相同方向持仓，显示为"已下单，执行中"
+                                this.textContent = '已下单，执行中';
+                                this.classList.add('order-success');
+                            }
+                        } else {
+                            // 无订单，保持"保存设置"状态
+                            this.textContent = '保存设置';
+                            this.classList.remove('order-success');
+                            this.classList.remove('position-active');
+                        }
+                    } else if (data.code === 503 || data.code === 504) {
+                        // 网络错误处理
+                        showNetworkErrorModal(data.message);
+                    } else {
+                        showToast('保存失败: ' + data.message);
+                    }
+                    this.classList.remove('btn-clicked');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // 网络错误或服务器问题
+                    showNetworkErrorModal('无法连接到服务器，请检查您的网络连接后重试');
+                    this.classList.remove('btn-clicked');
+                });
+            });
+            
+            // 初始化仓位滑动条
+            initPositionSlider();
+            
+            // 初始化百分比控制滑动条
+            initPositionPercentSlider();
+            
+            // 添加页面内各元素的入场动画
+            animateElements();
+            
+            // 投入金额获得焦点时添加高亮效果
+            const marginInput = document.querySelector('.uni-input-input[placeholder="输入投入金额"]');
+            marginInput.addEventListener('focus', function() {
+                // // document.getElementById('margin-input-container').classList.add('margin-highlight'); // 已禁用动画 // 已禁用动画
+            });
+            
+            marginInput.addEventListener('blur', function() {
+                // // document.getElementById('margin-input-container').classList.remove('margin-highlight'); // 已禁用动画 // 已禁用动画
+            });
+            
+            // 根据杠杆倍数更新保证金金额
+            function updateMarginFromLeverage(leverage) {
+                // 获取当前百分比值
+                const percentElement = document.getElementById('position-value-percent');
+                const percent = parseInt(percentElement.textContent);
+                
+                // 计算保证金金额（示例计算公式）
+                const baseAmount = 1000;  // 基础金额
+                const calculatedMargin = (baseAmount / leverage) * (percent / 100);
+                
+                // 更新保证金输入框，使用平滑动画
+                const marginInput = document.querySelector('.uni-input-input[placeholder="输入投入金额"]');
+                // 使用toFixed保留两位小数，避免浮点数问题并应用平滑过渡
+                const formattedValue = parseFloat(calculatedMargin.toFixed(2));
+                // 检查值是否有明显变化
+                if (marginInput.value !== formattedValue.toString()) {
+                    // 存储上一次的值，用于动画判断
+                    const prevValue = parseFloat(marginInput.value || '0');
+                    // 如果变化大于一定值，应用过渡动画
+                    if (Math.abs(prevValue - formattedValue) > 10) {
+                        marginInput.classList.add('value-changing');
+                        setTimeout(() => {
+                            marginInput.classList.remove('value-changing');
+                        }, 300);
+                    }
+                    // 设置新值
+                    marginInput.value = formattedValue;
+                }
+                
+                // 显示保证金更新提示
+                showToast(`保证金已更新: ${calculatedMargin.toFixed(2)} USDT`);
+            }
+        }
+        
+        // 显示消息提示
+        function showToast(message) {
+            // 如果已有toast，先移除
+            const existingToast = document.querySelector('.toast-message');
+            if (existingToast) {
+                existingToast.remove();
+            }
+            
+            // 创建新的toast元素
+            const toast = document.createElement('div');
+            toast.className = 'toast-message';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            // 显示toast
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+            
+            // 自动隐藏toast
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 2000);
+        }
+        
+        // 显示订单结果模态窗口
+        function showOrderResultModal(orderResult, tradePair) {
+            // 调用新的侧边显示函数，不再使用弹窗
+            showOrderInfo(orderResult, tradePair);
+            
+            // 同时显示一个小的成功提示
+            showToast(`下单成功: ${tradePair}, ${orderResult.contractSize}张`, 'success');
+        }
+        
+        // 显示网络错误模态窗口
+        function showNetworkErrorModal(message) {
+            // 创建模态框容器
+            const modal = document.createElement('div');
+            modal.className = 'modal-container error-modal';
+            
+            // 创建模态框内容
+            const modalContent = document.createElement('div');
+            modalContent.className = 'modal-content';
+            
+            // 添加标题
+            const titleEl = document.createElement('h3');
+            titleEl.textContent = '网络连接问题';
+            titleEl.className = 'modal-title';
+            modalContent.appendChild(titleEl);
+            
+            // 添加错误图标
+            const iconEl = document.createElement('div');
+            iconEl.className = 'error-icon';
+            iconEl.innerHTML = '<svg viewBox="0 0 24 24" width="48" height="48"><path fill="#ff4d4f" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-7v2h2v-2h-2zm0-8v6h2V7h-2z"/></svg>';
+            modalContent.appendChild(iconEl);
+            
+            // 添加错误信息
+            const msgEl = document.createElement('p');
+            msgEl.textContent = message;
+            msgEl.className = 'modal-message';
+            modalContent.appendChild(msgEl);
+            
+            // 添加确认按钮
+            const confirmBtn = document.createElement('button');
+            confirmBtn.textContent = '确定';
+            confirmBtn.className = 'modal-confirm-btn';
+            confirmBtn.addEventListener('click', function() {
+                document.body.removeChild(modal);
+            });
+            
+            modalContent.appendChild(confirmBtn);
+            modal.appendChild(modalContent);
+            
+            // 添加到body并显示
+            document.body.appendChild(modal);
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+        }
+        
+        // 添加元素入场动画
+        function animateElements() {
+            const elements = document.querySelectorAll('.box, .box2, .forms-item');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('element-animated');
+                }, 100 * index);
+            });
+        }
+        
+        // 初始化百分比控制滑动条
+        function initPositionPercentSlider() {
+            const slider = document.getElementById('position-slider-percent');
+            const sliderBar = slider.parentElement;
+            const positionValue = document.getElementById('position-value-percent');
+            const progressBar = sliderBar.querySelector('.gone');
+            
+            // 获取保证金输入框
+            const marginInput = document.querySelector('.forms-item .uni-input-input[placeholder="输入投入金额"]');
+            // 设置初始保证金值（假设有一个最大值）
+            const maxMargin = 1000; // 假设最大保证金为1000 USDT
+            
+            // 平滑设置初始值
+            setTimeout(() => {
+                const formattedValue = parseFloat(maxMargin.toFixed(2));
+                marginInput.value = formattedValue;
+            }, 300);
+            
+            let isDragging = false;
+            let startX, sliderWidth, sliderLeft;
+            
+            // 平滑更新保证金值函数
+            function updateMarginValue(percent, leverage) {
+                // 计算保证金
+                const marginValue = (percent / 100) * (maxMargin / leverage);
+                // 格式化值，保留2位小数
+                const formattedValue = parseFloat(marginValue.toFixed(2));
+                
+                // 简化后的逻辑，直接设置值，无动画
+                if (marginInput.value !== formattedValue.toString()) {
+                    marginInput.value = formattedValue;
+                }
+            }
+            
+            // 更新滑块位置和值
+            function updateSlider(clientX) {
+                // 计算滑块在轨道上的位置百分比
+                let newLeft = clientX - sliderLeft;
+                newLeft = Math.max(0, Math.min(newLeft, sliderWidth));
+                
+                const percent = Math.round((newLeft / sliderWidth) * 100);
+                
+                // 设置CSS变量记录当前位置，用于动画
+                slider.style.setProperty('--x-pos', `${newLeft}px`);
+                
+                // 更新滑块位置，保持垂直居中
+                slider.style.transform = `translateY(-50%) translateX(${newLeft}px)`;
+                
+                // 更新进度条
+                progressBar.style.width = `${percent}%`;
+                
+                // 更新值显示
+                slider.querySelector('.count').textContent = `${percent}%`;
+                positionValue.textContent = `${percent}%`;
+                
+                // 计算并更新保证金值
+                const leverageInput = document.querySelector('.forms-item .uni-input-input[placeholder="选择杠杆倍数"]');
+                let leverage = 10; // 默认杠杆
+                if (leverageInput.value) {
+                    // 解析杠杆值（例如 "10X" -> 10）
+                    leverage = parseInt(leverageInput.value);
+                    if (isNaN(leverage)) leverage = 10;
+                }
+                
+                // 使用平滑更新函数更新保证金值
+                updateMarginValue(percent, leverage);
+                
+                // 添加滑块动画效果
+                const handleSliderAnimation = (percent) => {
+                    // 移除所有颜色类
+                    progressBar.classList.remove('progress-red', 'progress-yellow', 'progress-blue');
+                    slider.classList.remove('slider-red', 'slider-yellow', 'slider-blue');
+                    
+                    // 根据百分比应用相应的颜色类
+                    if (percent < 30) {
+                        positionValue.style.color = '#ff4d4f';
+                        slider.classList.add('slider-red');
+                        progressBar.classList.add('progress-red');
+                        slider.querySelector('.count').style.backgroundColor = '#ff4d4f';
+                    } else if (percent < 70) {
+                        positionValue.style.color = '#faad14';
+                        slider.classList.add('slider-yellow');
+                        progressBar.classList.add('progress-yellow');
+                        slider.querySelector('.count').style.backgroundColor = '#faad14';
+                    } else {
+                        positionValue.style.color = '#1a6aff';
+                        slider.classList.add('slider-blue');
+                        progressBar.classList.add('progress-blue');
+                        slider.querySelector('.count').style.backgroundColor = '#1a6aff';
+                    }
+                    
+                    // 添加缩放动画效果
+                    if (isDragging) {
+                        // 拖动时不添加脉冲动画
+                        return;
+                    }
+                    
+                    slider.classList.remove('slider-pulse');
+                    // 强制重绘
+                    void slider.offsetWidth;
+                    slider.classList.add('slider-pulse');
+                };
+                
+                handleSliderAnimation(percent);
+                return percent;
+            }
+            
+            // 鼠标/触摸事件处理
+            function onStart(e) {
+                e.preventDefault();
+                const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+                
+                // 获取滑动条的宽度和位置
+                const rect = sliderBar.getBoundingClientRect();
+                sliderWidth = rect.width - 40; // 减去滑块自身宽度，使滑块能够完全移动到边缘
+                sliderLeft = rect.left + 20; // 加上滑块半径，使百分比计算更准确
+                
+                isDragging = true;
+                
+                // 添加激活样式
+                slider.classList.add('slider-active');
+                document.body.style.cursor = 'grabbing';
+                
+                // 更新初始位置
+                updateSlider(clientX);
+                
+                // 添加移动和结束事件监听
+                document.addEventListener('mousemove', onMove);
+                document.addEventListener('touchmove', onMove, { passive: false });
+                document.addEventListener('mouseup', onEnd);
+                document.addEventListener('touchend', onEnd);
+            }
+            
+            function onMove(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                
+                const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+                updateSlider(clientX);
+            }
+            
+            function onEnd() {
+                isDragging = false;
+                
+                // 移除激活样式
+                slider.classList.remove('slider-active');
+                document.body.style.cursor = '';
+                
+                // 移除事件监听
+                document.removeEventListener('mousemove', onMove);
+                document.removeEventListener('touchmove', onMove);
+                document.removeEventListener('mouseup', onEnd);
+                document.removeEventListener('touchend', onEnd);
+                
+                // 添加完成动画
+                slider.classList.add('slider-done');
+                setTimeout(() => {
+                    slider.classList.remove('slider-done');
+                }, 500);
+            }
+            
+            // 为固定点添加点击事件
+            sliderBar.querySelectorAll('.move-img').forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const percent = parseInt(this.style.left);
+                    
+                    // 获取滑动条的宽度
+                    const rect = sliderBar.getBoundingClientRect();
+                    sliderWidth = rect.width - 40;
+                    sliderLeft = rect.left + 20;
+                    
+                    const newPosition = (sliderWidth * percent) / 100;
+                    
+                    // 设置CSS变量记录当前位置，用于动画
+                    slider.style.setProperty('--x-pos', `${newPosition}px`);
+                    
+                    // 添加过渡动画
+                    slider.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    progressBar.style.transition = 'width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    
+                    // 更新滑块位置，保持垂直居中
+                    slider.style.transform = `translateY(-50%) translateX(${newPosition}px)`;
+                    progressBar.style.width = `${percent}%`;
+                    slider.querySelector('.count').textContent = `${percent}%`;
+                    positionValue.textContent = `${percent}%`;
+                    
+                    // 计算并更新保证金值
+                    const leverageInput = document.querySelector('.forms-item .uni-input-input[placeholder="选择杠杆倍数"]');
+                    let leverage = 10; // 默认杠杆
+                    if (leverageInput.value) {
+                        // 解析杠杆值（例如 "10X" -> 10）
+                        leverage = parseInt(leverageInput.value);
+                        if (isNaN(leverage)) leverage = 10;
+                    }
+                    
+                    // 使用平滑更新函数更新保证金值
+                    updateMarginValue(percent, leverage);
+                    
+                    // 根据百分比改变颜色
+                    if (percent < 30) {
+                        positionValue.style.color = '#ff4d4f';
+                        progressBar.classList.remove('progress-yellow', 'progress-blue');
+                        slider.classList.remove('slider-yellow', 'slider-blue');
+                        progressBar.classList.add('progress-red');
+                        slider.classList.add('slider-red');
+                        slider.querySelector('.count').style.backgroundColor = '#ff4d4f';
+                    } else if (percent < 70) {
+                        positionValue.style.color = '#faad14';
+                        progressBar.classList.remove('progress-red', 'progress-blue');
+                        slider.classList.remove('slider-red', 'slider-blue');
+                        progressBar.classList.add('progress-yellow');
+                        slider.classList.add('slider-yellow');
+                        slider.querySelector('.count').style.backgroundColor = '#faad14';
+                    } else {
+                        positionValue.style.color = '#1a6aff';
+                        progressBar.classList.remove('progress-red', 'progress-yellow');
+                        slider.classList.remove('slider-red', 'slider-yellow');
+                        progressBar.classList.add('progress-blue');
+                        slider.classList.add('slider-blue');
+                        slider.querySelector('.count').style.backgroundColor = '#1a6aff';
+                    }
+                    
+                    // 添加点击高亮动画
+                    this.classList.add('dot-active');
+                    setTimeout(() => {
+                        this.classList.remove('dot-active');
+                    }, 500);
+                    
+                    // 添加完成动画
+                    setTimeout(() => {
+                        slider.classList.remove('slider-done');
+                        // 强制重绘
+                        void slider.offsetWidth;
+                        slider.classList.add('slider-done');
+                    }, 300);
+                    
+                    // 移除过渡动画，以便拖动时不受影响
+                    setTimeout(() => {
+                        slider.style.transition = '';
+                        progressBar.style.transition = '';
+                    }, 500);
+                });
+            });
+            
+            // 为滑动条添加点击事件
+            sliderBar.addEventListener('click', function(e) {
+                // 如果点击的是滑块本身或者固定点，不处理
+                if (e.target === slider || e.target.closest('.move-img')) return;
+                
+                // 获取滑动条的宽度和位置
+                const rect = sliderBar.getBoundingClientRect();
+                sliderWidth = rect.width - 40;
+                sliderLeft = rect.left + 20;
+                
+                const clickX = e.clientX - sliderLeft + 20; // 调整点击位置
+                const percent = Math.round((clickX / sliderWidth) * 100);
+                const adjustedPercent = Math.max(0, Math.min(percent, 100)); // 确保百分比在0-100之间
+                
+                // 设置CSS变量记录当前位置，用于动画
+                const newPosition = (sliderWidth * adjustedPercent) / 100;
+                slider.style.setProperty('--x-pos', `${newPosition}px`);
+                
+                // 添加过渡动画
+                slider.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                progressBar.style.transition = 'width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                
+                // 更新滑块位置，保持垂直居中
+                slider.style.transform = `translateY(-50%) translateX(${newPosition}px)`;
+                progressBar.style.width = `${adjustedPercent}%`;
+                slider.querySelector('.count').textContent = `${adjustedPercent}%`;
+                positionValue.textContent = `${adjustedPercent}%`;
+                
+                // 计算并更新保证金值
+                const leverageInput = document.querySelector('.forms-item .uni-input-input[placeholder="选择杠杆倍数"]');
+                let leverage = 10; // 默认杠杆
+                if (leverageInput.value) {
+                    leverage = parseInt(leverageInput.value);
+                    if (isNaN(leverage)) leverage = 10;
+                }
+                
+                // 使用平滑更新函数更新保证金值
+                updateMarginValue(adjustedPercent, leverage);
+                
+                // 根据百分比改变颜色
+                if (adjustedPercent < 30) {
+                    positionValue.style.color = '#ff4d4f';
+                    progressBar.classList.remove('progress-yellow', 'progress-blue');
+                    slider.classList.remove('slider-yellow', 'slider-blue');
+                    progressBar.classList.add('progress-red');
+                    slider.classList.add('slider-red');
+                    slider.querySelector('.count').style.backgroundColor = '#ff4d4f';
+                } else if (adjustedPercent < 70) {
+                    positionValue.style.color = '#faad14';
+                    progressBar.classList.remove('progress-red', 'progress-blue');
+                    slider.classList.remove('slider-red', 'slider-blue');
+                    progressBar.classList.add('progress-yellow');
+                    slider.classList.add('slider-yellow');
+                    slider.querySelector('.count').style.backgroundColor = '#faad14';
+                } else {
+                    positionValue.style.color = '#1a6aff';
+                    progressBar.classList.remove('progress-red', 'progress-yellow');
+                    slider.classList.remove('slider-red', 'slider-yellow');
+                    progressBar.classList.add('progress-blue');
+                    slider.classList.add('slider-blue');
+                    slider.querySelector('.count').style.backgroundColor = '#1a6aff';
+                }
+                
+                // 添加完成动画
+                setTimeout(() => {
+                    slider.classList.remove('slider-done');
+                    // 强制重绘
+                    void slider.offsetWidth;
+                    slider.classList.add('slider-done');
+                }, 300);
+                
+                // 移除过渡动画，以便拖动时不受影响
+                setTimeout(() => {
+                    slider.style.transition = '';
+                    progressBar.style.transition = '';
+                }, 500);
+            });
+            
+            // 添加拖动事件监听
+            slider.addEventListener('mousedown', onStart);
+            slider.addEventListener('touchstart', onStart, { passive: false });
+            
+            // 初始化时设置滑块的颜色
+            setTimeout(() => {
+                // 获取初始百分比
+                const percent = parseInt(positionValue.textContent);
+                
+                if (percent < 30) {
+                    positionValue.style.color = '#ff4d4f';
+                    progressBar.classList.remove('progress-yellow', 'progress-blue');
+                    slider.classList.remove('slider-yellow', 'slider-blue');
+                    progressBar.classList.add('progress-red');
+                    slider.classList.add('slider-red');
+                    slider.querySelector('.count').style.backgroundColor = '#ff4d4f';
+                } else if (percent < 70) {
+                    positionValue.style.color = '#faad14';
+                    progressBar.classList.remove('progress-red', 'progress-blue');
+                    slider.classList.remove('slider-red', 'slider-blue');
+                    progressBar.classList.add('progress-yellow');
+                    slider.classList.add('slider-yellow');
+                    slider.querySelector('.count').style.backgroundColor = '#faad14';
+                } else {
+                    positionValue.style.color = '#1a6aff';
+                    progressBar.classList.remove('progress-red', 'progress-yellow');
+                    slider.classList.remove('slider-red', 'slider-yellow');
+                    progressBar.classList.add('progress-blue');
+                    slider.classList.add('slider-blue');
+                    slider.querySelector('.count').style.backgroundColor = '#1a6aff';
+                }
+            }, 500);
+        }
+        
+        // 初始化仓位滑动条
+        function initPositionSlider() {
+            const slider = document.getElementById('position-slider');
+            if (!slider) return; // 防止错误
+            
+            const progressBar = document.getElementById('progress-bar');
+            const positionValue = document.getElementById('position-value');
+            const sliderBar = document.querySelector('.sliderBar');
+            
+            let isDragging = false;
+            let startX, sliderWidth, sliderLeft;
+            
+            // 更新滑块位置和值
+            function updateSlider(clientX) {
+                // 计算滑块在轨道上的位置百分比
+                let newLeft = clientX - sliderLeft;
+                newLeft = Math.max(0, Math.min(newLeft, sliderWidth));
+                
+                const percent = Math.round((newLeft / sliderWidth) * 100);
+                
+                // 设置CSS变量记录当前位置，用于动画
+                slider.style.setProperty('--x-pos', `${newLeft}px`);
+                
+                // 更新滑块位置，保持垂直居中
+                slider.style.transform = `translateY(-50%) translateX(${newLeft}px)`;
+                
+                // 更新进度条
+                progressBar.style.width = `${percent}%`;
+                
+                // 更新值显示
+                slider.querySelector('.count').textContent = `${percent}%`;
+                positionValue.textContent = `${percent}%`;
+                
+                // 计算并更新保证金值
+                const leverageInput = document.querySelector('.forms-item .uni-input-input[placeholder="选择杠杆倍数"]');
+                let leverage = 10; // 默认杠杆
+                if (leverageInput.value) {
+                    // 解析杠杆值（例如 "10X" -> 10）
+                    leverage = parseInt(leverageInput.value);
+                    if (isNaN(leverage)) leverage = 10;
+                }
+                
+                // 计算保证金
+                const marginValue = (percent / 100) * (maxMargin / leverage);
+                marginInput.value = marginValue.toFixed(2);
+                
+                // 添加滑块动画效果
+                const handleSliderAnimation = (percent) => {
+                    // 移除所有颜色类
+                    progressBar.classList.remove('progress-red', 'progress-yellow', 'progress-blue');
+                    slider.classList.remove('slider-red', 'slider-yellow', 'slider-blue');
+                    
+                    // 根据百分比应用相应的颜色类
+                    if (percent < 30) {
+                        positionValue.style.color = '#ff4d4f';
+                        slider.classList.add('slider-red');
+                        progressBar.classList.add('progress-red');
+                        slider.querySelector('.count').style.backgroundColor = '#ff4d4f';
+                    } else if (percent < 70) {
+                        positionValue.style.color = '#faad14';
+                        slider.classList.add('slider-yellow');
+                        progressBar.classList.add('progress-yellow');
+                        slider.querySelector('.count').style.backgroundColor = '#faad14';
+                    } else {
+                        positionValue.style.color = '#1a6aff';
+                        slider.classList.add('slider-blue');
+                        progressBar.classList.add('progress-blue');
+                        slider.querySelector('.count').style.backgroundColor = '#1a6aff';
+                    }
+                    
+                    // 添加缩放动画效果
+                    if (isDragging) {
+                        // 拖动时不添加脉冲动画
+                        return;
+                    }
+                    
+                    slider.classList.remove('slider-pulse');
+                    // 强制重绘
+                    void slider.offsetWidth;
+                    slider.classList.add('slider-pulse');
+                };
+                
+                handleSliderAnimation(percent);
+                return percent;
+            }
+            
+            // 鼠标/触摸事件处理
+            function onStart(e) {
+                e.preventDefault();
+                const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+                
+                // 获取滑动条的宽度和位置
+                const rect = sliderBar.getBoundingClientRect();
+                sliderWidth = rect.width;
+                sliderLeft = rect.left;
+                
+                isDragging = true;
+                
+                // 更新初始位置
+                updateSlider(clientX);
+                
+                // 添加移动和结束事件监听
+                document.addEventListener('mousemove', onMove);
+                document.addEventListener('touchmove', onMove, { passive: false });
+                document.addEventListener('mouseup', onEnd);
+                document.addEventListener('touchend', onEnd);
+            }
+            
+            function onMove(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                
+                const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+                updateSlider(clientX);
+            }
+            
+            function onEnd() {
+                isDragging = false;
+                
+                // 移除事件监听
+                document.removeEventListener('mousemove', onMove);
+                document.removeEventListener('touchmove', onMove);
+                document.removeEventListener('mouseup', onEnd);
+                document.removeEventListener('touchend', onEnd);
+            }
+            
+            // 为固定点添加点击事件
+            const dotElements = document.querySelectorAll('.move-img');
+            if (dotElements.length > 0) {
+                dotElements.forEach(dot => {
+                    dot.addEventListener('click', function() {
+                        if (this.style.left) {
+                            const percent = parseInt(this.style.left);
+                            slider.style.left = `${percent}%`;
+                            
+                            if (progressBar) {
+                                progressBar.style.width = `${percent}%`;
+                            }
+                            
+                            const countElement = slider.querySelector('.count');
+                            if (countElement) {
+                                countElement.textContent = `${percent}%`;
+                            }
+                            
+                            if (positionValue) {
+                                positionValue.textContent = `${percent}%`;
+                            }
+                        }
+                    });
+                });
+            }
+            
+            // 为滑动条添加点击事件
+            sliderBar.addEventListener('click', function(e) {
+                if (e.target === slider) return;
+                
+                const rect = sliderBar.getBoundingClientRect();
+                const sliderWidth = rect.width;
+                const clickX = e.clientX - rect.left;
+                const percent = Math.round((clickX / sliderWidth) * 100);
+                
+                slider.style.left = `${percent}%`;
+                
+                if (progressBar) {
+                    progressBar.style.width = `${percent}%`;
+                }
+                
+                const countElement = slider.querySelector('.count');
+                if (countElement) {
+                    countElement.textContent = `${percent}%`;
+                }
+                
+                if (positionValue) {
+                    positionValue.textContent = `${percent}%`;
+                }
+            });
+            
+            // 添加拖动事件监听
+            slider.addEventListener('mousedown', onStart);
+            slider.addEventListener('touchstart', onStart, { passive: false });
+        }
+
+        // 检查持仓状态函数
+        function checkPositionStatus(allowTrade = false) {
+            // 获取当前选择的交易对和交易方向
+            let tradePair = 'BTC-USDT'; // 默认值
+            
+            // 优先使用selected-crypto-pair
+            const selectedCryptoPair = document.getElementById('selected-crypto-pair');
+            if (selectedCryptoPair && selectedCryptoPair.value) {
+                tradePair = selectedCryptoPair.value;
+            }
+            // 如果selected-crypto-pair为空，尝试使用trade-pair-select
+            else {
+                const tradePairSelect = document.getElementById('trade-pair-select');
+                if (tradePairSelect && tradePairSelect.value) {
+                    tradePair = tradePairSelect.value;
+                }
+            }
+            
+            console.log(`检查持仓状态使用的交易对: ${tradePair}`);
+            
+            // 获取交易方向
+            let tradeDirection = 'buy'; // 默认做多
+            const dirInput = document.querySelector('input[name="trade_direction"]:checked');
+            if (dirInput) {
+                tradeDirection = dirInput.value;
+            } else {
+                // 尝试使用类型选择器
+                const activeTypeEl = document.querySelector('.type-box .type-li.type-active');
+                if (activeTypeEl) {
+                    tradeDirection = activeTypeEl.textContent.trim() === '做多' ? 'buy' : 'sell';
+                }
+            }
+            
+            // 更新最后刷新时间
+            const lastRefreshTime = document.getElementById('last-refresh-time');
+            if (lastRefreshTime) {
+                lastRefreshTime.textContent = `最后刷新: ${new Date().toLocaleTimeString()}`;
+            }
+            
+            // 更新续下单按钮显示状态
+            const continueOrderBtn = document.getElementById('continue-order-btn');
+            
+            // 发送请求检查持仓状态
+            fetch('/api/position/check', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    tradePair: tradePair,
+                    tradeDirection: tradeDirection
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.code === 200) {
+                    // 更新持仓状态
+                    const hasBuyPosition = data.positionStatus.buy_flag;
+                    const hasSellPosition = data.positionStatus.sell_flag;
+                    chichang = hasBuyPosition || hasSellPosition;
+                    
+                    // 记录状态
+                    console.log(`[策略状态结果] 多头持仓: ${hasBuyPosition ? '激活' : '未激活'}, 空头持仓: ${hasSellPosition ? '激活' : '未激活'}`);
+                    
+                    // 更新策略运行状态指示器
+                    const statusIndicator = document.getElementById('key-status-indicator');
+                            const statusIcon = document.getElementById('status-icon');
+                    const statusText = document.getElementById('status-text');
+                    
+                    // 如果有持仓，更新续下单按钮样式
+                    if (chichang) {
+                        continueOrderBtn.innerHTML = '<i class="fas fa-clock"></i> 已持仓';
+                        continueOrderBtn.style.background = 'linear-gradient(135deg, #1890ff, #40a9ff)';
+                        continueOrderBtn.classList.add('position-active');
+                        continueOrderBtn.disabled = true;
+                    } else {
+                        // 检查是否有订单正在执行
+                        if (data.hasOrder) {
+                            continueOrderBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 处理中';
+                            continueOrderBtn.style.background = 'linear-gradient(135deg, #faad14, #ffc53d)';
+                            continueOrderBtn.disabled = true;
+                        } else {
+                            continueOrderBtn.innerHTML = '<i class="fas fa-sync-alt"></i> 续下单';
+                            continueOrderBtn.style.background = 'linear-gradient(135deg, #1a6aff, #3f87ff)';
+                            continueOrderBtn.classList.remove('position-active');
+                            continueOrderBtn.disabled = false;
+                        }
+                    }
+                    
+                    // 显示状态指示器
+                    statusIndicator.style.display = 'block';
+                    
+                    // 更新状态文本和图标
+                    if (chichang) {
+                        statusText.innerHTML = `多头持仓: ${hasBuyPosition ? '<span style="color:#52c41a">激活</span>' : '<span style="color:#bfbfbf">未激活</span>'}, 空头持仓: ${hasSellPosition ? '<span style="color:#52c41a">激活</span>' : '<span style="color:#bfbfbf">未激活</span>'}`;
+                        statusIcon.innerHTML = '🔄';
+                        statusIcon.style.animation = 'spin 5s linear infinite';
+                        statusIndicator.style.backgroundColor = '#e6f7ff';
+                        statusIndicator.style.borderColor = '#91d5ff';
+                    } else if (data.hasOrder) {
+                        statusText.innerHTML = '有订单正在处理中';
+                        statusIcon.innerHTML = '⏳';
+                        statusIcon.style.animation = 'blink 1.5s ease infinite';
+                        statusIndicator.style.backgroundColor = '#fffbe6';
+                        statusIndicator.style.borderColor = '#ffe58f';
+                    } else {
+                        statusText.innerHTML = '当前无持仓，可以下单';
+                        statusIcon.innerHTML = '✅';
+                        statusIcon.style.animation = 'none';
+                        statusIndicator.style.backgroundColor = '#f6ffed';
+                        statusIndicator.style.borderColor = '#b7eb8f';
+                    }
+                    
+                    // 更新按钮状态
+                    updateButtonStatus(chichang, strategyRunning);
+                    
+                    } else {
+                    console.error('检查持仓状态失败:', data.message);
+                    showToast(`检查持仓状态失败: ${data.message}`, 'error');
+                }
+            })
+            .catch(error => {
+                console.error('请求出错:', error);
+                showToast('网络请求失败，请检查网络连接', 'error');
+            });
+        }
+
+        // 保存持仓数据到localStorage
+        function storePositionData(positionInfo, tradePair) {
+            // 获取之前保存的所有持仓信息
+            let allPositions = [];
+            try {
+                const positionsStr = localStorage.getItem('okxPositions');
+                if (positionsStr) {
+                    allPositions = JSON.parse(positionsStr);
+                }
+            } catch (e) {
+                console.error('解析localStorage数据出错:', e);
+                allPositions = [];
+            }
+            
+            // 检查是否已有此交易对的信息，有则更新，无则添加
+            const existingIndex = allPositions.findIndex(p => p.tradePair === tradePair);
+            const hasPosition = positionInfo.hasBuyPosition || positionInfo.hasSellPosition;
+            
+            if (existingIndex >= 0) {
+                if (hasPosition) {
+                    // 更新现有持仓
+                    allPositions[existingIndex] = positionInfo;
+                } else {
+                    // 如果不再有持仓，移除此交易对
+                    allPositions.splice(existingIndex, 1);
+                }
+            } else if (hasPosition) {
+                // 添加新持仓
+                allPositions.push(positionInfo);
+            }
+            
+            // 保存更新后的持仓列表
+            localStorage.setItem('okxPositions', JSON.stringify(allPositions));
+            
+            // 触发自定义事件，通知其他页面更新
+            window.dispatchEvent(new CustomEvent('okxPositionsChanged', {
+                detail: { positions: allPositions }
+            }));
+            
+            // 更新持仓数量
+            updatePositionCount(allPositions.length);
+            
+            // 强制刷新localStorage事件，确保其他标签页能捕获到变化
+            localStorage.setItem('okxPositionCount', allPositions.length.toString());
+            localStorage.setItem('okxPositionsUpdateTime', new Date().getTime().toString());
+            
+            return allPositions;
+        }
+
+        // 更新按钮状态
+        function updateButtonStatus(hasPosition, isRunning) {
+            const toggleBtn = document.getElementById('toggle-strategy-btn');
+            
+            if (isRunning) {
+                // 如果策略正在运行中
+                toggleBtn.textContent = '停止策略';
+                toggleBtn.style.backgroundColor = '#ff4d4f';
+            } else {
+                // 如果策略已停止
+                toggleBtn.textContent = '运行';
+                toggleBtn.style.backgroundColor = '#52c41a';
+            }
+        }
+
+        // 清理所有定时器
+        function clearAllIntervals() {
+            if (strategyInterval) {
+                clearInterval(strategyInterval);
+                strategyInterval = null;
+            }
+            
+            if (window.strategyInterval) {
+                clearInterval(window.strategyInterval);
+                window.strategyInterval = null;
+            }
+            
+            if (autoRefreshInterval) {
+                clearInterval(autoRefreshInterval);
+                autoRefreshInterval = null;
+            }
+            
+            if (window.autoRefreshInterval) {
+                clearInterval(window.autoRefreshInterval);
+                window.autoRefreshInterval = null;
+            }
+        }
+
+        // 自定义确认对话框函数
+        function showConfirmDialog(title, message, confirmText, cancelText, onConfirm, onCancel) {
+            // 创建对话框容器
+            const dialogOverlay = document.createElement('div');
+            dialogOverlay.style.position = 'fixed';
+            dialogOverlay.style.top = '0';
+            dialogOverlay.style.left = '0';
+            dialogOverlay.style.width = '100%';
+            dialogOverlay.style.height = '100%';
+            dialogOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            dialogOverlay.style.zIndex = '9999';
+            dialogOverlay.style.display = 'flex';
+            dialogOverlay.style.justifyContent = 'center';
+            dialogOverlay.style.alignItems = 'center';
+            
+            // 创建对话框内容
+            const dialog = document.createElement('div');
+            dialog.style.backgroundColor = 'white';
+            dialog.style.borderRadius = '8px';
+            dialog.style.width = '300px';
+            dialog.style.maxWidth = '90%';
+            dialog.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+            
+            // 添加标题
+            const titleElement = document.createElement('div');
+            titleElement.textContent = title;
+            titleElement.style.padding = '16px';
+            titleElement.style.borderBottom = '1px solid #f0f0f0';
+            titleElement.style.fontWeight = 'bold';
+            dialog.appendChild(titleElement);
+            
+            // 添加消息
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            messageElement.style.padding = '16px';
+            messageElement.style.color = '#595959';
+            dialog.appendChild(messageElement);
+            
+            // 添加按钮容器
+            const buttonsContainer = document.createElement('div');
+            buttonsContainer.style.display = 'flex';
+            buttonsContainer.style.borderTop = '1px solid #f0f0f0';
+            
+            // 确认按钮
+            const confirmButton = document.createElement('button');
+            confirmButton.textContent = confirmText;
+            confirmButton.style.flex = '1';
+            confirmButton.style.padding = '12px';
+            confirmButton.style.border = 'none';
+            confirmButton.style.backgroundColor = '#1a6aff';
+            confirmButton.style.color = 'white';
+            confirmButton.style.borderRadius = '0 0 0 8px';
+            confirmButton.style.cursor = 'pointer';
+            confirmButton.addEventListener('click', function() {
+                document.body.removeChild(dialogOverlay);
+                if (onConfirm) onConfirm();
+            });
+            
+            // 取消按钮
+            const cancelButton = document.createElement('button');
+            cancelButton.textContent = cancelText;
+            cancelButton.style.flex = '1';
+            cancelButton.style.padding = '12px';
+            cancelButton.style.border = 'none';
+            cancelButton.style.backgroundColor = '#f5f5f5';
+            cancelButton.style.color = '#595959';
+            cancelButton.style.borderRadius = '0 0 8px 0';
+            cancelButton.style.cursor = 'pointer';
+            cancelButton.addEventListener('click', function() {
+                document.body.removeChild(dialogOverlay);
+                if (onCancel) onCancel();
+            });
+            
+            buttonsContainer.appendChild(confirmButton);
+            buttonsContainer.appendChild(cancelButton);
+            dialog.appendChild(buttonsContainer);
+            
+            dialogOverlay.appendChild(dialog);
+            document.body.appendChild(dialogOverlay);
+        }
+
+        // 更新导航栏中的持仓数量显示
+        function updatePositionCount(count) {
+            // 尝试找到当前页面中的持仓数量显示元素
+            const positionCountElem = document.querySelector('.flex-x.nav-li.active-nav-li.nav-li-p span:nth-child(2)');
+            if (positionCountElem) {
+                positionCountElem.textContent = `(${count})`;
+            }
+            
+            // 尝试发送消息到spot页面（如果有）
+            try {
+                // 将持仓信息广播到其他页面
+                localStorage.setItem('okxPositionCount', count.toString());
+                
+                // 派发自定义事件
+                window.dispatchEvent(new CustomEvent('okxPositionUpdated', {
+                    detail: { count: count }
+                }));
+            } catch (e) {
+                console.error('更新持仓数量出错:', e);
+            }
+            
+            // 创建持仓信息展示区（如果尚未创建）
+            if (!document.getElementById('position-details-container')) {
+                // 在状态显示下方添加持仓详情区域
+                const statusElement = document.getElementById('strategy-status');
+                if (statusElement) {
+                    const detailsContainer = document.createElement('div');
+                    detailsContainer.id = 'position-details-container';
+                    detailsContainer.style.marginTop = '15px';
+                    detailsContainer.style.padding = '15px';
+                    detailsContainer.style.backgroundColor = '#f8f9fa';
+                    detailsContainer.style.borderRadius = '8px';
+                    detailsContainer.style.display = count > 0 ? 'block' : 'none';
+                    statusElement.parentNode.insertBefore(detailsContainer, statusElement.nextSibling);
+                }
+            }
+        }
+
+        // 显示持仓详情
+        function showPositionDetails(positionStatus, tradePair) {
+            const container = document.getElementById('position-details-container');
+            if (!container) return;
+            
+            container.style.display = 'block';
+            container.innerHTML = `<h5 style="font-size: 16px; margin-bottom: 10px;">持仓详情</h5>`;
+            
+            // 显示多头持仓信息
+            if (positionStatus.buy_flag) {
+                const buyInfo = document.createElement('div');
+                buyInfo.classList.add('position-item');
+                buyInfo.style.marginBottom = '10px';
+                buyInfo.style.padding = '10px';
+                buyInfo.style.backgroundColor = '#e6f7ff';
+                buyInfo.style.borderRadius = '4px';
+                buyInfo.style.borderLeft = '3px solid #1890ff';
+                
+                let availPos = '';
+                let avgPrice = '';
+                
+                if (positionStatus.p_Pos_sz) {
+                    availPos = positionStatus.p_Pos_sz;
+                }
+                
+                if (positionStatus.p_cw_avgPx) {
+                    avgPrice = positionStatus.p_cw_avgPx;
+                }
+                
+                buyInfo.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span style="font-weight: 500;">${tradePair} 多头</span>
+                        <span style="color: #52c41a;">${availPos} 张</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>开仓均价</span>
+                        <span>${avgPrice}</span>
+                    </div>
+                `;
+                
+                container.appendChild(buyInfo);
+            }
+            
+            // 显示空头持仓信息
+            if (positionStatus.sell_flag) {
+                const sellInfo = document.createElement('div');
+                sellInfo.classList.add('position-item');
+                sellInfo.style.marginBottom = '10px';
+                sellInfo.style.padding = '10px';
+                sellInfo.style.backgroundColor = '#fff2e8';
+                sellInfo.style.borderRadius = '4px';
+                sellInfo.style.borderLeft = '3px solid #fa541c';
+                
+                let availPos = '';
+                let avgPrice = '';
+                
+                if (positionStatus.p_Pos_sz_s) {
+                    availPos = positionStatus.p_Pos_sz_s;
+                }
+                
+                if (positionStatus.p_cw_avgPx_s) {
+                    avgPrice = positionStatus.p_cw_avgPx_s;
+                }
+                
+                sellInfo.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span style="font-weight: 500;">${tradePair} 空头</span>
+                        <span style="color: #ff4d4f;">${availPos} 张</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>开仓均价</span>
+                        <span>${avgPrice}</span>
+                    </div>
+                `;
+                
+                container.appendChild(sellInfo);
+            }
+        }
+
+        // 清除持仓详情显示
+        function clearPositionDetails() {
+            const container = document.getElementById('position-details-container');
+            if (container) {
+                container.style.display = 'none';
+                container.innerHTML = '';
+            }
+        }
+        
+        // 页面加载时优先检查buy_flag状态并激活按钮
+        function checkInitialPositionStatus() {
+            // 获取当前URL中的策略ID和交易对
+            const urlParams = new URLSearchParams(window.location.search);
+            const strategyId = urlParams.get('id') || '1';
+            
+            // 获取交易对（根据策略ID设置不同的默认交易对）
+            let tradePair = 'BTC-USDT';
+            if (strategyId === '2') {
+                tradePair = 'ETH-USDT';
+            } else if (strategyId === '3') {
+                tradePair = 'SOL-USDT';
+            } else if (strategyId === '4') {
+                tradePair = 'BNB-USDT';
+            } else if (strategyId === '5') {
+                tradePair = 'DOT-USDT';
+            } else if (strategyId === '6') {
+                tradePair = 'ADA-USDT';
+            }
+            
+            // 显示加载状态
+            const statusElement = document.getElementById('strategy-status');
+            statusElement.textContent = '正在检查持仓状态...';
+            
+            // 向后端发送请求获取持仓状态
+            fetch('/api/position/check', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    tradePair: tradePair,
+                    tradeDirection: 'buy'  // 无论当前选择什么方向，优先检查buy_flag
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.code === 200) {
+                    // 直接检查buy_flag
+                    const hasBuyPosition = data.positionStatus && data.positionStatus.buy_flag;
+                    const hasSellPosition = data.positionStatus && data.positionStatus.sell_flag;
+                    
+                    // 获取UI元素
+                    const toggleBtn = document.getElementById('toggle-strategy-btn');
+                    const saveBtn = document.getElementById('save-strategy-btn');
+                    
+                    // 更新后端检查结果到控制台 - 这是控制zhibiao.py循环的关键状态
+                    console.log(`[策略状态结果] 多头持仓: ${hasBuyPosition ? '激活' : '未激活'}, 空头持仓: ${hasSellPosition ? '激活' : '未激活'}`);
+                    
+                    // 获取之前保存的策略运行状态
+                    const savedStrategyRunning = getStrategyRunningState();
+                    strategyRunning = savedStrategyRunning;
+                    
+                    // 如果保存的状态是已停止，则无论持仓状态如何，都显示运行按钮
+                    if (!savedStrategyRunning) {
+                        // 显示运行按钮
+                        toggleBtn.textContent = '运行';
+                        toggleBtn.style.backgroundColor = '#52c41a';
+                        statusElement.textContent = '策略已停止，点击"运行"启动策略';
+                        statusElement.style.color = '#8c8c8c';
+                        return;
+                    }
+                    
+                    // 以下仅在策略是运行状态时执行
+                    
+                    // 关键状态：多头激活而空头未激活 - 这是最重要的状态，用来控制zhibiao.py循环
+                    if (hasBuyPosition && !hasSellPosition) {
+                        console.log('🔄 关键循环状态: 多头持仓激活且空头未激活，zhibiao.py主循环运行中');
+                        
+                        // 更新全局持仓状态
+                        chichang = true;
+                        
+                        // 激活运行按钮 - 清晰显示循环运行状态
+                        toggleBtn.textContent = '停止策略';
+                        toggleBtn.style.backgroundColor = '#ff4d4f';
+                        
+                        // 激活保存按钮
+                        saveBtn.textContent = '多头持仓中';
+                        saveBtn.classList.add('position-active');
+                        saveBtn.classList.remove('order-success');
+                        
+                        // 更新状态提示
+                        statusElement.textContent = '🔄 多头持仓激活，zhibiao.py主循环运行中';
+                        statusElement.style.color = '#1a6aff'; // 蓝色警告
+                        
+                        // 自动开始策略运行状态
+                        strategyRunning = true;
+                        saveStrategyRunningState(true);
+                        
+                        // 创建持仓状态指示标签
+                        const statusIndicator = document.createElement('div');
+                        statusIndicator.style.backgroundColor = '#e6f7ff';
+                        statusIndicator.style.border = '1px solid #91d5ff';
+                        statusIndicator.style.borderRadius = '4px';
+                        statusIndicator.style.padding = '8px 12px';
+                        statusIndicator.style.marginTop = '10px';
+                        statusIndicator.style.fontWeight = 'bold';
+                        statusIndicator.style.color = '#1a6aff';
+                        statusIndicator.style.display = 'flex';
+                        statusIndicator.style.alignItems = 'center';
+                        statusIndicator.style.justifyContent = 'center';
+                        statusIndicator.style.gap = '8px';
+                        
+                        // 添加循环图标和文本
+                        statusIndicator.innerHTML = `
+                            <div style="animation: spin 2s linear infinite;">🔄</div>
+                            <div>多头持仓激活 - zhibiao.py主循环运行中</div>
+                        `;
+                        
+                        // 如果已有状态指示，先移除
+                        const existingIndicator = document.querySelector('#loop-status-indicator');
+                        if (existingIndicator) {
+                            existingIndicator.remove();
+                        }
+                        
+                        statusIndicator.id = 'loop-status-indicator';
+                        statusElement.parentNode.insertBefore(statusIndicator, statusElement.nextSibling);
+                        
+                        // 添加CSS动画
+                        const style = document.createElement('style');
+                        style.innerHTML = `
+                            @keyframes spin {
+                                from { transform: rotate(0deg); }
+                                to { transform: rotate(360deg); }
+                            }
+                        `;
+                        document.head.appendChild(style);
+                        
+                        // 设置自动监控 - 更频繁检查状态
+                        strategyInterval = setInterval(function() {
+                            checkPositionStatus();
+                        }, 10000); // 10秒检查一次
+                    } else if (hasBuyPosition && hasSellPosition) {
+                        // 多头和空头都激活
+                        console.log('检测到buy_flag=True和sell_flag=True，设置为双向持仓状态');
+                        
+                        // 更新全局持仓状态
+                        chichang = true;
+                        
+                        // 激活运行按钮
+                        toggleBtn.textContent = '停止策略';
+                        toggleBtn.style.backgroundColor = '#ff4d4f';
+                        
+                        // 激活保存按钮
+                        saveBtn.textContent = '双向持仓中';
+                        saveBtn.classList.add('position-active');
+                        saveBtn.classList.remove('order-success');
+                        
+                        // 更新状态提示
+                        statusElement.textContent = '检测到多头和空头持仓，策略已激活';
+                        statusElement.style.color = '#faad14'; // 黄色警告
+                        
+                        // 自动开始策略运行状态
+                        strategyRunning = true;
+                        saveStrategyRunningState(true);
+                        
+                        // 设置自动监控
+                        strategyInterval = setInterval(function() {
+                            checkPositionStatus();
+                        }, 15000); // 15秒检查一次
+                    } else if (!hasBuyPosition && hasSellPosition) {
+                        // 只有空头持仓
+                        console.log('检测到buy_flag=False但sell_flag=True，设置为空头持仓状态');
+                        
+                        // 更新全局持仓状态
+                        chichang = true;
+                        
+                        // 激活运行按钮
+                        toggleBtn.textContent = '停止策略';
+                        toggleBtn.style.backgroundColor = '#ff4d4f';
+                        
+                        // 激活保存按钮
+                        saveBtn.textContent = '空头持仓中';
+                        saveBtn.classList.add('position-active');
+                        saveBtn.classList.remove('order-success');
+                        
+                        // 更新状态提示
+                        statusElement.textContent = '检测到空头持仓，多头未激活';
+                        statusElement.style.color = '#ff4d4f'; // 红色警告
+                        
+                        // 自动开始策略运行状态
+                        strategyRunning = true;
+                        saveStrategyRunningState(true);
+                        
+                        // 设置自动监控
+                        strategyInterval = setInterval(function() {
+                            checkPositionStatus();
+                        }, 15000); // 15秒检查一次
+                    } else {
+                        // 无任何持仓，但检查保存的策略状态
+                        console.log('检测到无持仓，参考保存的策略状态');
+                        
+                        // 未检测到持仓，设置全局变量
+                        chichang = false;
+                        
+                        // 根据保存的策略运行状态设置UI
+                        if (savedStrategyRunning) {
+                            // 如果之前是运行状态，则继续显示停止按钮
+                            toggleBtn.textContent = '停止策略';
+                            toggleBtn.style.backgroundColor = '#ff4d4f';
+                            
+                            statusElement.textContent = '策略正在运行中...';
+                            statusElement.style.color = '#1a6aff';
+                            
+                            // 启动定时器
+                            strategyInterval = setInterval(function() {
+                                checkPositionStatus(true);
+                            }, 15000);
+                        } else {
+                            // 保持正常状态
+                            toggleBtn.textContent = '运行';
+                            toggleBtn.style.backgroundColor = '#52c41a'; // 绿色
+                            
+                            saveBtn.textContent = '保存设置';
+                            statusElement.textContent = '无持仓，系统准备就绪';
+                            statusElement.style.color = '#52c41a'; // 绿色正常
+                            strategyRunning = false;
+                        }
+                        
+                        // 确保移除任何激活状态的类
+                        saveBtn.classList.remove('position-active');
+                        saveBtn.classList.remove('order-success');
+                        
+                        // 如果没有buy_flag，则正常检查持仓状态
+                        checkPositionStatusOnLoad();
+                    }
+                    
+                    // 添加状态摘要显示 - 如果后端提供了状态摘要
+                    if (data.statusSummary) {
+                        // 在状态元素的下方添加后端状态摘要
+                        const statusDetailElement = document.createElement('div');
+                        statusDetailElement.textContent = `后端状态: ${data.statusSummary}`;
+                        statusDetailElement.style.fontSize = '12px';
+                        statusDetailElement.style.marginTop = '5px';
+                        statusDetailElement.style.color = '#666';
+                        
+                        // 如果已有之前的状态摘要，先移除
+                        const existingDetail = document.querySelector('.status-detail');
+                        if (existingDetail) {
+                            existingDetail.remove();
+                        }
+                        
+                        statusDetailElement.classList.add('status-detail');
+                        statusElement.parentNode.insertBefore(statusDetailElement, statusElement.nextSibling);
+                    }
+                    
+                    // 关键状态显示
+                    if (hasBuyPosition && !hasSellPosition) {
+                        const keyStatusIndicator = document.getElementById('key-status-indicator');
+                        if (keyStatusIndicator) {
+                            keyStatusIndicator.style.display = 'block';
+                        }
+                    } else {
+                        const keyStatusIndicator = document.getElementById('key-status-indicator');
+                        if (keyStatusIndicator) {
+                            keyStatusIndicator.style.display = 'none';
+                        }
+                    }
+                } else {
+                    // 如果检查失败，回退到正常检查
+                    checkPositionStatusOnLoad();
+                }
+            })
+            .catch(error => {
+                console.error('优先检查buy_flag失败:', error);
+                // 出错时回退到正常检查
+                checkPositionStatusOnLoad();
+            });
+        }
+
+        // 初始化币种选择器功能
+        function initCryptoSelector() {
+            // 币种选择模态框
+            const modal = document.getElementById('crypto-selection-modal');
+            const cryptoSelector = document.getElementById('crypto-selector');
+            const closeBtn = document.querySelector('.close');
+            const searchInput = document.getElementById('crypto-search');
+            const cryptoItems = document.querySelectorAll('.crypto-item');
+            
+            // 打开模态框
+            if (cryptoSelector) {
+                cryptoSelector.addEventListener('click', function() {
+                    modal.style.display = 'block';
+                });
+            }
+            
+            // 关闭模态框
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                });
+            }
+            
+            // 点击模态框外部关闭
+            window.addEventListener('click', function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // 搜索功能
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    cryptoItems.forEach(item => {
+                        const symbol = item.getAttribute('data-symbol').toLowerCase();
+                        const display = item.getAttribute('data-display').toLowerCase();
+                        if (symbol.includes(searchTerm) || display.includes(searchTerm)) {
+                            item.style.display = 'flex';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            }
+            
+            // 选择交易对
+            cryptoItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const symbol = this.getAttribute('data-symbol');
+                    const display = this.getAttribute('data-display');
+                    const originalPair = this.getAttribute('data-original');
+                    
+                    // 更新显示
+                    document.getElementById('selected-crypto-name').textContent = display;
+                    document.getElementById('selected-crypto-icon').src = `https://ai.hkd.red/symbolImage/${symbol}.png`;
+                    document.getElementById('selected-crypto-pair').value = originalPair;
+                    
+                    // 高亮选中项
+                    cryptoItems.forEach(i => i.classList.remove('selected'));
+                    this.classList.add('selected');
+                    
+                    // 关闭模态框
+                    modal.style.display = 'none';
+                    
+                    // 更新策略配置中的交易对
+                    if (window.strategyConfig) {
+                        window.strategyConfig.tradePair = originalPair;
+                    }
+                    
+                    // 这里可以添加选择交易对后的其他逻辑，如更新杠杆选项等
+                    showToast(`已选择 ${display} 交易对`);
+                    
+                    // 选择新的交易对后，重新检查持仓状态
+                    checkPositionStatus(false);
+                });
+            });
+        }
+
+        // 策略方向选择事件
+        const typeElements = document.querySelectorAll('.type-box .type-li');
+        typeElements.forEach(function(el) {
+            el.addEventListener('click', function() {
+                // 移除所有的激活状态
+                typeElements.forEach(item => {
+                    item.classList.remove('type-active');
+                });
+                
+                // 为当前点击元素添加激活状态
+                this.classList.add('type-active');
+                
+                // 更新方向，如果是保存按钮再次提交，需要获取最新的方向
+                const tradeDirection = this.textContent.trim() === '做多' ? 'buy' : 'sell';
+                
+                // 添加点击动画效果
+                this.parentElement.classList.add('row-clicked');
+                setTimeout(() => {
+                    this.parentElement.classList.remove('row-clicked');
+                }, 300);
+                
+                // 显示选择的方向
+                showToast(`已选择${this.textContent.trim()}方向`);
+                
+                // 重置保存按钮状态 - 用户切换方向后应该重新提交订单
+                const saveButton = document.querySelector('.confirm-btn');
+                saveButton.textContent = '保存设置';
+                saveButton.classList.remove('order-success');
+                saveButton.classList.remove('position-active');
+                
+                // 检查当前方向是否已有持仓，如果有则更新按钮状态
+                checkPositionStatus(tradeDirection);
+            });
+        });
+        
+        // 检查持仓状态
+        function checkPositionStatus(direction) {
+            const tradePair = document.getElementById('selected-crypto-pair').value || 'BTC-USDT';
+            
+            // 发送AJAX请求到后端检查持仓状态
+            fetch('/api/position/check', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    tradePair: tradePair,
+                    tradeDirection: direction
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.code === 200) {
+                    const saveButton = document.querySelector('.confirm-btn');
+                    const hasSameDirectionPosition = 
+                        (direction === 'buy' && data.positionStatus && data.positionStatus.buy_flag) || 
+                        (direction === 'sell' && data.positionStatus && data.positionStatus.sell_flag);
+                    
+                    if (hasSameDirectionPosition) {
+                        // 已有相同方向持仓，显示为"已持仓中"
+                        saveButton.textContent = '已持仓中';
+                        saveButton.classList.add('position-active');
+                        saveButton.classList.remove('order-success');
+                    } else if (data.hasOrder) {
+                        // 有订单执行中
+                        saveButton.textContent = '已下单，执行中';
+                        saveButton.classList.add('order-success');
+                        saveButton.classList.remove('position-active');
+                    } else {
+                        // 无持仓或订单
+                        saveButton.textContent = '保存设置';
+                        saveButton.classList.remove('order-success');
+                        saveButton.classList.remove('position-active');
+                    }
+                    
+                    // 更新状态指示器
+                    updateStatusIndicator(data.positionStatus, data.statusSummary);
+                }
+            })
+            .catch(error => {
+                console.error('Error checking position:', error);
+            });
+        }
+        
+        // 更新状态指示器
+        function updateStatusIndicator(positionStatus, statusSummary) {
+            const statusIndicator = document.getElementById('key-status-indicator');
+            const statusText = document.getElementById('status-text');
+            const statusIcon = document.getElementById('status-icon');
+            
+            if (statusIndicator && statusText) {
+                statusIndicator.style.display = 'block';
+                
+                // 更新状态文本
+                if (statusSummary) {
+                    statusText.textContent = statusSummary;
+                } else {
+                    const buyStatus = positionStatus && positionStatus.buy_flag ? '激活' : '未激活';
+                    const sellStatus = positionStatus && positionStatus.sell_flag ? '激活' : '未激活';
+                    statusText.textContent = `多头持仓: ${buyStatus}, 空头持仓: ${sellStatus}`;
+                }
+                
+                // 更新图标
+                if (positionStatus && (positionStatus.buy_flag || positionStatus.sell_flag)) {
+                    statusIcon.textContent = '✅';
+                } else {
+                    statusIcon.textContent = '⚙️';
+                }
+            }
+        }
+    </script>
+
+    <script>
+        // 确保保证金输入框稳定，禁用所有动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const marginContainer = document.getElementById('margin-input-container');
+            if (marginContainer) {
+                // 移除所有可能导致动画的类
+                marginContainer.classList.remove('hover-glow', 'element-animated', 'margin-highlight');
+                
+                // 设置内联样式以覆盖任何动画
+                marginContainer.style.transition = 'none';
+                marginContainer.style.animation = 'none';
+                marginContainer.style.transform = 'none';
+                
+                // 获取输入框
+                const input = marginContainer.querySelector('.uni-input-input');
+                if (input) {
+                    input.style.transition = 'none';
+                    input.style.animation = 'none';
+                }
+            }
+        });
+    </script>
+    
+    <!-- 添加订单信息侧边显示区域的HTML结构 - 在body末尾添加 -->
+    <div id="order-info-sidebar" class="order-info-sidebar" style="display: none; position: fixed; right: 20px; top: 20px; width: 30%; max-width: 350px; background: white; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); z-index: 9998; padding: 15px; transition: transform 0.3s ease, opacity 0.3s ease; transform: translateX(100%); opacity: 0;">
+        <div class="order-info-header" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+            <div style="display: flex; align-items: center;">
+                <div style="margin-right: 10px;">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="#52c41a" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-7v2h2v-2h-2zm0-8v6h2V7h-2z"/></svg>
+                </div>
+                <h3 style="margin: 0; font-size: 16px;">订单信息</h3>
+            </div>
+            <button class="close-order-info" style="background: none; border: none; cursor: pointer; font-size: 16px; color: #999;">×</button>
+        </div>
+        <div id="order-info-content"></div>
+    </div>
+
+    <script>
+        // 在文档加载完成后绑定事件
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加关闭按钮事件
+            const closeBtn = document.querySelector('.close-order-info');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    hideOrderInfo();
+                });
+            }
+        });
+
+        // 显示订单信息小窗口
+        function showOrderInfo(orderResult, tradePair) {
+            const orderInfoSidebar = document.getElementById('order-info-sidebar');
+            const orderInfoContent = document.getElementById('order-info-content');
+            
+            if (!orderInfoSidebar || !orderInfoContent) return;
+            
+            // 添加交易对信息
+            let htmlContent = `
+                <div style="background: linear-gradient(135deg, #f0f7ff, #e6f7ff); padding: 12px 15px; border-radius: 8px; margin-bottom: 15px; display: flex; align-items: center; justify-content: space-between;">
+                    <span style="color: #333; font-weight: 500;">交易对:</span>
+                    <span style="color: #1a6aff; font-weight: 600; font-size: 16px;">${tradePair}</span>
+                </div>
+                <div class="order-details" style="background: #f9fafc; border: 1px solid #f0f0f0; border-radius: 8px; padding: 15px;">
+            `;
+            
+            // 定义要显示的字段和对应的中文名称
+            const fieldLabels = {
+                'orderId': '订单ID',
+                'status': '状态',
+                'exchangeId': '交易所',
+                'direction': '方向',
+                'contractSize': '合约数量',
+                'margin': '保证金',
+                'time': '时间'
+            };
+            
+            // 按顺序显示字段
+            const fieldsOrder = ['orderId', 'status', 'exchangeId', 'direction', 'contractSize', 'margin', 'time'];
+            
+            // 格式化并显示订单结果数据
+            fieldsOrder.forEach(key => {
+                if (orderResult[key]) {
+                    htmlContent += `
+                        <div class="detail-row">
+                            <span class="detail-label">${fieldLabels[key] || key}:</span>
+                            <span class="detail-value" ${key === 'direction' ? 
+                                `style="color: ${orderResult[key] === '做多' ? '#52c41a' : '#ff4d4f'}; font-weight: 600;"` :
+                                key === 'status' ? `style="color: #52c41a; font-weight: 600;"` : ''
+                            }>${orderResult[key]}</span>
+                        </div>
+                    `;
+                }
+            });
+            
+            htmlContent += `
+                </div>
+                <p style="color: #8c8c8c; font-size: 14px; text-align: center; margin: 15px 0;">您的订单已成功提交，可在交易所查看订单详情。</p>
+            `;
+            
+            // 更新内容
+            orderInfoContent.innerHTML = htmlContent;
+            
+            // 显示侧边栏
+            orderInfoSidebar.style.display = 'block';
+            
+            // 使用CSS动画类控制显示
+            orderInfoSidebar.classList.remove('order-info-slide-out');
+            orderInfoSidebar.classList.add('order-info-slide-in');
+            orderInfoSidebar.classList.add('show');
+            
+            // 添加自动关闭
+            setTimeout(() => {
+                hideOrderInfo();
+            }, 60000); // 60秒后自动隐藏
+        }
+
+        // 隐藏订单信息小窗口
+        function hideOrderInfo() {
+            const orderInfoSidebar = document.getElementById('order-info-sidebar');
+            if (!orderInfoSidebar) return;
+            
+            // 使用CSS动画类控制隐藏
+            orderInfoSidebar.classList.remove('order-info-slide-in');
+            orderInfoSidebar.classList.remove('show');
+            orderInfoSidebar.classList.add('order-info-slide-out');
+            
+            setTimeout(() => {
+                orderInfoSidebar.style.display = 'none';
+            }, 300);
+        }
+    </script>
+
+    <!-- 杠杆倍数相关功能 -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 获取杠杆选择器元素
+        const leverageSelector = document.getElementById('leverage-selector');
+        const leverageInput = document.getElementById('leverage-input');
+        const leverageValue = document.getElementById('leverage-value');
+        const leverageDropdown = document.getElementById('leverage-dropdown');
+        const leverageOptionsList = document.getElementById('leverage-options-list');
+        
+        // 杠杆倍数列表 - 从HTML预加载的数据获取
+        let leverageOptions = [1, 2, 3, 5, 10, 20, 50, 100]; // 默认值
+        const defaultLeverageOptionsElem = document.getElementById('default-leverage-options');
+        if (defaultLeverageOptionsElem && defaultLeverageOptionsElem.value) {
+            try {
+                const parsedOptions = JSON.parse(defaultLeverageOptionsElem.value);
+                if (Array.isArray(parsedOptions) && parsedOptions.length > 0) {
+                    leverageOptions = parsedOptions;
+                }
+            } catch (e) {
+                console.error('解析默认杠杆选项失败', e);
+            }
+        }
+        
+        let selectedLeverage = 10; // 默认选择
+        
+        // 当前选中的交易对
+        let currentTradePair = '';
+        const selectedCryptoPair = document.getElementById('selected-crypto-pair');
+        if (selectedCryptoPair) {
+            currentTradePair = selectedCryptoPair.value;
+        }
+        
+        // 初始化时加载当前交易对的杠杆倍数
+        if (currentTradePair) {
+            loadLeverageOptions(currentTradePair);
+        }
+        
+        // 监听币种选择变化
+        document.querySelectorAll('.crypto-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const tradePair = this.getAttribute('data-original');
+                if (tradePair) {
+                    currentTradePair = tradePair;
+                    loadLeverageOptions(tradePair);
+                }
+            });
+        });
+        
+        // 点击杠杆选择器显示下拉面板
+        leverageSelector.addEventListener('click', function(e) {
+            // 阻止事件冒泡，确保点击下拉面板内部内容时不会触发关闭
+            e.stopPropagation(); 
+            
+            // 如果已经显示，则隐藏
+            if (leverageDropdown.style.display === 'block') {
+                leverageDropdown.style.display = 'none';
+                leverageSelector.classList.remove('dropdown-active');
+                return;
+            }
+            
+            // 显示下拉面板
+            showLeverageDropdown();
+            leverageSelector.classList.add('dropdown-active');
+        });
+        
+        // 关闭下拉面板的按钮
+        const closeDropdownBtn = document.querySelector('.close-dropdown');
+        if (closeDropdownBtn) {
+            closeDropdownBtn.addEventListener('click', function(e) {
+                e.stopPropagation(); // 阻止事件冒泡
+                leverageDropdown.style.display = 'none';
+                leverageSelector.classList.remove('dropdown-active');
+            });
+        }
+        
+        // 点击页面其他地方关闭下拉面板
+        document.addEventListener('click', function(e) {
+            // 检查点击的元素是否在下拉面板内
+            if (leverageDropdown.style.display === 'block' && !leverageDropdown.contains(e.target) && !leverageSelector.contains(e.target)) {
+                leverageDropdown.style.display = 'none';
+                leverageSelector.classList.remove('dropdown-active');
+            }
+        });
+        
+        // 阻止下拉面板内的点击事件冒泡
+        leverageDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+        
+        // 从API加载杠杆倍数选项
+        function loadLeverageOptions(tradePair) {
+            // 显示加载中
+            leverageInput.value = '加载中...';
+            
+            // 调用API获取杠杆倍数
+            fetch(`/api/trading/leverage?trade_pair=${tradePair}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.code === 200) {
+                        // 更新杠杆选项
+                        leverageOptions = data.data.leverage_options;
+                        // 更新当前杠杆
+                        selectedLeverage = data.data.current_leverage;
+                        leverageInput.value = `${selectedLeverage}X`;
+                        leverageValue.value = selectedLeverage;
+                        
+                        // 更新保证金值
+                        if (typeof updateMarginFromLeverage === 'function') {
+                            updateMarginFromLeverage(selectedLeverage);
+                        }
+                        
+                        console.log(`已加载交易对 ${tradePair} 的杠杆倍数:`, leverageOptions);
+                    } else {
+                        console.warn('获取杠杆倍数失败:', data.message);
+                        // 设置默认杠杆
+                        leverageInput.value = '10X';
+                        leverageValue.value = 10;
+                    }
+                })
+                .catch(error => {
+                    console.error('获取杠杆倍数出错:', error);
+                    // 设置默认杠杆
+                    leverageInput.value = '10X';
+                    leverageValue.value = 10;
+                });
+        }
+        
+        // 显示杠杆选择下拉面板
+        function showLeverageDropdown() {
+            // 清空现有选项
+            leverageOptionsList.innerHTML = '';
+            
+            // 添加杠杆选项
+            leverageOptions.forEach(function(leverage) {
+                const option = document.createElement('div');
+                option.className = 'leverage-option';
+                if (leverage === selectedLeverage) {
+                    option.classList.add('selected');
+                }
+                option.textContent = `${leverage}`;
+                option.setAttribute('data-value', leverage);
+                
+                // 添加一个标记用于样式化
+                const badge = document.createElement('span');
+                badge.className = 'leverage-badge';
+                badge.textContent = 'X';
+                badge.style.marginLeft = '3px';
+                badge.style.fontSize = '14px';
+                badge.style.opacity = '0.7';
+                option.appendChild(badge);
+                
+                // 点击选项事件
+                option.addEventListener('click', function(e) {
+                    e.stopPropagation(); // 阻止事件冒泡
+                    const leverageVal = parseInt(this.getAttribute('data-value'));
+                    selectedLeverage = leverageVal;
+                    leverageInput.value = `${leverageVal}X`;
+                    document.getElementById('leverage-value').value = leverageVal;
+                    
+                    // 为所有选项移除选中样式
+                    document.querySelectorAll('.leverage-option').forEach(function(opt) {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // 为当前选项添加选中样式
+                    this.classList.add('selected');
+                    
+                    // 更新保证金值
+                    if (typeof updateMarginFromLeverage === 'function') {
+                        updateMarginFromLeverage(leverageVal);
+                    }
+                    
+                    // 关闭下拉面板
+                    leverageDropdown.style.display = 'none';
+                    leverageSelector.classList.remove('dropdown-active');
+                    
+                    // 显示提示
+                    if (typeof showToast === 'function') {
+                        showToast(`已设置杠杆倍数: ${leverageVal}X`);
+                    }
+                });
+                
+                leverageOptionsList.appendChild(option);
+            });
+            
+            // 显示下拉面板
+            leverageDropdown.style.display = 'block';
+            
+            // 确保选中的选项在视图中可见
+            setTimeout(function() {
+                const selectedOption = leverageOptionsList.querySelector('.selected');
+                if (selectedOption) {
+                    selectedOption.scrollIntoView({ block: 'nearest' });
+                }
+            }, 100);
+        }
+    });
+    </script>
+
+    <!-- 添加样式 -->
+    <style>
+    /* 杠杆选择下拉面板样式 */
+    .leverage-dropdown {
+        position: absolute;
+        z-index: 1000;
+        top: 100%;
+        left: 0;
+        right: 0;
+        margin-top: 8px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 
+                    0 1px 8px rgba(0, 0, 0, 0.1);
+        border: none;
+        overflow: hidden;
+        animation: fadeInDown 0.3s ease;
+        min-width: 220px;
+        transform-origin: top center;
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px) scale(0.95);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .leverage-dropdown-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 20px;
+        border-bottom: 1px solid #f0f0f0;
+        background: linear-gradient(135deg, #f8faff, #edf3ff);
+    }
+
+    .leverage-dropdown-header h3 {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: #1a6aff;
+    }
+
+    .close-dropdown {
+        color: #8c8c8c;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        line-height: 1;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.2s ease;
+    }
+
+    .close-dropdown:hover {
+        color: #555;
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .leverage-dropdown-body {
+        max-height: 320px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 8px 0;
+    }
+
+    .leverage-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* 杠杆选项样式 */
+    .leverage-option {
+        padding: 14px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        transition: all 0.2s ease;
+        min-height: 54px;
+        border-bottom: 1px solid #f5f5f5;
+        color: #333;
+        font-weight: 500;
+    }
+
+    .leverage-option:last-child {
+        border-bottom: none;
+    }
+
+    /* 单选框样式 */
+    .leverage-option:before {
+        content: "";
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        border: 2px solid #e0e0e0;
+        border-radius: 50%;
+        margin-right: 14px;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+        box-sizing: border-box;
+    }
+
+    /* 杠杆徽章样式 */
+    .leverage-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #777;
+        margin-left: 4px;
+    }
+
+    /* 右侧杠杆倍数徽章 */
+    .leverage-option:after {
+        content: attr(data-value) "X";
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: 600;
+        color: #666;
+        font-size: 14px;
+        background-color: #f3f6f9;
+        padding: 4px 12px;
+        border-radius: 20px;
+        transition: all 0.2s ease;
+    }
+
+    /* 悬停效果 */
+    .leverage-option:hover {
+        background-color: #f7faff;
+    }
+
+    .leverage-option:hover:after {
+        background-color: #e7f0ff;
+        color: #1a6aff;
+        transform: translateY(-50%) scale(1.05);
+    }
+
+    .leverage-option:active {
+        background-color: #edf3ff;
+    }
+
+    /* 选中状态样式 */
+    .leverage-option.selected {
+        color: #1a6aff;
+        font-weight: 600;
+        background-color: #f0f7ff;
+    }
+
+    .leverage-option.selected:after {
+        background-color: #1a6aff;
+        color: white;
+        box-shadow: 0 2px 8px rgba(26, 106, 255, 0.3);
+    }
+
+    .leverage-option.selected:before {
+        border-color: #1a6aff;
+        background-color: #1a6aff;
+        box-shadow: inset 0 0 0 4px #fff;
+    }
+
+    /* 输入框样式优化 */
+    #leverage-selector {
+        position: relative;
+        cursor: pointer;
+    }
+
+    #leverage-selector .form-item-input {
+        background-color: #fafbfc;
+        border: 1px solid #e5e9ef;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        height: 42px;
+    }
+
+    #leverage-selector .uni-input-input {
+        font-weight: 600;
+        color: #1a6aff;
+        font-size: 15px;
+        background-color: transparent;
+        height: 40px;
+        line-height: 40px;
+        cursor: pointer;
+    }
+
+    /* 下拉箭头动画 */
+    #leverage-selector .input-right .u-icon__icon {
+        color: #1a6aff;
+        font-size: 18px !important;
+        transition: transform 0.3s ease;
+    }
+
+    #leverage-selector.dropdown-active .input-right .u-icon__icon {
+        transform: rotate(180deg);
+    }
+
+    /* 悬停效果增强 */
+    #leverage-selector:hover .form-item-input {
+        border-color: #1a6aff;
+        box-shadow: 0 0 0 2px rgba(26, 106, 255, 0.1);
+    }
+
+    #leverage-selector:active .form-item-input {
+        background-color: #f0f7ff;
+    }
+
+    /* 提示文本 */
+    #leverage-selector:after {
+        content: "点击选择杠杆倍数";
+        position: absolute;
+        bottom: -28px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 100;
+        white-space: nowrap;
+    }
+
+    #leverage-selector:hover:after {
+        opacity: 1;
+    }
+
+    /* 杠杆选择器高亮动画 */
+    @keyframes highlightPulse {
+        0% { box-shadow: 0 0 0 0 rgba(26, 106, 255, 0.4); }
+        70% { box-shadow: 0 0 0 8px rgba(26, 106, 255, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(26, 106, 255, 0); }
+    }
+
+    /* 杠杆选择器添加提示和高亮效果 */
+    #leverage-selector {
+        position: relative;
+    }
+    
+    /* 初次加载时添加一个动画，吸引用户注意 */
+    #leverage-selector:after {
+        content: "可点击选择杠杆倍数";
+        position: absolute;
+        bottom: -28px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 12px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+        z-index: 100;
+        white-space: nowrap;
+    }
+    
+    #leverage-selector:hover:after {
+        opacity: 1;
+    }
+    
+    /* 让输入框看起来更像按钮 */
+    #leverage-selector .form-item-input {
+        background-color: #f8f9fa;
+        border: 1px solid #e8e8e8;
+        transition: all 0.3s ease;
+    }
+    
+    #leverage-selector:hover .form-item-input {
+        background-color: #f0f7ff;
+        border-color: #1a6aff;
+        animation: highlightPulse 2s infinite;
+    }
+    
+    /* 更明显的下拉指示器 */
+    #leverage-selector .input-right .u-icon__icon {
+        color: #1a6aff;
+        font-size: 18px !important;
+        animation: bounce 1.5s ease infinite;
+    }
+    
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-3px); }
+    }
+
+    /* 在移动设备上的特殊处理 */
+    @media (max-width: 767px) {
+        .leverage-dropdown {
+            position: fixed;
+            top: auto;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin-top: 0;
+            border-radius: 16px 16px 0 0;
+            max-height: 80vh;
+            animation: slideUp 0.3s ease;
+            z-index: 10000; /* 确保在顶层 */
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+        
+        .leverage-dropdown-body {
+            max-height: 60vh;
+            padding-bottom: env(safe-area-inset-bottom, 20px); /* 适配iOS底部安全区域 */
+        }
+        
+        /* 移动设备上选项更大，便于触摸 */
+        .leverage-option {
+            padding: 18px 20px; /* 移动端更大的点击区域 */
+            font-size: 16px;
+            min-height: 60px; /* 移动端更高的最小高度 */
+        }
+        
+        .leverage-option:before {
+            width: 24px; /* 移动端更大的选择框 */
+            height: 24px;
+            margin-right: 16px;
+        }
+        
+        /* 添加背景遮罩 */
+        .leverage-dropdown:before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        
+        /* 移动端顶部拖动条 */
+        .leverage-dropdown-header:before {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 5px;
+            background-color: #ddd;
+            border-radius: 3px;
+            margin: 0 auto 12px;
+        }
+        
+        .leverage-dropdown-header {
+            flex-direction: column;
+            padding-top: 12px;
+            background: #fff;
+        }
+        
+        .leverage-dropdown-header h3 {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+        
+        /* 关闭按钮位置调整 */
+        .close-dropdown {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            font-size: 24px;
+            background-color: rgba(0, 0, 0, 0.05);
+            width: 32px;
+            height: 32px;
+        }
+        
+        /* 移动端选项的徽章样式 */
+        .leverage-option:after {
+            font-size: 15px;
+            padding: 5px 14px;
+            background-color: #f0f7ff;
+        }
+    }
+    </style>
+</body>
+</html> 

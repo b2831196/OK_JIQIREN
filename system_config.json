@@ -1,0 +1,8 @@
+{
+    "allow_placing_orders": true,
+    "auto_trading_enabled": true,
+    "order_interval": 60,
+    "max_positions": 10,
+    "max_order_value": 5000,
+    "last_updated": "2024-03-31 19:30:00"
+} 

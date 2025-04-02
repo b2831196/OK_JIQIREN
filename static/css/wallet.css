@@ -1,0 +1,197 @@
+/* 钱包页面样式 */
+.wallet-container {
+    padding: 20px;
+}
+
+.wallet-header {
+    background: linear-gradient(135deg, #3366ff 0%, #6f86ff 100%);
+    color: white;
+    border-radius: 10px;
+    padding: 25px 20px;
+    margin-bottom: 20px;
+}
+
+.wallet-balance-title {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 5px;
+}
+
+.wallet-balance {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.wallet-balance-btc {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.wallet-action-btns {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+
+.wallet-action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+}
+
+.wallet-action-btn:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.wallet-action-btn i {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.wallet-tabs {
+    margin-top: 20px;
+}
+
+.nav-tabs .nav-link {
+    border: none;
+    color: #666;
+    padding: 10px 20px;
+}
+
+.nav-tabs .nav-link.active {
+    border-bottom: 2px solid #3366ff;
+    color: #3366ff;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+.wallet-asset {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.wallet-asset:last-child {
+    border-bottom: none;
+}
+
+.asset-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.asset-info {
+    flex: 1;
+}
+
+.asset-name {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.asset-amount {
+    color: #666;
+    font-size: 14px;
+}
+
+.asset-value {
+    text-align: right;
+}
+
+.asset-value-usd {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.asset-value-change {
+    font-size: 14px;
+}
+
+.value-up {
+    color: #58bd7d;
+}
+
+.value-down {
+    color: #f65959;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.empty-state img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.empty-state-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+.empty-state-text {
+    color: #999;
+    margin-bottom: 20px;
+    max-width: 300px;
+}
+
+.transaction-record {
+    display: flex;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.transaction-record:last-child {
+    border-bottom: none;
+}
+
+.transaction-icon {
+    margin-right: 15px;
+}
+
+.transaction-info {
+    flex: 1;
+}
+
+.transaction-type {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.transaction-date {
+    color: #666;
+    font-size: 14px;
+}
+
+.transaction-amount {
+    text-align: right;
+    font-weight: bold;
+}
+
+.amount-positive {
+    color: #58bd7d;
+}
+
+.amount-negative {
+    color: #f65959;
+} 

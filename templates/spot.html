@@ -1,0 +1,2737 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能交易 - 现货与合约</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/crypto-theme.css">
+    <style>
+        /* 页面特定样式 */
+        .spot-header {
+            background: linear-gradient(120deg, #3366FF, #5B8FF9);
+            color: white;
+            padding: 20px 15px;
+            position: relative;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 15px rgba(51, 102, 255, 0.2);
+            overflow: hidden;
+        }
+        
+        .spot-header:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: rotate 15s linear infinite;
+            z-index: 0;
+        }
+        
+        .contract-header {
+            background: linear-gradient(120deg, #6633FF, #9B58F9);
+            color: white;
+            padding: 20px 15px;
+            position: relative;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 15px rgba(102, 51, 255, 0.2);
+            overflow: hidden;
+        }
+        
+        .contract-header:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: rotate 15s linear infinite;
+            z-index: 0;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .header-icon {
+            margin-right: 10px;
+            font-size: 28px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .header-title span {
+            background: linear-gradient(90deg, #ffffff, #f0f8ff);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: shine 3s linear infinite;
+            font-weight: bold;
+        }
+        
+        @keyframes shine {
+            0% {
+                background-position: 0% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+        
+        .header-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 0.9;
+                transform: translateY(0);
+            }
+        }
+        
+        .search-container {
+            padding: 10px 15px;
+            background-color: white;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: #f5f7fa;
+            border-radius: 20px;
+            padding: 8px 15px;
+        }
+        
+        .search-box i {
+            color: #909399;
+            margin-right: 10px;
+        }
+        
+        .search-input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            outline: none;
+            color: #606266;
+        }
+        
+        .tab-container {
+            display: flex;
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .trade-type-switcher {
+            display: flex;
+            justify-content: center;
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .trade-type-option {
+            padding: 8px 20px;
+            border-radius: 15px;
+            margin: 0 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .trade-type-option:hover {
+            transform: translateY(-2px);
+        }
+        
+        .trade-type-option.active {
+            background-color: white;
+            color: #3366FF;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+        }
+        
+        .trade-type-option.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #3366FF, #5B8FF9);
+            border-radius: 3px;
+        }
+        
+        .trade-type-option.contract.active {
+            color: #6633FF;
+        }
+        
+        .trade-type-option.contract.active:after {
+            background: linear-gradient(90deg, #6633FF, #9B58F9);
+        }
+        
+        .tab-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px 0;
+            cursor: pointer;
+            font-size: 14px;
+            color: #606266;
+            position: relative;
+        }
+        
+        .tab-item.active {
+            color: #3366FF;
+            font-weight: 500;
+        }
+        
+        .tab-item.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 30%;
+            right: 30%;
+            height: 2px;
+            background-color: #3366FF;
+            border-radius: 2px;
+        }
+        
+        .pair-list {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .pair-header {
+            display: flex;
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 13px;
+            color: #909399;
+        }
+        
+        .pair-item {
+            display: flex;
+            padding: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+        
+        .pair-item:last-child {
+            border-bottom: none;
+        }
+        
+        .pair-item:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .pair-col {
+            flex: 1;
+        }
+        
+        .pair-name {
+            font-size: 15px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 2px;
+        }
+        
+        .pair-volume {
+            font-size: 12px;
+            color: #909399;
+        }
+        
+        .pair-price {
+            font-size: 15px;
+            font-weight: 500;
+            color: #333;
+            text-align: right;
+        }
+        
+        .pair-change {
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-block;
+            text-align: center;
+            min-width: 60px;
+        }
+        
+        .pair-change.positive {
+            background-color: rgba(38, 166, 154, 0.1);
+            color: #26a69a;
+        }
+        
+        .pair-change.negative {
+            background-color: rgba(239, 83, 80, 0.1);
+            color: #ef5350;
+        }
+        
+        .no-data {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .no-data img {
+            width: 80px;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+        
+        .no-data-text {
+            color: #909399;
+            font-size: 14px;
+        }
+        
+        /* 底部导航栏 */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+        }
+        
+        .nav-item.active {
+            background-color: rgba(51, 102, 255, 0.1);
+        }
+        
+        .nav-item.active .nav-icon-img {
+            filter: brightness(0.8) sepia(1) hue-rotate(190deg) saturate(5);
+        }
+        
+        .nav-item.active .nav-text {
+            color: #3366FF;
+        }
+        
+        .nav-icon-img {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 4px;
+        }
+        
+        .nav-text {
+            font-size: 12px;
+            color: #606266;
+        }
+        
+        /* Font Awesome图标样式 */
+        .nav-icon-fa {
+            font-size: 24px;
+            color: #606266;
+            margin-bottom: 4px;
+        }
+        
+        .nav-item.active .nav-icon-fa {
+            color: #3366FF;
+        }
+        
+        .billimg.fas {
+            width: auto;
+            height: auto;
+            font-size: 24px;
+            color: #ffffff;
+            margin-right: 5px;
+        }
+        
+        /* 合约模块样式 */
+        .contract-section {
+            display: none;
+        }
+        
+        .property-box {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .property-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        
+        .property-col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .property-label {
+            font-size: 12px;
+            color: #909399;
+            margin-bottom: 5px;
+        }
+        
+        .property-value {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .property-value.down {
+            color: #ef5350;
+        }
+        
+        .property-value.up {
+            color: #26a69a;
+        }
+        
+        .recommend-box {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .recommend-title {
+            font-size: 16px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .recommend-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .recommend-item:last-child {
+            border-bottom: none;
+        }
+        
+        .recommend-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            margin-right: 15px;
+            overflow: hidden;
+        }
+        
+        .recommend-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .recommend-info {
+            flex: 1;
+        }
+        
+        .recommend-name {
+            font-size: 15px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 4px;
+        }
+        
+        .recommend-desc {
+            font-size: 12px;
+            color: #909399;
+        }
+        
+        .recommend-users {
+            font-size: 12px;
+            color: #909399;
+            text-align: right;
+        }
+        
+        .tips-api {
+            background-color: #e2e9fc;
+            color: #3366FF;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .tips-api .btn-btn {
+            background-color: #3366FF;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        
+        /* 新增合约页面样式 */
+        .flex-x {
+            display: flex;
+            align-items: center;
+        }
+        
+        .flex-y {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .flex-x-b {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .flexs {
+            display: flex;
+            align-items: center;
+        }
+        
+        .f-c {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .box-bg {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        
+        .box-bg4 {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 5px 10px;
+        }
+        
+        .box-bg9 {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 4px;
+        }
+        
+        .nav-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .text-color3 {
+            color: #333;
+        }
+        
+        .text-color2 {
+            color: #666;
+        }
+        
+        .coin-name {
+            font-size: 14px;
+        }
+        
+        .coinimg {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+        
+        .nav-ul {
+            flex: 1;
+            max-width: 75%;
+        }
+        
+        .nav-li {
+            padding: 6px 15px;
+            margin: 0 2px;
+            border-radius: 16px;
+            font-size: 13px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .active-nav-li {
+            background-color: white;
+            color: #3366FF;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .nav-li-p {
+            min-width: 80px;
+            justify-content: center;
+        }
+        
+        .icon-box {
+            margin-left: 10px;
+        }
+        
+        .billimg {
+            width: 24px;
+            height: 24px;
+            margin-right: 5px;
+        }
+        
+        .icon-name {
+            font-size: 12px;
+        }
+        
+        .property-all {
+            font-size: 12px;
+            color: #909399;
+            margin-right: 3px;
+        }
+        
+        .property-all-m {
+            font-size: 18px;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+        
+        .property-all-m2 {
+            text-align: right;
+        }
+        
+        .font-d {
+            font-family: DIN;
+        }
+        
+        .ud-down-color {
+            color: #ef5350;
+        }
+        
+        .margin_l4 {
+            margin-left: 10px;
+        }
+        
+        .margin_b3 {
+            margin-bottom: 10px;
+        }
+        
+        .sm-box {
+            margin-right: 15px;
+        }
+        
+        .recommend-ul {
+            width: 100%;
+        }
+        
+        .recommend-li {
+            padding: 12px 0;
+        }
+        
+        .border-b {
+            border-bottom: 1px solid #eee;
+        }
+        
+        .theme-border-color {
+            border-color: #eee;
+        }
+        
+        .rec-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .right-box {
+            flex: 1;
+            margin-left: 10px;
+        }
+        
+        .title-box {
+            width: 100%;
+        }
+        
+        .rec-name {
+            font-size: 15px;
+            font-weight: 500;
+        }
+        
+        .rec-number {
+            font-size: 12px;
+            margin-top: 4px;
+        }
+        
+        .rec-number-p {
+            font-size: 12px;
+        }
+        
+        .badge-premium {
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            color: #8B4513;
+            font-size: 12px;
+            padding: 3px 8px;
+            border-radius: 20px;
+            margin-left: 10px;
+            display: inline-flex;
+            align-items: center;
+            font-weight: bold;
+            text-shadow: none;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-3px);
+            }
+        }
+        
+        /* 添加策略项的悬停效果 */
+        .recommend-li[onclick] {
+            transition: all 0.3s ease;
+        }
+        
+        .recommend-li[onclick]:hover {
+            background-color: rgba(51, 102, 255, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 操作菜单栏图标样式 */
+        .action-icon-fa {
+            font-size: 22px;
+            color: #3366FF;
+            margin-bottom: 5px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* 操作菜单栏样式 */
+        .action-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: white;
+            border-radius: 8px;
+        }
+        
+        .icon-li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            padding: 0 5px;
+        }
+        
+        .action-img {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .action-name {
+            font-size: 12px;
+            color: #333;
+        }
+        
+        .icon-line {
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 20px;
+            background-color: #eee;
+        }
+        
+        .margin8 {
+            margin-bottom: 8px;
+        }
+        
+        .flex-y-c {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* 持仓卡片样式 */
+        .position-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin: 10px;
+            padding: 15px;
+            position: relative;
+        }
+        
+        .position-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .position-symbol {
+            display: flex;
+            align-items: center;
+        }
+        
+        .position-symbol img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            border-radius: 50%;
+        }
+        
+        .position-side {
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .long-side {
+            background-color: rgba(0, 180, 0, 0.1);
+            color: #00b400;
+        }
+        
+        .short-side {
+            background-color: rgba(255, 0, 0, 0.1);
+            color: #ff0000;
+        }
+        
+        .position-details {
+            margin-bottom: 15px;
+        }
+        
+        .position-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .position-label {
+            color: #666;
+            font-size: 13px;
+        }
+        
+        .position-value {
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .profit-positive {
+            color: #00b400;
+        }
+        
+        .profit-negative {
+            color: #ff0000;
+        }
+        
+        .position-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .close-position-btn, .modify-position-btn {
+            padding: 6px 12px;
+            border-radius: 4px;
+            border: none;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            flex: 1;
+            margin: 0 5px;
+        }
+        
+        .close-position-btn {
+            background-color: #ff3b30;
+            color: white;
+        }
+        
+        .modify-position-btn {
+            background-color: #007aff;
+            color: white;
+        }
+        
+        /* 刷新按钮旋转动画 */
+        @keyframes rotating {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .rotating {
+            animation: rotating 1s linear infinite;
+        }
+        
+        /* 时间戳样式 */
+        .data-timestamp {
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .data-timestamp:hover {
+            opacity: 1;
+        }
+        
+        /* 添加刷新按钮的旋转动画 */
+        .refresh-img.rotating {
+            animation: rotate 1s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* 缓存清除按钮样式 */
+        #clear-position-cache {
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+        
+        #position-refresh-box {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 现货页面 -->
+    <div id="spot-section" class="spot-section">
+        <div class="spot-header">
+            <div class="container">
+                <div class="trade-type-switcher">
+                    <div class="trade-type-option spot active" onclick="switchTradeType('spot')">现货</div>
+                    <div class="trade-type-option contract" onclick="switchTradeType('contract')">合约</div>
+                </div>
+                <div class="header-title">
+                    <i class="fas fa-chart-line header-icon"></i>
+                    <span>智能交易平台</span>
+                    <div class="badge-premium">
+                        <i class="fas fa-crown" style="font-size: 14px; margin-right: 4px;"></i>专业版
+                    </div>
+                </div>
+                <div class="header-subtitle">快速交易各类加密货币，专业高效的数字资产管理</div>
+            </div>
+        </div>
+
+        <div class="container mb-5 pb-5">
+            <!-- 搜索框 -->
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" class="search-input" placeholder="搜索币种...">
+                </div>
+            </div>
+            
+            <!-- 标签页 -->
+            <div class="tab-container">
+                <div class="tab-item active">自选</div>
+                <div class="tab-item">热门</div>
+                <div class="tab-item">涨幅</div>
+                <div class="tab-item">成交额</div>
+            </div>
+            
+            <!-- 交易对列表 -->
+            <div id="spot-data-container">
+                <div class="pair-header">
+                    <div class="pair-col">交易对</div>
+                    <div class="pair-col text-end">最新价格</div>
+                </div>
+                <!-- 交易对数据将通过JavaScript动态填充 -->
+                <div class="no-data">
+                    <img src="/static/images/no-data.svg" alt="无数据">
+                    <div class="no-data-text">正在加载数据...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 合约页面 -->
+    <div id="contract-section" class="contract-section">
+        <div class="contract-header">
+            <div class="container">
+                <div class="trade-type-switcher">
+                    <div class="trade-type-option spot" onclick="switchTradeType('spot')">现货</div>
+                    <div class="trade-type-option contract active" onclick="switchTradeType('contract')">合约</div>
+                </div>
+                <div class="header-title">
+                    <i class="fas fa-exchange-alt header-icon"></i>
+                    <span>智能交易平台</span>
+                    <div class="badge-premium">
+                        <i class="fas fa-crown" style="font-size: 14px; margin-right: 4px;"></i>专业版
+                    </div>
+                </div>
+                <div class="header-subtitle">专业杠杆合约交易，多元化策略量化投资</div>
+                
+                <!-- 添加顶部导航 -->
+                <div class="flex-x-b" style="margin-top: 15px;">
+                    <div class="flex-x-b nav-ul box-bg9">
+                        <div class="flex-x nav-li nav-li-p" onclick="switchContractTab('strategy')">
+                            <span>选择策略</span>
+                        </div>
+                        <div class="flex-x nav-li active-nav-li nav-li-p" onclick="switchContractTab('running')">
+                            <span>执行中</span>
+                            <span>(0)</span>
+                        </div>
+                        <div class="flex-x nav-li nav-li-p" onclick="switchContractTab('stopped')">
+                            <span>已停止</span>
+                            <span>(0)</span>
+                        </div>
+                    </div>
+                    <div class="icon-box flex-x-b">
+                        <div class="flex-x">
+                            <i class="fas fa-file-invoice-dollar billimg"></i>
+                            <span class="icon-name text-color3">账单</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mb-5 pb-5">
+            <!-- 添加操作菜单栏 -->
+            <div class="action-box box-bg flex-x-b" style="margin-bottom: 15px; padding: 10px 15px; border-radius: 8px;">
+                <div class="flex-y-c icon-li" onclick="window.location.href='/position/control';" style="cursor: pointer;">
+                    <i class="fas fa-balance-scale action-icon-fa"></i>
+                    <span class="action-name text-color3">仓位控制</span>
+                    <span class="icon-line box-bg4"></span>
+                </div>
+                <div class="flex-y-c icon-li">
+                    <i class="fas fa-cogs action-icon-fa"></i>
+                    <span class="action-name text-color3">批量设置</span>
+                    <span class="icon-line box-bg4"></span>
+                </div>
+                <div class="flex-y-c icon-li">
+                    <i class="fas fa-sync-alt action-icon-fa"></i>
+                    <span class="action-name text-color3">循环策略</span>
+                    <span class="icon-line box-bg4"></span>
+                </div>
+                <div class="flex-y-c icon-li">
+                    <i class="fas fa-pause-circle action-icon-fa"></i>
+                    <span class="action-name text-color3">一键暂停</span>
+                    <span class="icon-line box-bg4"></span>
+                </div>
+                <div class="flex-y-c icon-li">
+                    <i class="fas fa-trash-alt action-icon-fa"></i>
+                    <span class="action-name text-color3">清仓卖出</span>
+                </div>
+            </div>
+            
+            <!-- 账户资产信息 -->
+            <div class="property-box box-bg">
+                <div class="flex-x-b">
+                    <div class="flex-y">
+                        <div class="flex-x">
+                            <span class="property-all">交易所总资产</span>
+                            <span class="property-all">(USDT)</span>
+                        </div>
+                        <span class="property-all-m font-d text-color3" id="total-balance">0</span>
+                    </div>
+                    <div class="flex-y">
+                        <div class="flex-x">
+                            <span class="property-all">合约持仓</span>
+                            <span class="property-all">(USDT)</span>
+                        </div>
+                        <span class="property-all-m font-d text-color3 property-all-m2" id="position-value">0</span>
+                    </div>
+                </div>
+                <div class="flex-x-b">
+                    <div class="flex-y sm-box">
+                        <div class="flex-x">
+                            <span class="property-all">可用余额</span>
+                            <span class="property-all">(USDT)</span>
+                        </div>
+                        <span class="property-all-m font-d text-color3" id="available-balance">0</span>
+                    </div>
+                    <div class="flex-y">
+                        <div class="flex-x">
+                            <span class="property-all" style="text-align: left;">浮动盈亏</span>
+                            <span class="property-all">(USDT)</span>
+                        </div>
+                        <span class="property-all-m font-d text-color3 property-all-m2 ud-down-color" id="floating-pnl">0</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 合约标签内容 -->
+            <div id="contract-strategy-tab" class="contract-tab-content">
+                <!-- 策略推荐 -->
+                <div class="recommend-box flex-y box-bg">
+                    <span class="recommend-title text-color3">策略推荐</span>
+                    <div class="recommend-ul" id="strategy-list">
+                        <!-- 策略数据将通过JavaScript动态填充 -->
+                    </div>
+                </div>
+            </div>
+
+            <div id="contract-running-tab" class="contract-tab-content" style="display: none;">
+                <div class="no-data">
+                    <img src="/static/images/No_data.png" alt="无数据">
+                    <div class="no-data-text">暂无数据</div>
+                </div>
+            </div>
+
+            <div id="contract-stopped-tab" class="contract-tab-content" style="display: none;">
+                <div class="no-data">
+                    <img src="/static/images/No_data.png" alt="无数据">
+                    <div class="no-data-text">暂无已停止策略</div>
+                </div>
+            </div>
+            
+            <!-- API提示 -->
+            <div class="tips-api flexs">
+                <div class="flex-x">
+                    <i class="fas fa-key" style="margin-right: 8px; font-size: 16px;"></i>
+                    <span>现在录入API，免费体验量化策略交易</span>
+                </div>
+                <div class="btn-btn f-c">去添加</div>
+            </div>
+            
+            <!-- 交易对列表 -->
+            <div id="contract-data-container">
+                <div class="pair-header">
+                    <div class="pair-col">交易对</div>
+                    <div class="pair-col text-end">最新价格</div>
+                </div>
+                <!-- 交易对数据将通过JavaScript动态填充 -->
+                <div class="no-data">
+                    <img src="/static/images/no-data.svg" alt="无数据">
+                    <div class="no-data-text">正在加载数据...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <a href="/dashboard" class="nav-item">
+            <i class="fas fa-home nav-icon-fa"></i>
+            <div class="nav-text">首页</div>
+        </a>
+        <a href="/spot?type=spot" class="nav-item">
+            <i class="fas fa-chart-line nav-icon-fa"></i>
+            <div class="nav-text">现货</div>
+        </a>
+        <a href="/spot?type=contract" class="nav-item">
+            <i class="fas fa-file-contract nav-icon-fa"></i>
+            <div class="nav-text">合约</div>
+        </a>
+        <a href="/wallet" class="nav-item">
+            <i class="fas fa-user nav-icon-fa"></i>
+            <div class="nav-text">我的</div>
+        </a>
+    </div>
+
+    <!-- 在合约交易区域适当位置添加刷新按钮 -->
+    <div class="white-box margin-bottom-10" id="position-refresh-box">
+        <div class="flex-x-b">
+            <div class="box-title">持仓状态</div>
+            <div class="flex-x">
+                <img src="/static/newimg/refresh.png" class="refresh-img" id="force-refresh-position" title="强制刷新持仓数据" alt="刷新">
+                <button class="btn btn-sm btn-outline-danger ms-2" id="clear-position-cache" title="清除持仓缓存">
+                    <i class="fas fa-trash-alt"></i> 清除缓存
+                </button>
+            </div>
+        </div>
+        <div class="margin-t10 text-muted small" id="position-refresh-status">
+            上次刷新: <span id="position-last-refresh">--</span>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 获取并更新持仓数量
+        function updatePositionCount() {
+            // 首先尝试从缓存获取上次有效的持仓数量，如果没有则默认为0
+            const lastValidCount = localStorage.getItem('okxLastValidCount');
+            if (lastValidCount && parseInt(lastValidCount) > 0) {
+                // 立即使用上次有效的持仓数量更新UI，提供更好的用户体验
+                console.log(`使用缓存的持仓数量: ${lastValidCount}`);
+                updateRunningPositionCount(parseInt(lastValidCount));
+                
+                // 如果有持仓且在合约页面，自动切换到"执行中"标签
+                if (parseInt(lastValidCount) > 0 && document.getElementById('contract-section').style.display !== 'none') {
+                    switchContractTab('running');
+                }
+            }
+            
+            // 然后在后台获取最新数据，使用相对路径避免跨域问题
+            fetch('./api/position/count', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Cache-Control': 'no-cache', // 添加缓存控制头部
+                    'Pragma': 'no-cache',
+                    'X-Requested-With': 'XMLHttpRequest' // 添加XHR标识
+                },
+                credentials: 'same-origin' // 确保发送cookie
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP错误! 状态: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.code === 200) {
+                    const count = data.position_count;
+                    console.log(`获取到最新持仓数量: ${count}`);
+                    
+                    // 检查OKX_chichang_Order()的返回值
+                    if (count === 0) {
+                        // 当OKX_chichang_Order()返回值为0时，取消缓存机制
+                        console.log('持仓数量为0，取消缓存机制');
+                        localStorage.removeItem('okxLastValidCount');
+                        localStorage.removeItem('okxLastValidPositions');
+                        localStorage.removeItem('okxPositions');
+                        localStorage.removeItem('okxPositionCount');
+                        console.log('持仓数量为0，已清除所有持仓缓存');
+                        
+                        // 更新执行中标签的数量
+                        updateRunningPositionCount(0);
+                        
+                        // 确保清除持仓显示
+                        clearPositions(true); // 传入true，强制清除所有缓存
+                    } else if (count >= 1) {
+                        // 当OKX_chichang_Order()返回值为1或更多时，更新缓存
+                        console.log('持仓数量为1或更多，更新缓存');
+                        localStorage.setItem('okxLastValidCount', count.toString());
+                        
+                        // 更新执行中标签的数量
+                        updateRunningPositionCount(count);
+                        
+                        // 如果有持仓且在合约页面，自动切换到"执行中"标签
+                        if (count > 0 && document.getElementById('contract-section').style.display !== 'none') {
+                            switchContractTab('running');
+                        }
+                        
+                        // 如果持仓数量不为0，但还没有获取详细数据，则获取详细数据
+                        if (!localStorage.getItem('okxPositions') || JSON.parse(localStorage.getItem('okxPositions')).length !== count) {
+                            fetchPositionStatus();
+                        }
+                    }
+                } else {
+                    console.error('获取持仓数量失败:', data.message);
+                    // 使用上次有效的值
+                    if (lastValidCount) {
+                        updateRunningPositionCount(parseInt(lastValidCount));
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('获取持仓数量失败:', error);
+                // 出错时使用缓存的值
+                if (lastValidCount) {
+                    updateRunningPositionCount(parseInt(lastValidCount));
+                }
+                
+                // 5秒后重试一次
+                setTimeout(() => {
+                    console.log('正在重试获取持仓数量...');
+                    fetch('./api/position/count')
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.code === 200) {
+                                const count = data.position_count;
+                                if (count === 0) {
+                                    // 取消缓存机制
+                                    clearPositions(true);
+                                    updateRunningPositionCount(0);
+                                } else if (count >= 1) {
+                                    // 更新缓存
+                                    updateRunningPositionCount(count);
+                                    localStorage.setItem('okxLastValidCount', count.toString());
+                                    fetchPositionStatus(); // 获取详细数据
+                                }
+                            }
+                        })
+                        .catch(e => console.error('重试获取持仓数量失败:', e));
+                }, 5000);
+            });
+        }
+
+        // 页面加载时执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 检查URL参数，决定显示现货还是合约
+            const urlParams = new URLSearchParams(window.location.search);
+            const tradeType = urlParams.get('type') || 'spot';
+            const timestamp = urlParams.get('t'); // 获取时间戳参数，用于判断是否从策略页面返回
+            const forceRefresh = urlParams.get('refresh'); // 获取强制刷新参数
+            
+            // 检测当前访问的域名/IP地址
+            const currentHost = window.location.hostname;
+            const currentPort = window.location.port;
+            const currentOrigin = window.location.origin;
+            console.log(`当前访问地址: ${currentOrigin}`);
+            
+            // 检查是否需要清除本地缓存（用于解决不同IP访问的缓存冲突）
+            const lastAccessedHost = localStorage.getItem('lastAccessedHost');
+            if (lastAccessedHost && lastAccessedHost !== currentHost) {
+                console.log(`检测到跨域访问: 上次 ${lastAccessedHost}，当前 ${currentHost}，正在清除缓存...`);
+                clearAllPositionCache();
+            }
+            // 记录本次访问的域名/IP
+            localStorage.setItem('lastAccessedHost', currentHost);
+            
+            // 初始化交易类型
+            switchTradeType(tradeType);
+            
+            // 初始化页面数据
+            initTradePages();
+            
+            // 更新底部导航栏的活动状态
+            updateBottomNavActive();
+            
+            // 添加强制刷新逻辑
+            if (forceRefresh === '1' || timestamp) {
+                console.log('检测到强制刷新参数，立即清除缓存并获取最新数据');
+                // 清除所有持仓相关的缓存
+                localStorage.removeItem('okxPositions');
+                localStorage.removeItem('okxPositionCount');
+                localStorage.removeItem('okxLastValidPositions');
+                localStorage.removeItem('okxLastValidCount');
+                localStorage.removeItem('okxPositionsUpdateTime');
+                
+                // 更新刷新状态
+                const lastRefreshElem = document.getElementById('position-last-refresh');
+                if (lastRefreshElem) {
+                    lastRefreshElem.textContent = new Date().toLocaleTimeString();
+                }
+                
+                // 强制清除显示
+                clearPositions(true);
+                
+                // 立即获取最新数据
+                fetchPositionStatus();
+            } else {
+                // 首先尝试从缓存加载上次的有效持仓数据
+                tryLoadCachedPositions();
+                
+                // 然后获取最新数据
+                updatePositionCount();
+            }
+            
+            // 无论如何，总是在页面加载后主动调用一次fetchPositionStatus获取最新数据
+            setTimeout(() => {
+                console.log('页面加载完成，主动获取最新持仓数据');
+                fetchPositionStatus();
+            }, 1000);
+            
+            // 监听持仓状态变化
+            window.addEventListener('storage', function(e) {
+                if (e.key === 'okxPositions' || e.key === 'okxPositionCount' || e.key === 'okxPositionsUpdateTime' || e.key === 'okxLastValidPositions' || e.key === 'okxLastValidCount') {
+                    console.log('检测到localStorage变化:', e.key);
+                    updatePositionCount();  // 先获取最新数量
+                }
+            });
+            
+            // 监听需要刷新的自定义事件
+            window.addEventListener('needRefreshPositions', function() {
+                console.log('收到需要刷新持仓的事件');
+                // 不要立即清除历史数据，先使用缓存，然后在后台刷新
+                fetchPositionStatus();
+            });
+            
+            // 其他事件监听保持不变
+            window.addEventListener('okxPositionUpdated', function(e) {
+                console.log('收到持仓更新事件:', e.detail);
+                updatePositionCount();  // 使用API获取真实数量
+            });
+            
+            window.addEventListener('okxPositionsChanged', function(e) {
+                console.log('收到持仓变化事件:', e.detail);
+                if (e.detail && e.detail.positions) {
+                    displayPositionsInRunningTab(e.detail.positions);
+                    updatePositionCount();  // 使用API获取真实数量
+                }
+            });
+            
+            // 添加页面可见性变化事件，当页面从后台切换到前台时，刷新数据
+            document.addEventListener('visibilitychange', function() {
+                if (document.visibilityState === 'visible') {
+                    console.log('页面变为可见，刷新持仓数据');
+                    tryLoadCachedPositions(); // 先尝试加载缓存
+                    updatePositionCount();  // 再获取最新数量
+                }
+            });
+            
+            // 添加页面获得焦点事件，当用户从其他标签页或应用切回时，刷新数据
+            window.addEventListener('focus', function() {
+                console.log('页面获得焦点，刷新持仓数据');
+                updatePositionCount();  // 先更新数量
+            });
+            
+            // 设置定时器，定期检查持仓状态
+            setInterval(function() {
+                console.log('定时检查持仓状态...');
+                updatePositionCount();  // 先更新数量
+            }, 15000); // 每15秒检查一次数量
+            
+            // 设置定时器，定期获取详细持仓信息（频率较低）
+            setInterval(function() {
+                console.log('定时检查详细持仓信息...');
+                fetchPositionStatus();
+            }, 30000); // 每30秒检查一次详细信息
+            
+            // 添加错误处理，防止因缓存问题导致页面无法加载
+            window.onerror = function(message, source, lineno, colno, error) {
+                console.error('捕获到页面错误:', message, 'at', source, lineno, colno);
+                // 如果错误来自localStorage操作，尝试清除缓存
+                if (message.includes('localStorage') || message.includes('JSON') || message.includes('storage')) {
+                    console.log('检测到存储相关错误，尝试清除缓存...');
+                    clearAllPositionCache();
+                    alert('检测到数据存储问题，已重置缓存。请刷新页面重试。');
+                }
+                return false; // 允许默认的错误处理继续
+            };
+            
+            // 添加清除缓存按钮的点击事件
+            const clearCacheBtn = document.getElementById('clear-position-cache');
+            if (clearCacheBtn) {
+                clearCacheBtn.addEventListener('click', function() {
+                    console.log('清除持仓缓存按钮被点击');
+                    
+                    // 显示确认对话框
+                    if (confirm('确定要清除持仓缓存并重新获取数据吗？')) {
+                        // 清除所有持仓相关的缓存
+                        localStorage.removeItem('okxPositions');
+                        localStorage.removeItem('okxPositionCount');
+                        localStorage.removeItem('okxLastValidPositions');
+                        localStorage.removeItem('okxLastValidCount');
+                        localStorage.removeItem('okxPositionsUpdateTime');
+                        
+                        // 更新刷新状态
+                        document.getElementById('position-last-refresh').textContent = new Date().toLocaleTimeString();
+                        
+                        // 显示清除成功提示
+                        const statusElem = document.getElementById('position-refresh-status');
+                        if (statusElem) {
+                            statusElem.innerHTML = '上次刷新: <span id="position-last-refresh">' + new Date().toLocaleTimeString() + '</span> <span class="text-success">缓存已清除</span>';
+                            
+                            // 5秒后恢复原状
+                            setTimeout(() => {
+                                statusElem.innerHTML = '上次刷新: <span id="position-last-refresh">' + new Date().toLocaleTimeString() + '</span>';
+                            }, 5000);
+                        }
+                        
+                        // 强制清除显示
+                        clearPositions(true);
+                        
+                        // 重新获取最新数据
+                        updatePositionCount();
+                        fetchPositionStatus();
+                        
+                        console.log('持仓缓存已清除，正在重新获取数据');
+                    }
+                });
+            }
+            
+            // 更新强制刷新按钮的点击事件
+            const forceRefreshBtn = document.getElementById('force-refresh-position');
+            if (forceRefreshBtn) {
+                forceRefreshBtn.addEventListener('click', function() {
+                    console.log('强制刷新按钮被点击');
+                    
+                    // 显示加载动画
+                    forceRefreshBtn.classList.add('rotating');
+                    
+                    // 更新刷新时间
+                    document.getElementById('position-last-refresh').textContent = new Date().toLocaleTimeString();
+                    
+                    // 强制获取最新数据
+                    updatePositionCount();
+                    fetchPositionStatus();
+                    
+                    // 2秒后停止旋转动画
+                    setTimeout(() => {
+                        forceRefreshBtn.classList.remove('rotating');
+                    }, 2000);
+                });
+            }
+        });
+        
+        // 尝试从缓存加载上次的有效持仓数据
+        function tryLoadCachedPositions() {
+            const lastValidPositions = localStorage.getItem('okxLastValidPositions');
+            const lastValidCount = localStorage.getItem('okxLastValidCount');
+            
+            if (lastValidPositions && lastValidCount && parseInt(lastValidCount) > 0) {
+                console.log('使用缓存的持仓数据...');
+                try {
+                    const positions = JSON.parse(lastValidPositions);
+                    if (positions && positions.length > 0) {
+                        // 显示持仓信息
+                        displayPositionsInRunningTab(positions);
+                        
+                        // 更新执行中标签的数量
+                        updateRunningPositionCount(parseInt(lastValidCount));
+                        
+                        // 如果有持仓，自动切换到"执行中"标签
+                        if (positions.length > 0 && document.getElementById('contract-section').style.display !== 'none') {
+                            switchContractTab('running');
+                        }
+                        
+                        // 临时保存到当前会话的缓存中
+                        localStorage.setItem('okxPositions', lastValidPositions);
+                        localStorage.setItem('okxPositionCount', lastValidCount);
+                    }
+                } catch (e) {
+                    console.error('解析缓存持仓数据时出错:', e);
+                }
+            }
+        }
+        
+        // 更新底部导航栏的活动状态
+        function updateBottomNavActive() {
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            
+            // 根据当前页面路径设置活动项
+            const currentPath = window.location.pathname;
+            const tradeType = new URLSearchParams(window.location.search).get('type') || 'spot';
+            
+            if (currentPath === '/spot') {
+                if (tradeType === 'spot') {
+                    // 现货页面 - 激活第二个标签
+                    navItems[1].classList.add('active');
+                    navItems[1].querySelector('.nav-icon-fa').style.color = '#3366FF';
+                } else if (tradeType === 'contract') {
+                    // 合约页面 - 激活第三个标签
+                    navItems[2].classList.add('active');
+                    navItems[2].querySelector('.nav-icon-fa').style.color = '#3366FF';
+                }
+            } else if (currentPath === '/dashboard' || currentPath === '/') {
+                navItems[0].classList.add('active');
+                navItems[0].querySelector('.nav-icon-fa').style.color = '#3366FF';
+            } else if (currentPath === '/wallet') {
+                navItems[3].classList.add('active');
+                navItems[3].querySelector('.nav-icon-fa').style.color = '#3366FF';
+            }
+        }
+        
+        // 切换交易类型
+        function switchTradeType(type) {
+            const spotSection = document.getElementById('spot-section');
+            const contractSection = document.getElementById('contract-section');
+            const spotOption = document.querySelector('.trade-type-option.spot');
+            const contractOption = document.querySelector('.trade-type-option.contract');
+            
+            if (type === 'spot') {
+                spotSection.style.display = 'block';
+                contractSection.style.display = 'none';
+                spotOption.classList.add('active');
+                contractOption.classList.remove('active');
+                document.title = '智能交易 - 现货';
+                // 更新URL但不刷新页面
+                window.history.replaceState({}, '', '/spot?type=spot');
+            } else {
+                spotSection.style.display = 'none';
+                contractSection.style.display = 'block';
+                spotOption.classList.remove('active');
+                contractOption.classList.add('active');
+                document.title = '智能交易 - 合约';
+                // 更新URL但不刷新页面
+                window.history.replaceState({}, '', '/spot?type=contract');
+            }
+            
+            // 更新底部导航栏状态
+            updateBottomNavActive();
+        }
+
+        // 初始化页面数据
+        function initTradePages() {
+            // 初始化现货页面
+            initSpotPage();
+            
+            // 初始化合约页面
+            initContractPage();
+        }
+        
+        // 初始化现货页面
+        function initSpotPage() {
+            // 为标签页添加点击事件
+            const tabItems = document.querySelectorAll('#spot-section .tab-item');
+            tabItems.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有标签页的活动状态
+                    tabItems.forEach(t => t.classList.remove('active'));
+                    // 将当前点击的标签页设为活动状态
+                    this.classList.add('active');
+                    
+                    // 根据标签名称获取数据
+                    fetchSpotData(this.textContent.trim());
+                });
+            });
+            
+            // 获取现货数据
+            fetchSpotData();
+        }
+        
+        // 获取现货数据
+        function fetchSpotData(tabName = '自选') {
+            fetch('/api/crypto/prices')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.code === 200) {
+                        // 渲染数据
+                        renderSpotData(data.data);
+                    } else {
+                        // 显示错误信息
+                        console.error('Failed to fetch data:', data.message);
+                        document.getElementById('spot-data-container').innerHTML = `
+                            <div class="no-data">
+                                <img src="/static/images/no-data.svg" alt="无数据">
+                                <div class="no-data-text">暂无数据</div>
+                            </div>
+                        `;
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+        
+        // 渲染现货数据
+        function renderSpotData(data) {
+            const container = document.getElementById('spot-data-container');
+            
+            if (!data || data.length === 0) {
+                container.innerHTML = `
+                    <div class="no-data">
+                        <img src="/static/images/no-data.svg" alt="无数据">
+                        <div class="no-data-text">暂无数据</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = `
+                <div class="pair-header">
+                    <div class="pair-col">交易对</div>
+                    <div class="pair-col text-end">最新价格</div>
+                </div>
+            `;
+            
+            data.forEach(item => {
+                const changeClass = item.change >= 0 ? 'positive' : 'negative';
+                const changeSymbol = item.change >= 0 ? '+' : '';
+                
+                html += `
+                    <div class="pair-item">
+                        <div class="pair-col">
+                            <div class="pair-name">${item.symbol}/USDT</div>
+                            <div class="pair-volume">成交量: ${item.volume}</div>
+                        </div>
+                        <div class="pair-col text-end">
+                            <div class="pair-price">$${item.price.toLocaleString()}</div>
+                            <div class="pair-change ${changeClass}">${changeSymbol}${item.change}%</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+        
+        // 初始化合约页面
+        function initContractPage() {
+            // 为标签页添加点击事件
+            const tabItems = document.querySelectorAll('#contract-section .tab-item');
+            tabItems.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有标签页的活动状态
+                    tabItems.forEach(t => t.classList.remove('active'));
+                    // 将当前点击的标签页设为活动状态
+                    this.classList.add('active');
+                    
+                    // 根据标签名称获取数据
+                    fetchContractData(this.textContent.trim());
+                });
+            });
+            
+            // 获取合约数据
+            fetchContractData();
+            
+            // 默认显示"执行中"标签内容
+            switchContractTab('running');
+        }
+        
+        // 获取合约数据
+        function fetchContractData(tabName = '自选') {
+            fetch('/api/crypto/contract_data')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.code === 200) {
+                        // 渲染数据
+                        renderContractData(data.data);
+                    } else {
+                        // 显示错误信息
+                        console.error('Failed to fetch contract data:', data.message);
+                        document.getElementById('contract-data-container').innerHTML = `
+                            <div class="no-data">
+                                <img src="/static/images/no-data.svg" alt="无数据">
+                                <div class="no-data-text">暂无数据</div>
+                            </div>
+                        `;
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+        
+        // 切换合约页面的标签
+        function switchContractTab(tabName) {
+            // 隐藏所有标签内容
+            const tabContents = document.querySelectorAll('.contract-tab-content');
+            tabContents.forEach(tab => tab.style.display = 'none');
+            
+            // 移除所有标签项的活动状态
+            const navItems = document.querySelectorAll('.nav-li');
+            navItems.forEach(item => item.classList.remove('active-nav-li'));
+            
+            // 显示选中的标签内容
+            const selectedTab = document.getElementById('contract-' + tabName + '-tab');
+            if (selectedTab) {
+                selectedTab.style.display = 'block';
+            }
+            
+            // 设置选中标签项的活动状态
+            const tabIndex = tabName === 'strategy' ? 0 : (tabName === 'running' ? 1 : 2);
+            if (navItems[tabIndex]) {
+                navItems[tabIndex].classList.add('active-nav-li');
+            }
+            
+            // 控制操作菜单栏的显示/隐藏
+            const actionBox = document.querySelector('.action-box');
+            if (actionBox) {
+                if (tabName === 'strategy') {
+                    // 选择"策略"选项时隐藏操作菜单栏
+                    actionBox.style.display = 'none';
+                } else {
+                    // 选择其他选项时显示操作菜单栏
+                    actionBox.style.display = 'flex';
+                }
+            }
+        }
+        
+        // 渲染合约数据
+        function renderContractData(data) {
+            // 渲染账户资产信息
+            document.getElementById('total-balance').textContent = data.total_balance;
+            document.getElementById('position-value').textContent = data.position;
+            document.getElementById('available-balance').textContent = data.available_balance;
+            document.getElementById('floating-pnl').textContent = data.floating_pnl;
+            
+            // 渲染策略推荐
+            const strategyList = document.getElementById('strategy-list');
+            let strategyHtml = '';
+            
+            data.recommended_strategies.forEach(strategy => {
+                // 为蓝龙综合策略添加特殊处理，其他策略也可以添加对应的ID
+                let strategyId = '';
+                if (strategy.name === '蓝龙综合策略') {
+                    strategyId = '4';
+                } else if (strategy.name === '蓝龙出海') {
+                    strategyId = '5';
+                } else if (strategy.name === '网格量化') {
+                    strategyId = '6';
+                }
+                
+                strategyHtml += `
+                    <div class="flex-y recommend-li box-bg border-b theme-border-color" 
+                         ${strategyId ? `onclick="window.location.href='/strategy/settings?id=${strategyId}'"` : ''} 
+                         style="${strategyId ? 'cursor: pointer;' : ''}">
+                        <div class="flex-x">
+                            <img src="${strategy.image}" class="rec-img" alt="${strategy.name}">
+                            <div class="flex-y right-box">
+                                <div class="flex-x-b title-box">
+                                    <span class="rec-name text-color3">${strategy.name}</span>
+                                    <span class="rec-number-p text-color2">${strategy.users}人使用</span>
+                                </div>
+                                <span class="rec-number text-color2">${strategy.description}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            strategyList.innerHTML = strategyHtml;
+            
+            // 渲染交易对数据
+            const container = document.getElementById('contract-data-container');
+            
+            if (!data.pairs || data.pairs.length === 0) {
+                container.innerHTML = `
+                    <div class="no-data">
+                        <img src="/static/images/no-data.svg" alt="无数据">
+                        <div class="no-data-text">暂无数据</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = `
+                <div class="pair-header">
+                    <div class="pair-col">交易对</div>
+                    <div class="pair-col text-end">最新价格</div>
+                </div>
+            `;
+            
+            data.pairs.forEach(item => {
+                const changeClass = item.change >= 0 ? 'positive' : 'negative';
+                const changeSymbol = item.change >= 0 ? '+' : '';
+                
+                html += `
+                    <div class="pair-item">
+                        <div class="pair-col">
+                            <div class="pair-name">${item.name}</div>
+                            <div class="pair-volume">成交量: ${item.volume}</div>
+                        </div>
+                        <div class="pair-col text-end">
+                            <div class="pair-price">$${item.price.toLocaleString()}</div>
+                            <div class="pair-change ${changeClass}">${changeSymbol}${item.change}%</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // 检查持仓状态并更新UI
+        function checkAndDisplayPositions() {
+            try {
+                // 从本地存储获取持仓信息
+                const positionsStr = localStorage.getItem('okxPositions');
+                const positionCount = localStorage.getItem('okxPositionCount');
+                const updateTime = localStorage.getItem('okxPositionsUpdateTime');
+                
+                console.log('检查持仓数据:', positionsStr);
+                
+                // 获取当前时间
+                const now = new Date().getTime();
+                
+                // 如果数据过期（超过2分钟），重新获取
+                if (updateTime && (now - parseInt(updateTime)) > 2 * 60 * 1000) {
+                    console.log('持仓数据已过期，重新获取');
+                    fetchPositionStatus();
+                    return;
+                }
+                
+                if (positionsStr) {
+                    const positions = JSON.parse(positionsStr);
+                    console.log('解析持仓数据:', positions);
+                    
+                    // 如果持仓数组为空，显示无持仓状态
+                    if (!positions || positions.length === 0) {
+                        clearPositions(true);
+                        return;
+                    }
+                    
+                    // 更新执行中标签的数量
+                    updateRunningPositionCount(positions.length);
+                    
+                    // 显示持仓信息
+                    displayPositionsInRunningTab(positions);
+                    
+                    // 如果有持仓，自动切换到"执行中"标签
+                    if (positions.length > 0) {
+                        switchContractTab('running');
+                    }
+                } else if (positionCount && parseInt(positionCount) > 0) {
+                    // 如果只有计数信息且大于0，只更新数量
+                    updateRunningPositionCount(parseInt(positionCount) || 0);
+                } else {
+                    console.log('未找到持仓数据或持仓数量为0');
+                    // 显示无持仓状态
+                    clearPositions(true);
+                    
+                    // 主动获取持仓状态
+                    fetchPositionStatus();
+                }
+            } catch (e) {
+                console.error('检查持仓状态时出错:', e);
+                // 出错时也尝试获取持仓状态
+                fetchPositionStatus();
+            }
+        }
+
+        // 清空持仓显示
+        function clearPositions(isQuickClear = false) {
+            // 如果是快速清理模式，则完全清除localStorage中的持仓数据
+            if (isQuickClear) {
+                localStorage.removeItem('okxPositions');
+                localStorage.removeItem('okxPositionCount');
+                localStorage.removeItem('okxLastValidPositions');
+                localStorage.removeItem('okxLastValidCount');
+                console.log('强制清除所有持仓数据，包括缓存的最后有效数据');
+            }
+            
+            // 更新执行中标签的数量为0
+            updateRunningPositionCount(0);
+            
+            // 显示无持仓状态
+            const runningTab = document.getElementById('contract-running-tab');
+            if (runningTab) {
+                // 立即移除所有子元素，以加快清除速度
+                while (runningTab.firstChild) {
+                    runningTab.removeChild(runningTab.firstChild);
+                }
+                
+                // 添加无数据提示
+                runningTab.innerHTML = `
+                    <div class="no-data">
+                        <img src="/static/images/No_data.png" alt="无数据">
+                        <div class="no-data-text">暂无持仓数据</div>
+                    </div>
+                `;
+            }
+            
+            // 触发持仓更新事件
+            window.dispatchEvent(new CustomEvent('okxPositionsChanged', { 
+                detail: { positions: [] } 
+            }));
+            
+            // 如果是快速清理模式，执行额外操作以加快UI响应
+            if (isQuickClear) {
+                console.log('快速清除持仓显示');
+                // 清除DOM缓存，强制重新渲染
+                if (runningTab) {
+                    runningTab.style.opacity = '0.6';
+                    setTimeout(() => {
+                        runningTab.style.opacity = '1';
+                    }, 100);
+                }
+            }
+        }
+
+        // 从localStorage中移除特定交易对的持仓数据
+        function removePositionForPair(tradePair) {
+            try {
+                const positionsStr = localStorage.getItem('okxPositions');
+                if (positionsStr) {
+                    const positions = JSON.parse(positionsStr);
+                    
+                    // 过滤掉特定交易对
+                    const filteredPositions = positions.filter(p => p.tradePair !== tradePair);
+                    
+                    // 如果过滤后的持仓列表非空，则更新localStorage
+                    if (filteredPositions.length > 0) {
+                        localStorage.setItem('okxPositions', JSON.stringify(filteredPositions));
+                        localStorage.setItem('okxPositionCount', filteredPositions.length.toString());
+                        
+                        // 更新UI
+                        displayPositionsInRunningTab(filteredPositions);
+                        updateRunningPositionCount(filteredPositions.length);
+                        
+                        console.log(`已从持仓列表中移除 ${tradePair}`);
+                    } else {
+                        // 如果过滤后没有持仓了，直接清空
+                        clearPositions();
+                    }
+                }
+            } catch (e) {
+                console.error('移除特定持仓时出错:', e);
+            }
+        }
+
+        // 在执行中标签页显示持仓信息
+        function displayPositionsInRunningTab(positions) {
+            const runningTab = document.getElementById('contract-running-tab');
+            if (!runningTab) return;
+            
+            console.log('显示持仓信息:', positions);
+            
+            if (positions && positions.length > 0) {
+                // 清空现有内容
+                runningTab.innerHTML = '';
+                
+                // 创建持仓列表
+                const positionList = document.createElement('div');
+                positionList.className = 'position-list';
+                positionList.style.padding = '15px';
+                
+                // 添加每个持仓信息
+                positions.forEach(position => {
+                    const positionItem = document.createElement('div');
+                    positionItem.className = 'position-item box-bg';
+                    positionItem.style.marginBottom = '15px';
+                    positionItem.style.padding = '15px';
+                    positionItem.style.borderRadius = '8px';
+                    positionItem.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)';
+                    
+                    // 交易对信息
+                    const pairInfo = document.createElement('div');
+                    pairInfo.style.display = 'flex';
+                    pairInfo.style.justifyContent = 'space-between';
+                    pairInfo.style.marginBottom = '10px';
+                    
+                    const pairName = document.createElement('div');
+                    pairName.style.fontWeight = 'bold';
+                    pairName.style.fontSize = '16px';
+                    pairName.textContent = position.tradePair;
+                    
+                    const timestamp = document.createElement('div');
+                    timestamp.style.color = '#8c8c8c';
+                    timestamp.style.fontSize = '12px';
+                    const date = new Date(position.timestamp);
+                    timestamp.textContent = date.toLocaleString();
+                    
+                    pairInfo.appendChild(pairName);
+                    pairInfo.appendChild(timestamp);
+                    
+                    // 持仓方向信息
+                    const directionInfo = document.createElement('div');
+                    directionInfo.style.display = 'flex';
+                    directionInfo.style.flexDirection = 'column';
+                    directionInfo.style.marginBottom = '15px';
+                    
+                    if (position.hasBuyPosition) {
+                        const buyInfo = document.createElement('div');
+                        buyInfo.style.display = 'flex';
+                        buyInfo.style.justifyContent = 'space-between';
+                        buyInfo.style.alignItems = 'center';
+                        buyInfo.style.marginBottom = '8px';
+                        
+                        const buyBadge = document.createElement('span');
+                        buyBadge.style.backgroundColor = '#e6f7ff';
+                        buyBadge.style.color = '#1890ff';
+                        buyBadge.style.padding = '4px 8px';
+                        buyBadge.style.borderRadius = '4px';
+                        buyBadge.style.fontWeight = '500';
+                        buyBadge.textContent = '多头持仓';
+                        
+                        const buyDetails = document.createElement('span');
+                        buyDetails.style.fontSize = '13px';
+                        
+                        // 使用API返回的实际数据，避免显示0张@0的情况
+                        if (position.details && position.details.buy) {
+                            // 确保不为0的显示
+                            const availPos = parseFloat(position.details.buy.availPos) || 
+                                            (position.positionData.p_Pos_sz ? parseFloat(position.positionData.p_Pos_sz) : 0);
+                            const avgPrice = parseFloat(position.details.buy.avgPrice) || 
+                                            (position.positionData.p_cw_avgPx ? parseFloat(position.positionData.p_cw_avgPx) : 0);
+                            
+                            // 如果是有效仓位，从API获取的持仓数据可能会更准确
+                            if (position.positionData && position.positionData.buy_flag) {
+                                // 从positionData获取更具体的持仓信息
+                                buyDetails.textContent = `${availPos > 0 ? availPos : '1'}张 @ ${avgPrice > 0 ? avgPrice.toFixed(2) : position.positionData.last_px || '市价'}`;
+                            } else {
+                                // 回退到details中的信息
+                                buyDetails.textContent = `${availPos > 0 ? availPos : '1'}张 @ ${avgPrice > 0 ? avgPrice.toFixed(2) : '市价'}`;
+                            }
+                        } else if (position.positionData && position.positionData.buy_flag) {
+                            // 直接从positionData读取
+                            const availPos = position.positionData.p_Pos_sz ? parseFloat(position.positionData.p_Pos_sz) : 1;
+                            const avgPrice = position.positionData.p_cw_avgPx ? parseFloat(position.positionData.p_cw_avgPx) : 
+                                            (position.positionData.last_px ? parseFloat(position.positionData.last_px) : 0);
+                            
+                            buyDetails.textContent = `${availPos > 0 ? availPos : '1'}张 @ ${avgPrice > 0 ? avgPrice.toFixed(2) : '市价'}`;
+                        } else {
+                            // 如果没有任何可用数据，则显示至少1张的默认值
+                            buyDetails.textContent = `1张 @ 市价`;
+                        }
+                        
+                        buyInfo.appendChild(buyBadge);
+                        buyInfo.appendChild(buyDetails);
+                        directionInfo.appendChild(buyInfo);
+                    }
+                    
+                    if (position.hasSellPosition) {
+                        const sellInfo = document.createElement('div');
+                        sellInfo.style.display = 'flex';
+                        sellInfo.style.justifyContent = 'space-between';
+                        sellInfo.style.alignItems = 'center';
+                        
+                        const sellBadge = document.createElement('span');
+                        sellBadge.style.backgroundColor = '#fff2e8';
+                        sellBadge.style.color = '#fa541c';
+                        sellBadge.style.padding = '4px 8px';
+                        sellBadge.style.borderRadius = '4px';
+                        sellBadge.style.fontWeight = '500';
+                        sellBadge.textContent = '空头持仓';
+                        
+                        const sellDetails = document.createElement('span');
+                        sellDetails.style.fontSize = '13px';
+                        
+                        // 使用API返回的实际数据，避免显示0张@0的情况
+                        if (position.details && position.details.sell) {
+                            // 确保不为0的显示
+                            const availPos = parseFloat(position.details.sell.availPos) || 
+                                            (position.positionData.p_Pos_sz_s ? parseFloat(position.positionData.p_Pos_sz_s) : 0);
+                            const avgPrice = parseFloat(position.details.sell.avgPrice) || 
+                                            (position.positionData.p_cw_avgPx_s ? parseFloat(position.positionData.p_cw_avgPx_s) : 0);
+                            
+                            // 如果是有效仓位，从API获取的持仓数据可能会更准确
+                            if (position.positionData && position.positionData.sell_flag) {
+                                // 从positionData获取更具体的持仓信息
+                                sellDetails.textContent = `${availPos > 0 ? availPos : '1'}张 @ ${avgPrice > 0 ? avgPrice.toFixed(2) : position.positionData.last_px || '市价'}`;
+                            } else {
+                                // 回退到details中的信息
+                                sellDetails.textContent = `${availPos > 0 ? availPos : '1'}张 @ ${avgPrice > 0 ? avgPrice.toFixed(2) : '市价'}`;
+                            }
+                        } else if (position.positionData && position.positionData.sell_flag) {
+                            // 直接从positionData读取
+                            const availPos = position.positionData.p_Pos_sz_s ? parseFloat(position.positionData.p_Pos_sz_s) : 1;
+                            const avgPrice = position.positionData.p_cw_avgPx_s ? parseFloat(position.positionData.p_cw_avgPx_s) : 
+                                            (position.positionData.last_px ? parseFloat(position.positionData.last_px) : 0);
+                            
+                            sellDetails.textContent = `${availPos > 0 ? availPos : '1'}张 @ ${avgPrice > 0 ? avgPrice.toFixed(2) : '市价'}`;
+                        } else {
+                            // 如果没有任何可用数据，则显示至少1张的默认值
+                            sellDetails.textContent = `1张 @ 市价`;
+                        }
+                        
+                        sellInfo.appendChild(sellBadge);
+                        sellInfo.appendChild(sellDetails);
+                        directionInfo.appendChild(sellInfo);
+                    }
+                    
+                    // 添加按钮操作区
+                    const actionButtons = document.createElement('div');
+                    actionButtons.style.display = 'flex';
+                    actionButtons.style.justifyContent = 'space-between';
+                    actionButtons.style.marginTop = '15px';
+                    
+                    const viewButton = document.createElement('button');
+                    viewButton.className = 'btn-btn';
+                    viewButton.style.flex = '1';
+                    viewButton.style.marginRight = '10px';
+                    viewButton.style.backgroundColor = '#1a6aff';
+                    viewButton.style.color = 'white';
+                    viewButton.style.border = 'none';
+                    viewButton.style.borderRadius = '4px';
+                    viewButton.style.padding = '8px 0';
+                    viewButton.style.cursor = 'pointer';
+                    viewButton.textContent = '查看详情';
+                    
+                    // 获取策略ID
+                    const strategyId = position.strategy ? position.strategy.id : getStrategyIdForPair(position.tradePair);
+                    
+                    viewButton.onclick = function() {
+                        window.location.href = `/strategy/settings?id=${strategyId}`;
+                    };
+                    
+                    const closeButton = document.createElement('button');
+                    closeButton.className = 'btn-btn';
+                    closeButton.style.flex = '1';
+                    closeButton.style.backgroundColor = '#ff4d4f';
+                    closeButton.style.color = 'white';
+                    closeButton.style.border = 'none';
+                    closeButton.style.borderRadius = '4px';
+                    closeButton.style.padding = '8px 0';
+                    closeButton.style.cursor = 'pointer';
+                    closeButton.textContent = '平仓';
+                    closeButton.onclick = function() {
+                        if (confirm(`确定要平仓 ${position.tradePair} 吗？`)) {
+                            // 在这里添加平仓逻辑
+                            alert('平仓功能尚未实现');
+                        }
+                    };
+                    
+                    actionButtons.appendChild(viewButton);
+                    actionButtons.appendChild(closeButton);
+                    
+                    // 组装项目
+                    positionItem.appendChild(pairInfo);
+                    positionItem.appendChild(directionInfo);
+                    positionItem.appendChild(actionButtons);
+                    
+                    positionList.appendChild(positionItem);
+                });
+                
+                runningTab.appendChild(positionList);
+            } else {
+                // 无持仓时显示空状态
+                runningTab.innerHTML = `
+                    <div class="no-data">
+                        <img src="/static/images/No_data.png" alt="无数据">
+                        <div class="no-data-text">暂无持仓数据</div>
+                    </div>
+                `;
+            }
+        }
+
+        // 根据交易对获取对应的策略ID
+        function getStrategyIdForPair(tradePair) {
+            switch (tradePair) {
+                case 'ETH-USDT':
+                    return '2';
+                case 'SOL-USDT':
+                    return '3';
+                case 'BNB-USDT':
+                    return '4';
+                case 'DOT-USDT':
+                    return '5';
+                case 'ADA-USDT':
+                    return '6';
+                default:
+                    return '1'; // 默认BTC-USDT对应策略1
+            }
+        }
+
+        // 更新执行中标签的数量
+        function updateRunningPositionCount(count) {
+            // 查找"执行中"标签中的数量显示元素
+            const runningCountElems = document.querySelectorAll('.flex-x.nav-li.nav-li-p span:nth-child(2)');
+            runningCountElems.forEach(elem => {
+                if (elem.parentElement.textContent.includes('执行中')) {
+                    elem.textContent = `(${count})`;
+                }
+            });
+            
+            // 更新"合约持仓"数量
+            const positionValueElem = document.getElementById('position-value');
+            if (positionValueElem) {
+                // 假设每个持仓价值约1000 USDT
+                const estimatedValue = count * 1000;
+                positionValueElem.textContent = estimatedValue;
+                
+                // 设置颜色
+                if (count > 0) {
+                    positionValueElem.style.color = '#52c41a'; // 绿色，表示有持仓
+                } else {
+                    positionValueElem.style.color = '#8c8c8c'; // 灰色，表示无持仓
+                }
+            }
+            
+            // 如果有持仓，确保合约页面显示
+            if (count > 0) {
+                // 切换到合约页面
+                if (document.getElementById('spot-section').style.display !== 'none') {
+                    switchTradeType('contract');
+                }
+            }
+        }
+
+        // 主动获取持仓状态
+        function fetchPositionStatus() {
+            console.log('获取持仓状态...');
+            // 检查是否有现有位置信息
+            const existingPositions = localStorage.getItem('okxPositions');
+            const existingCount = localStorage.getItem('okxPositionCount');
+            
+            // 先使用现有缓存显示（如果有）
+            if (existingPositions && existingCount) {
+                try {
+                    const positions = JSON.parse(existingPositions);
+                    if (positions && positions.length > 0) {
+                        displayPositionsInRunningTab(positions);
+                        updateRunningPositionCount(parseInt(existingCount));
+                        
+                        // 如果有持仓且在合约页面，自动切换到"执行中"标签
+                        if (positions.length > 0 && document.getElementById('contract-section').style.display !== 'none') {
+                            switchContractTab('running');
+                        }
+                    }
+                } catch (e) {
+                    console.error('解析缓存持仓数据时出错:', e);
+                }
+            }
+            
+            // 向后端发送请求获取持仓状态，使用相对路径避免跨域问题
+            fetch('./api/position/check', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Cache-Control': 'no-cache', // 添加缓存控制头部
+                    'Pragma': 'no-cache',
+                    'X-Requested-With': 'XMLHttpRequest' // 添加XHR标识
+                },
+                credentials: 'same-origin', // 确保发送cookie
+                body: JSON.stringify({
+                    tradePair: 'ALL',
+                    tradeDirection: 'all'
+                }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP错误! 状态: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.code === 200) {
+                    if (data.hasOrder && data.positionStatus && data.positionStatus.data) {
+                        // 获取所有持仓数据
+                        const positions = data.positionStatus.data;
+                        
+                        // 检查OKX_chichang_Order()的返回值
+                        const okxChichangLength = positions.length;
+                        console.log(`OKX_chichang_Order()返回值长度: ${okxChichangLength}`);
+                        
+                        if (okxChichangLength === 0) {
+                            // 当OKX_chichang = OKX_chichang_Order()的值为0时，取消缓存机制
+                            console.log('OKX_chichang_Order()返回值为0，取消缓存机制');
+                            clearPositions(true); // 强制清除所有缓存
+                            
+                            // 显式移除所有持仓相关的localStorage项
+                            localStorage.removeItem('okxPositions');
+                            localStorage.removeItem('okxPositionCount');
+                            localStorage.removeItem('okxLastValidPositions');
+                            localStorage.removeItem('okxLastValidCount');
+                            localStorage.removeItem('okxPositionsUpdateTime');
+                            
+                            // 更新执行中数量为0
+                            updateRunningPositionCount(0);
+                            
+                            return; // 提前返回，不进行后续处理
+                        } else if (okxChichangLength >= 1) {
+                            // 当OKX_chichang = OKX_chichang_Order()的值为1或更多时，重新读取OKX_chichang并缓存
+                            console.log('OKX_chichang_Order()返回值为1或更多，重新读取并缓存');
+                            
+                            // 过滤掉模拟持仓数据（如果需要的话）
+                            const filteredPositions = positions.filter(position => {
+                                // 这里可以添加过滤逻辑，例如过滤特定标记的持仓
+                                return true;  // 默认不过滤
+                            });
+                            
+                            // 更新缓存中的持仓数据
+                            localStorage.setItem('okxPositions', JSON.stringify(filteredPositions));
+                            localStorage.setItem('okxPositionCount', filteredPositions.length.toString());
+                            
+                            // 如果有有效的持仓数据，也保存为最后有效的数据
+                            localStorage.setItem('okxLastValidPositions', JSON.stringify(filteredPositions));
+                            localStorage.setItem('okxLastValidCount', filteredPositions.length.toString());
+                            console.log(`更新最后有效持仓数据，共 ${filteredPositions.length} 个持仓`);
+                            
+                            // 显示持仓信息
+                            displayPositionsInRunningTab(filteredPositions);
+                            
+                            // 更新执行中标签的数量
+                            updateRunningPositionCount(filteredPositions.length);
+                            
+                            // 如果有持仓且在合约页面，自动切换到"执行中"标签
+                            if (filteredPositions.length > 0 && document.getElementById('contract-section').style.display !== 'none') {
+                                switchContractTab('running');
+                            }
+                            
+                            // 添加最后更新时间
+                            localStorage.setItem('okxPositionsUpdateTime', new Date().toLocaleString());
+                            
+                            // 触发持仓更新事件
+                            window.dispatchEvent(new CustomEvent('okxPositionsChanged', { 
+                                detail: { positions: filteredPositions } 
+                            }));
+                        }
+                    } else {
+                        // 没有持仓，彻底清空显示和所有缓存
+                        clearPositions(true);  // 使用true，强制清除所有缓存
+                        
+                        // 显式移除所有持仓相关的localStorage项
+                        localStorage.removeItem('okxPositions');
+                        localStorage.removeItem('okxPositionCount');
+                        localStorage.removeItem('okxLastValidPositions');
+                        localStorage.removeItem('okxLastValidCount');
+                        
+                        console.log('没有活跃持仓，已清除所有持仓缓存');
+                    }
+                } else {
+                    console.error('获取持仓状态失败:', data.message);
+                    // 使用缓存数据
+                    tryLoadCachedPositions();
+                }
+            })
+            .catch(error => {
+                console.error('获取持仓状态时出错:', error);
+                
+                // 如果获取失败，尝试使用最后有效的缓存数据
+                tryLoadCachedPositions();
+                
+                // 5秒后重试一次
+                setTimeout(() => {
+                    console.log('正在重试获取持仓状态...');
+                    fetch('./api/position/check', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            tradePair: 'ALL',
+                            tradeDirection: 'all'
+                        }),
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.code === 200) {
+                            if (data.hasOrder && data.positionStatus && data.positionStatus.data) {
+                                const positions = data.positionStatus.data;
+                                const okxChichangLength = positions.length;
+                                
+                                if (okxChichangLength === 0) {
+                                    // 当OKX_chichang_Order()返回值为0时，取消缓存机制
+                                    clearPositions(true);
+                                    updateRunningPositionCount(0);
+                                } else if (okxChichangLength >= 1) {
+                                    // 当值为1时，重新缓存
+                                    displayPositionsInRunningTab(positions);
+                                    updateRunningPositionCount(positions.length);
+                                    localStorage.setItem('okxPositions', JSON.stringify(positions));
+                                    localStorage.setItem('okxPositionCount', positions.length.toString());
+                                    localStorage.setItem('okxLastValidPositions', JSON.stringify(positions));
+                                    localStorage.setItem('okxLastValidCount', positions.length.toString());
+                                }
+                            } else {
+                                // 没有持仓，强制清除所有缓存
+                                clearPositions(true);
+                            }
+                        }
+                    })
+                    .catch(e => console.error('重试获取持仓状态失败:', e));
+                }, 5000);
+            });
+        }
+
+        // 添加立即刷新按钮的事件监听
+        document.addEventListener('DOMContentLoaded', function() {
+            // 绑定刷新按钮点击事件
+            const refreshElements = document.querySelectorAll('.refresh-img');
+            refreshElements.forEach(function(element) {
+                element.addEventListener('click', function() {
+                    console.log('刷新按钮被点击，开始刷新数据...');
+                    // 显示加载动画
+                    element.classList.add('rotating');
+                    
+                    // 先更新数量，再获取详细数据
+                    updatePositionCount();
+                    fetchPositionStatus();
+                    
+                    // 5秒后停止旋转动画
+                    setTimeout(() => {
+                        element.classList.remove('rotating');
+                    }, 1000);
+                });
+            });
+            
+            // 定时获取持仓状态
+            setInterval(function() {
+                updatePositionCount();
+            }, 30000); // 每30秒刷新一次
+        });
+
+        // 清除所有持仓数据，包括缓存的最后有效数据
+        function clearAllPositionCache() {
+            localStorage.removeItem('okxPositions');
+            localStorage.removeItem('okxPositionCount');
+            localStorage.removeItem('okxPositionsUpdateTime');
+            localStorage.removeItem('okxLastValidPositions');
+            localStorage.removeItem('okxLastValidCount');
+            console.log('已清除所有持仓缓存数据');
+        }
+
+        // 在显示持仓数据到"执行中"标签的函数中，添加时间戳显示
+        function displayPositionsInRunningTab(positions) {
+            const runningTab = document.getElementById('contract-running-tab');
+            
+            if (!runningTab) {
+                console.error('找不到执行中标签的DOM元素');
+                return;
+            }
+            
+            // 清空现有内容
+            runningTab.innerHTML = '';
+            
+            if (!positions || positions.length === 0) {
+                // 显示无数据提示
+                runningTab.innerHTML = `
+                    <div class="no-data">
+                        <img src="/static/images/No_data.png" alt="无数据">
+                        <div class="no-data-text">暂无持仓数据</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            // 添加加载时间戳提示
+            const now = new Date();
+            const timestamp = now.toLocaleTimeString();
+            const timestampDiv = document.createElement('div');
+            timestampDiv.className = 'data-timestamp';
+            timestampDiv.innerHTML = `<small>数据更新时间: ${timestamp}</small>`;
+            timestampDiv.style.textAlign = 'right';
+            timestampDiv.style.padding = '2px 10px';
+            timestampDiv.style.color = '#999';
+            timestampDiv.style.fontSize = '12px';
+            runningTab.appendChild(timestampDiv);
+            
+            // 为每个持仓创建卡片
+            positions.forEach(position => {
+                // 创建持仓卡片
+                const card = document.createElement('div');
+                card.className = 'position-card';
+                
+                // 计算收益
+                const entryPrice = parseFloat(position.avgPx || 0);
+                const currentPrice = parseFloat(position.markPx || 0);
+                const posSide = position.posSide; // long或short
+                const posSize = parseFloat(position.pos || 0);
+                const leverage = parseFloat(position.lever || '1');
+                
+                // 计算收益百分比
+                let profitPercent = 0;
+                if (posSide === 'long') {
+                    profitPercent = entryPrice > 0 ? ((currentPrice - entryPrice) / entryPrice) * 100 * leverage : 0;
+                } else if (posSide === 'short') {
+                    profitPercent = entryPrice > 0 ? ((entryPrice - currentPrice) / entryPrice) * 100 * leverage : 0;
+                }
+                
+                // 计算收益USDT
+                const usdtValue = parseFloat(position.upl || 0);
+                const profitClass = profitPercent >= 0 ? 'profit-positive' : 'profit-negative';
+                const profitSign = profitPercent >= 0 ? '+' : '';
+                
+                // 获取符号名称
+                const instId = position.instId || '';
+                const symbolMatch = instId.match(/^([A-Za-z0-9]+)-/);
+                const symbol = symbolMatch ? symbolMatch[1] : '未知';
+                
+                // 渲染卡片内容
+                card.innerHTML = `
+                    <div class="position-header">
+                        <div class="position-symbol">
+                            <img src="https://ai.hkd.red/symbolImage/${symbol}.png" alt="${symbol}" onerror="this.src='/static/images/coin-fallback.png'">
+                            <span>${symbol}</span>
+                        </div>
+                        <div class="position-side ${posSide === 'long' ? 'long-side' : 'short-side'}">
+                            ${posSide === 'long' ? '做多' : '做空'}
+                        </div>
+                    </div>
+                    <div class="position-details">
+                        <div class="position-row">
+                            <div class="position-label">开仓价</div>
+                            <div class="position-value">${entryPrice.toFixed(2)}</div>
+                        </div>
+                        <div class="position-row">
+                            <div class="position-label">当前价</div>
+                            <div class="position-value">${currentPrice.toFixed(2)}</div>
+                        </div>
+                        <div class="position-row">
+                            <div class="position-label">收益率</div>
+                            <div class="position-value ${profitClass}">${profitSign}${profitPercent.toFixed(2)}%</div>
+                        </div>
+                        <div class="position-row">
+                            <div class="position-label">收益额</div>
+                            <div class="position-value ${profitClass}">${profitSign}${Math.abs(usdtValue).toFixed(2)} USDT</div>
+                        </div>
+                        <div class="position-row">
+                            <div class="position-label">持仓量</div>
+                            <div class="position-value">${Math.abs(posSize)} 张</div>
+                        </div>
+                        <div class="position-row">
+                            <div class="position-label">杠杆倍数</div>
+                            <div class="position-value">${leverage}X</div>
+                        </div>
+                    </div>
+                    <div class="position-actions">
+                        <button class="close-position-btn" data-instid="${instId}" data-posside="${posSide}">平仓</button>
+                        <button class="modify-position-btn" data-instid="${instId}" data-posside="${posSide}">调整</button>
+                    </div>
+                `;
+                
+                runningTab.appendChild(card);
+            });
+            
+            // 绑定平仓和调整按钮事件
+            bindPositionButtonEvents();
+        }
+
+        // 添加更新按钮点击事件
+        const refreshButtons = document.querySelectorAll('.refresh-img');
+        refreshButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                updatePositionCount();  // 先更新数量
+                fetchPositionStatus();  // 再获取详细数据
+            });
+        });
+
+        // 绑定持仓卡片上的按钮事件
+        function bindPositionButtonEvents() {
+            // 绑定平仓按钮事件
+            document.querySelectorAll('.close-position-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const instId = this.getAttribute('data-instid');
+                    const posSide = this.getAttribute('data-posside');
+                    
+                    // 显示确认对话框
+                    if (confirm(`确定要平掉 ${instId} 的${posSide === 'long' ? '多' : '空'}头持仓吗？`)) {
+                        // 显示加载状态
+                        this.disabled = true;
+                        this.textContent = '处理中...';
+                        
+                        // 发送平仓请求到后端，使用相对路径
+                        fetch('./api/position/close', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Cache-Control': 'no-cache',
+                                'Pragma': 'no-cache'
+                            },
+                            credentials: 'same-origin',
+                            body: JSON.stringify({
+                                instId: instId,
+                                posSide: posSide
+                            })
+                        })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP错误! 状态: ${response.status}`);
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data.code === 200) {
+                                alert('平仓成功！');
+                                // 刷新持仓状态
+                                fetchPositionStatus();
+                            } else {
+                                alert(`平仓失败: ${data.message || '未知错误'}`);
+                                this.disabled = false;
+                                this.textContent = '平仓';
+                            }
+                        })
+                        .catch(error => {
+                            console.error('平仓请求失败:', error);
+                            alert('平仓请求失败，请稍后再试');
+                            this.disabled = false;
+                            this.textContent = '平仓';
+                        });
+                    }
+                });
+            });
+            
+            // 绑定调整按钮事件
+            document.querySelectorAll('.modify-position-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const instId = this.getAttribute('data-instid');
+                    const posSide = this.getAttribute('data-posside');
+                    
+                    // 跳转到调整页面或显示调整对话框
+                    alert(`调整持仓功能开发中，敬请期待！\n\n持仓ID: ${instId}\n方向: ${posSide}`);
+                });
+            });
+        }
+
+        // 在页面底部添加额外的检测代码，确保页面正确加载
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加页面健康检查，确保持仓页面能正确加载
+            console.log('正在执行页面健康检查...');
+            
+            // 确保合约页面和现货页面的DOM元素已正确加载
+            const spotSection = document.getElementById('spot-section');
+            const contractSection = document.getElementById('contract-section');
+            
+            if (!spotSection || !contractSection) {
+                console.error('页面关键元素缺失！现货页面:', !!spotSection, '合约页面:', !!contractSection);
+                alert('页面加载异常，请刷新重试！');
+                return;
+            }
+            
+            // 检查API连接状态
+            fetch('./api/position/count')
+                .then(response => {
+                    console.log('API连接状态检查:', response.status);
+                    if (!response.ok) {
+                        console.error('API连接失败:', response.status);
+                        alert('无法连接到服务器API，请检查网络连接！');
+                    }
+                })
+                .catch(error => {
+                    console.error('API连接检查失败:', error);
+                });
+            
+            // 注册一个定时健康检查，定期验证页面状态
+            setInterval(function() {
+                const contractRunningTab = document.getElementById('contract-running-tab');
+                if (!contractRunningTab) {
+                    console.error('合约执行中标签元素丢失，尝试重新初始化页面...');
+                    // 尝试重新初始化页面
+                    initTradePages();
+                }
+            }, 60000); // 每分钟检查一次
+            
+            console.log('页面健康检查完成');
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,3768 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能交易 - 策略设置</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/crypto-theme.css">
+    <style>
+        /* 页面基础样式 */
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+        }
+        
+        /* 已下单状态按钮样式 */
+        .confirm-btn.order-success {
+            background: linear-gradient(135deg, #52c41a, #73d13d);
+            box-shadow: 0 4px 15px rgba(82, 196, 26, 0.3);
+        }
+        
+        .confirm-btn.order-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(82, 196, 26, 0.4);
+            background: linear-gradient(135deg, #46b314, #66c832);
+        }
+        
+        /* 已持仓状态按钮样式 */
+        .confirm-btn.position-active {
+            background: linear-gradient(135deg, #1890ff, #40a9ff);
+            box-shadow: 0 4px 15px rgba(24, 144, 255, 0.3);
+        }
+        
+        .confirm-btn.position-active:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(24, 144, 255, 0.4);
+            background: linear-gradient(135deg, #096dd9, #1f9fff);
+        }
+        
+        /* 导航栏样式 */
+        .u-navbar {
+            background: linear-gradient(135deg, #1a6aff, #3f87ff);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+            transition: all 0.3s ease;
+        }
+        
+        .u-navbar__content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            position: relative;
+            padding: 0 15px;
+        }
+        
+        .u-navbar__content__left {
+            position: absolute;
+            left: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .u-navbar__content__title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            text-align: center;
+            letter-spacing: 0.5px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .u-icon__icon {
+            font-size: 20px;
+            color: #ffffff;
+            transition: transform 0.2s ease;
+        }
+        
+        .u-icon__icon:hover {
+            transform: scale(1.1);
+        }
+        
+        /* 主要内容区域 */
+        .robot-settings {
+            margin-top: 70px;
+            padding: 15px;
+        }
+        
+        /* 卡片式容器 */
+        .box {
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 18px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(230, 230, 230, 0.7);
+        }
+        
+        .box:hover {
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.11);
+            transform: translateY(-2px);
+        }
+        
+        .box-card {
+            padding: 22px;
+        }
+        
+        /* 顶部资产信息 */
+        .top-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .top-left {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .available-m {
+            font-size: 14px;
+            color: #8c8c8c;
+            margin-right: 8px;
+        }
+        
+        .refresh-img {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .refresh-img:hover {
+            transform: rotate(90deg);
+        }
+        
+        .now-money {
+            font-size: 24px;
+            font-weight: 600;
+            color: #262626;
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+        }
+        
+        .top-right {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .coin-img {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            margin-bottom: 8px;
+            border: 1px solid rgba(0,0,0,0.05);
+            padding: 2px;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .change-img {
+            width: 16px;
+            height: 16px;
+            margin-right: 6px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .change-img:hover {
+            opacity: 1;
+        }
+        
+        /* 表单项样式 */
+        .self-forms {
+            margin-top: 15px;
+        }
+        
+        .forms-item {
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .forms-item:hover {
+            transform: translateY(-2px);
+        }
+        
+        .form-item-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .label {
+            font-size: 15px;
+            color: #262626;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+        }
+        
+        .form-item-input {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 16px 18px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .form-item-input:focus-within {
+            box-shadow: 0 0 0 2px rgba(51, 102, 255, 0.2);
+        }
+        
+        .input-border {
+            border: 1px solid #e8e8e8;
+        }
+        
+        .robot-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .robot-name {
+            margin-left: 12px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #262626;
+        }
+        
+        .input-right {
+            margin-left: auto;
+            color: #3366FF;
+        }
+        
+        /* 策略类型选择 */
+        .type-scroll {
+            display: flex;
+            overflow-x: auto;
+            margin: 10px 0;
+            padding: 8px 0;
+            scrollbar-width: none; /* Firefox */
+        }
+        
+        .type-scroll::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Edge */
+        }
+        
+        .scroll-li-types {
+            min-width: 100px;
+            height: 44px;
+            border-radius: 22px;
+            background-color: #f9fafc;
+            margin-right: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #5c5c5c;
+            padding: 0 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(230, 230, 230, 0.7);
+        }
+        
+        .scroll-li-types:hover {
+            background-color: #edf2ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(51, 102, 255, 0.15);
+        }
+        
+        .type-actives {
+            background: linear-gradient(135deg, #1a6aff, #3f87ff);
+            color: white;
+            box-shadow: 0 4px 15px rgba(51, 102, 255, 0.3);
+            border: none;
+        }
+        
+        /* 滑块样式 */
+        .gress-box {
+            margin: 15px 0;
+            padding: 5px 0;
+            width: 100%;
+        }
+        
+        .sunny-sliderBar {
+            width: 100%;
+        }
+        
+        /* 进度条样式优化，修复背景出界问题 */
+        .gone {
+            transition: width 0.3s ease;
+            background: linear-gradient(135deg, rgba(26, 106, 255, 0.25), rgba(63, 135, 255, 0.25));
+            border-radius: 22px;
+            box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.3);
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            max-width: 100% !important;
+            overflow: hidden;
+        }
+        
+        /* 滑动条容器增强 */
+        .sliderBar {
+            cursor: pointer;
+            background: linear-gradient(to bottom, #f0f0f0, #f9fafc);
+            box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.08);
+            border-radius: 22px;
+            position: relative;
+            border: 1px solid rgba(220, 220, 220, 0.9);
+            height: 44px;
+            overflow: hidden;
+        }
+        
+        .img-box {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .move-img {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 2;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .move-img:hover {
+            transform: translateY(-50%) scale(1.2);
+        }
+        
+        .dot-indicator {
+            width: 14px;
+            height: 14px;
+            background-color: #fff;
+            border: 2px solid var(--primaryColor, #1a6aff);
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(26, 106, 255, 0.2);
+            transition: all 0.2s ease;
+        }
+        
+        .move-img:hover .dot-indicator {
+            transform: scale(1.1);
+            box-shadow: 0 3px 10px rgba(26, 106, 255, 0.3);
+        }
+        
+        .bili-text {
+            position: absolute;
+            top: 22px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+            color: #666;
+            white-space: nowrap;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .move-img:hover .bili-text {
+            color: #1a6aff;
+            font-weight: 600;
+        }
+        
+        .gone {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 106, 255, 0.25), rgba(63, 135, 255, 0.25));
+            border-radius: 22px;
+            z-index: 1;
+            transition: width 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .slider {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #1a6aff, #3f87ff);
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(51, 102, 255, 0.4);
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: none;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+        
+        .slider::before {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+        }
+        
+        .slider::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+            z-index: -1;
+        }
+        
+        .slider:hover {
+            box-shadow: 0 5px 18px rgba(51, 102, 255, 0.6);
+            transform: translateY(-50%) scale(1.05);
+        }
+        
+        .slider:active {
+            box-shadow: 0 2px 8px rgba(51, 102, 255, 0.6);
+            transform: translateY(-50%) scale(0.98);
+        }
+        
+        .count {
+            color: rgba(255, 255, 255, 0);
+            font-size: 13px;
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            bottom: -24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #1a6aff;
+            padding: 2px 8px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(26, 106, 255, 0.3);
+            opacity: 0;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .slider:hover .count {
+            color: rgba(255, 255, 255, 1);
+            opacity: 1;
+            bottom: -30px;
+        }
+        
+        .position-slider-container {
+            padding: 15px 0;
+        }
+        
+        /* 底部按钮 */
+        .confirm-bot-btn {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px 20px;
+            background-color: white;
+            z-index: 90;
+            box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .confirm-btn {
+            width: 100%;
+            height: 50px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #1a6aff, #3f87ff);
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            box-shadow: 0 4px 15px rgba(51, 102, 255, 0.25);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+        
+        .confirm-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(51, 102, 255, 0.35);
+            background: linear-gradient(135deg, #0a5aea, #2d78ff);
+        }
+        
+        .confirm-btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(51, 102, 255, 0.3);
+        }
+        
+        /* 开关样式 */
+        .toggle-wrapper {
+            width: 60px;
+            height: 32px;
+            position: relative;
+            background-color: #e8e8e8;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-background {
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-indicator {
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 28px;
+            height: 28px;
+            background-color: #fff;
+            border-radius: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
+        
+        .active-lis .toggle-background {
+            background: linear-gradient(135deg, #1a6aff, #3f87ff);
+        }
+        
+        .active-lis .toggle-indicator {
+            transform: translateX(28px);
+        }
+        
+        /* 单选框样式 */
+        .radio-box {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 5px 0;
+        }
+        
+        .u-radio {
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #333;
+            cursor: pointer;
+            margin-bottom: 5px;
+            transition: all 0.2s ease;
+        }
+        
+        .u-radio:hover {
+            color: #3366FF;
+        }
+        
+        .u-radio__icon-wrap {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #c8c9cc;
+            margin-right: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+        
+        .u-radio__icon-wrap--circle {
+            background-color: #fff;
+        }
+        
+        /* 修改原有样式 */
+        .settings-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #262626;
+            padding: 18px 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .settings-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s ease;
+        }
+        
+        .settings-row:hover {
+            background-color: #f9fafc;
+        }
+        
+        .settings-row:last-child {
+            border-bottom: none;
+        }
+        
+        .setting-label {
+            font-size: 15px;
+            color: #454545;
+            font-weight: 500;
+        }
+        
+        .setting-value {
+            font-size: 15px;
+            color: #333;
+            display: flex;
+            align-items: center;
+        }
+        
+        .arrow-right {
+            margin-left: 10px;
+            color: #c0c4cc;
+            transition: transform 0.2s ease;
+        }
+        
+        .settings-row:hover .arrow-right {
+            transform: translateX(3px);
+            color: #3366FF;
+        }
+        
+        /* 添加uni-app风格组件样式 */
+        .f-1 {
+            flex: 1;
+        }
+        
+        .box2 {
+            background-color: #fff;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+            transition: all 0.3s ease;
+        }
+        
+        .box2:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.09);
+        }
+        
+        .flexs {
+            display: flex;
+            align-items: center;
+        }
+        
+        .flex-x {
+            display: flex;
+            align-items: center;
+        }
+        
+        .flex-y {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .flex-x-b {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .flex-x-c {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .flex-y-c {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .f-s {
+            display: flex;
+            align-items: center;
+        }
+        
+        .theme-border-color {
+            border-color: #e8e8e8;
+        }
+        
+        .theme-border-color2 {
+            border-color: #f5f7fa;
+        }
+        
+        .box-bg1 {
+            background-color: #f5f7fa;
+        }
+        
+        .margin_r1 {
+            margin-right: 10px;
+        }
+        
+        .margin_b1 {
+            margin-bottom: 18px;
+        }
+        
+        .lable-name {
+            font-size: 15px;
+            color: #262626;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .type-box {
+            height: 40px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+        
+        .type-li {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #666;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .type-active {
+            background: linear-gradient(135deg, #3366FF, #5C91EF);
+            color: white;
+        }
+        
+        .icon-box {
+            display: flex;
+            align-items: center;
+            margin-left: 5px;
+        }
+        
+        .uni-input-input {
+            height: 36px;
+            width: 100%;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            font-size: 15px;
+            color: #262626;
+            font-weight: 500;
+        }
+        
+        .uni-input-wrapper {
+            width: 100%;
+            position: relative;
+        }
+        
+        .myicon {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+        
+        .icon-Choose:before {
+            content: "\f0c9";
+        }
+        
+        /* 滑块相关样式补充 */
+        .gress-box {
+            margin: 10px 0;
+            padding: 10px 5px;
+            width: 100%;
+        }
+        
+        .uni-input-placeholder {
+            color: #999;
+            font-size: 14px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+        }
+        
+        .uicon-question-circle:before {
+            content: "\f059";
+            font-family: "Font Awesome 6 Free";
+        }
+        
+        .uicon-arrow-right:before {
+            content: "\f054";
+            font-family: "Font Awesome 6 Free";
+        }
+        
+        .uicon-arrow-down-fill:before {
+            content: "\f078";
+            font-family: "Font Awesome 6 Free";
+        }
+        
+        /* 修改滑块组件样式 */
+        .position-slider-container {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        
+        /* 添加动画和过渡效果 */
+        .element-animated {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+        
+        .title-animated {
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .row-clicked {
+            background-color: #f0f7ff !important;
+        }
+        
+        .btn-clicked {
+            transform: scale(0.95) !important;
+        }
+        
+        .slider-active {
+            box-shadow: 0 5px 15px rgba(51, 102, 255, 0.5) !important;
+        }
+        
+        .page-loaded .u-navbar {
+            transform: translateY(0);
+        }
+        
+        /* Toast消息提示 */
+        .toast-message {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background-color: rgba(30, 30, 30, 0.95);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 12px;
+            z-index: 9999;
+            font-size: 15px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 80%;
+            font-weight: 500;
+        }
+        
+        .toast-message.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        /* 新增高级样式 */
+        .premium-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background: linear-gradient(135deg, #ffb700, #ffd869);
+            border-radius: 50%;
+            margin-left: 6px;
+            box-shadow: 0 2px 6px rgba(255, 183, 0, 0.3);
+        }
+        
+        .premium-icon i {
+            color: white;
+            font-size: 12px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .premium-strategy {
+            position: relative;
+        }
+        
+        .premium-strategy::after {
+            content: "推荐";
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-weight: 500;
+            box-shadow: 0 2px 6px rgba(255, 107, 107, 0.3);
+        }
+        
+        /* 新增按钮悬停效果 */
+        .hover-glow {
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        
+        .hover-glow:hover {
+            box-shadow: 0 0 20px rgba(26, 106, 255, 0.4);
+        }
+        
+        /* 动画关键帧增强 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        /* 新增投入金额高亮效果 */
+        .margin-highlight {
+            animation: pulse 1s infinite;
+            box-shadow: 0 0 0 2px rgba(26, 106, 255, 0.3);
+        }
+        
+        /* 杠杆选择框样式优化 */
+        .leverage-dialog {
+            animation: fadeInUp 0.3s ease;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
+            border: 1px solid rgba(230, 230, 230, 0.7);
+        }
+        
+        .leverage-option {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .leverage-option::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(26, 106, 255, 0.05);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+        
+        .leverage-option:hover::before {
+            transform: scaleX(1);
+        }
+        
+        /* 页面初始化状态 */
+        .u-navbar {
+            transform: translateY(-10px);
+            transition: transform 0.3s ease;
+        }
+        
+        /* 滑块颜色样式 */
+        .slider-red {
+            background: linear-gradient(135deg, #ff4d4f, #ff7875) !important;
+            box-shadow: 0 3px 12px rgba(255, 77, 79, 0.5) !important;
+        }
+        
+        .slider-yellow {
+            background: linear-gradient(135deg, #faad14, #ffc53d) !important;
+            box-shadow: 0 3px 12px rgba(250, 173, 20, 0.5) !important;
+        }
+        
+        .slider-blue {
+            background: linear-gradient(135deg, #1a6aff, #3f87ff) !important;
+            box-shadow: 0 3px 12px rgba(26, 106, 255, 0.5) !important;
+        }
+
+        /* 滑块动画效果 */
+        .slider-active {
+            transform: scale(1.1) !important;
+            transition: transform 0.2s, box-shadow 0.2s !important;
+            z-index: 5;
+        }
+
+        .slider-pulse {
+            animation: pulse 0.3s ease-out;
+        }
+
+        .slider-done {
+            animation: done 0.5s ease-out;
+        }
+
+        .dot-active {
+            transform: scale(1.3);
+            box-shadow: 0 0 15px rgba(26, 106, 255, 0.6);
+            transition: transform 0.2s, box-shadow 0.2s;
+            z-index: 3;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1) translateX(var(--x-position, 0)); }
+            50% { transform: scale(1.2) translateX(var(--x-position, 0)); }
+            100% { transform: scale(1) translateX(var(--x-position, 0)); }
+        }
+
+        @keyframes done {
+            0% { box-shadow: 0 0 0 rgba(26, 106, 255, 0); }
+            50% { box-shadow: 0 0 20px rgba(26, 106, 255, 0.8); }
+            100% { box-shadow: 0 3px 12px rgba(26, 106, 255, 0.5); }
+        }
+
+        /* 滑动条容器增强样式 */
+        .sliderBar {
+            cursor: pointer;
+            background-color: #f5f7fa;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        /* 进度条样式增强 */
+        .gone {
+            transition: width 0.3s ease;
+            background: linear-gradient(135deg, rgba(26, 106, 255, 0.25), rgba(63, 135, 255, 0.25));
+            border-radius: 4px;
+        }
+
+        /* 滑块增强样式 */
+        .slider {
+            cursor: grab;
+            background: linear-gradient(135deg, #1a6aff, #3f87ff);
+            border: 2px solid white;
+            transition: background 0.3s, box-shadow 0.3s, transform 0.1s;
+            z-index: 4;
+        }
+        
+        .slider:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(26, 106, 255, 0.6);
+        }
+        
+        .slider:active {
+            cursor: grabbing;
+        }
+
+        /* 百分比显示样式增强 */
+        .slider .count {
+            background-color: #1a6aff;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .slider:hover .count {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* 固定点样式增强 */
+        .move-img {
+            transition: transform 0.2s, box-shadow 0.2s;
+            background-color: white;
+            border: 1px solid #e4e7ed;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            z-index: 3;
+        }
+        
+        .move-img:hover {
+            transform: scale(1.2);
+            box-shadow: 0 3px 10px rgba(26, 106, 255, 0.4);
+        }
+        
+        /* 滑块点指示器 */
+        .dot-indicator {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .dot-indicator::after {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background-color: #1a6aff;
+            border-radius: 50%;
+            transition: transform 0.2s;
+        }
+        
+        .move-img:hover .dot-indicator::after {
+            transform: scale(1.5);
+        }
+        
+        /* 滑块优化 */
+        #position-slider-percent {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a6aff, #3f87ff);
+            border: 2px solid white;
+            box-shadow: 0 3px 12px rgba(26, 106, 255, 0.5);
+            position: absolute;
+            cursor: grab;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s, box-shadow 0.3s;
+            z-index: 5;
+        }
+        
+        #position-slider-percent:active {
+            cursor: grabbing;
+            transform: scale(1.1) translateX(var(--x-pos, 0px));
+        }
+        
+        #position-slider-percent .count {
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 50px;
+            height: 26px;
+            line-height: 26px;
+            text-align: center;
+            background-color: #1a6aff;
+            color: white;
+            border-radius: 13px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        
+        /* 修复动画效果 */
+        .slider-pulse {
+            animation: sliderPulse 0.3s ease-out;
+        }
+        
+        .slider-done {
+            animation: sliderDone 0.5s ease-out;
+        }
+        
+        @keyframes sliderPulse {
+            0% { transform: scale(1) translateX(var(--x-pos, 0px)); }
+            50% { transform: scale(1.2) translateX(var(--x-pos, 0px)); }
+            100% { transform: scale(1) translateX(var(--x-pos, 0px)); }
+        }
+        
+        @keyframes sliderDone {
+            0% { box-shadow: 0 0 0 rgba(26, 106, 255, 0); }
+            50% { box-shadow: 0 0 20px rgba(26, 106, 255, 0.8); }
+            100% { box-shadow: 0 3px 12px rgba(26, 106, 255, 0.5); }
+        }
+        
+        /* 保证金输入框更强优化 - 彻底消除跳动 */
+        .form-item-input.margin-input {
+            height: 56px; /* 固定高度 */
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            border: 1px solid rgba(230, 230, 230, 0.9);
+            background: linear-gradient(to bottom, #f9fafc, #fff);
+            overflow: hidden; /* 防止内容溢出 */
+        }
+        
+        /* 保证输入框内部元素不引起跳动 */
+        .form-item-input.margin-input .uni-input-wrapper {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .form-item-input.margin-input .uni-input-input {
+            font-family: 'Roboto Mono', monospace, 'Segoe UI', 'PingFang SC';
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            height: 100%;
+            line-height: 56px; /* 与容器高度相同 */
+            transition: all 0.2s ease;
+        }
+        
+        /* 右侧单位固定位置和尺寸 */
+        .margin-value-container {
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 50px; /* 固定宽度 */
+            font-size: 16px;
+        }
+        
+        /* 滑块球体居中 */
+        #position-slider-percent {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1a6aff, #3f87ff);
+            border: 2px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 3px 12px rgba(26, 106, 255, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+            position: absolute;
+            cursor: grab;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s, box-shadow 0.3s;
+            z-index: 5;
+            backdrop-filter: blur(4px);
+            top: 50%; /* 垂直居中 */
+            transform: translateY(-50%) translateX(0); /* 垂直居中并保留水平移动能力 */
+        }
+        
+        /* 更新滑块球体在激活和交互状态的变形样式 */
+        #position-slider-percent:active {
+            cursor: grabbing;
+            transform: translateY(-50%) scale(1.05) translateX(var(--x-pos, 0px));
+            box-shadow: 0 2px 8px rgba(26, 106, 255, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.3);
+        }
+        
+        .slider-active {
+            transform: translateY(-50%) scale(1.1) !important;
+            transition: transform 0.2s, box-shadow 0.2s !important;
+            z-index: 5;
+        }
+        
+        /* 修复动画关键帧，保持垂直居中 */
+        @keyframes sliderPulse {
+            0% { transform: translateY(-50%) scale(1) translateX(var(--x-pos, 0px)); }
+            50% { transform: translateY(-50%) scale(1.15) translateX(var(--x-pos, 0px)); }
+            100% { transform: translateY(-50%) scale(1) translateX(var(--x-pos, 0px)); }
+        }
+        
+        /* 百分比值显示 */
+        #position-value-percent {
+            transition: color 0.3s ease, transform 0.2s ease;
+            font-weight: 600;
+            font-size: 16px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            position: relative;
+            min-width: 50px;
+            text-align: right;
+        }
+        
+        #position-value-percent:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: currentColor;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: right;
+            opacity: 0.7;
+        }
+        
+        #position-value-percent:hover:after {
+            transform: scaleX(1);
+        }
+        
+        /* 动画关键帧增强 */
+        @keyframes sliderPulse {
+            0% { transform: translateY(-50%) scale(1) translateX(var(--x-pos, 0px)); }
+            50% { transform: translateY(-50%) scale(1.15) translateX(var(--x-pos, 0px)); }
+            100% { transform: translateY(-50%) scale(1) translateX(var(--x-pos, 0px)); }
+        }
+        
+        @keyframes sliderDone {
+            0% { box-shadow: 0 0 0 rgba(26, 106, 255, 0); }
+            50% { box-shadow: 0 0 25px rgba(26, 106, 255, 0.8); }
+            100% { box-shadow: 0 3px 12px rgba(26, 106, 255, 0.5); }
+        }
+        
+        @keyframes dotPulse {
+            0% { box-shadow: 0 0 0 rgba(26, 106, 255, 0); }
+            50% { box-shadow: 0 0 15px rgba(26, 106, 255, 0.8); }
+            100% { box-shadow: 0 3px 8px rgba(26, 106, 255, 0.3); }
+        }
+        
+        .dot-active {
+            animation: dotPulse 0.5s ease-out;
+        }
+
+        /* 数值变化动画 */
+        .value-changing {
+            animation: value-pulse 0.3s ease;
+        }
+
+        @keyframes value-pulse {
+            0% { opacity: 0.6; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* 添加滑块滑动时的样式，确保其垂直居中 */
+        .slider-pulse {
+            animation: sliderPulse 0.3s ease-out !important;
+        }
+
+        /* 更新HTML中的滑块初始样式 */
+        <div class="slider" id="position-slider-percent" style="transform: translateY(-50%) translateX(100%);">
+            <span class="count">100%</span>
+        </div>
+
+        /* 为数字输入添加额外的反跳动防护 */
+        .uni-input-input[type="number"] {
+            -moz-appearance: textfield; /* Firefox */
+            appearance: textfield;
+            margin: 0;
+            padding: 0 15px; /* 统一内边距，防止跳动 */
+            width: 100%;
+        }
+
+        /* 消除数字输入框的上下箭头，避免高度变化 */
+        .uni-input-input[type="number"]::-webkit-inner-spin-button,
+        .uni-input-input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* 添加数值平滑过渡效果 */
+        .form-item-input.margin-input .uni-input-input {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* 输入值变化时的动画优化 */
+        .value-changing {
+            animation: value-pulse 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes value-pulse {
+            0% { opacity: 0.5; transform: scale(0.98); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* 确保USDT单位有固定尺寸 */
+        .margin-value-container span {
+            min-width: 45px;
+            text-align: center;
+            display: block;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        /* 不同颜色进度条的样式 */
+        .progress-red {
+            background: linear-gradient(135deg, rgba(255, 77, 79, 0.25), rgba(255, 120, 117, 0.25)) !important;
+        }
+
+        .progress-yellow {
+            background: linear-gradient(135deg, rgba(250, 173, 20, 0.25), rgba(255, 197, 61, 0.25)) !important;
+        }
+
+        .progress-blue {
+            background: linear-gradient(135deg, rgba(26, 106, 255, 0.25), rgba(63, 135, 255, 0.25)) !important;
+        }
+
+        /* 滑块的颜色样式增强 */
+        .slider-red {
+            background: linear-gradient(135deg, #ff4d4f, #ff7875) !important;
+            box-shadow: 0 3px 12px rgba(255, 77, 79, 0.5) !important;
+        }
+
+        .slider-yellow {
+            background: linear-gradient(135deg, #faad14, #ffc53d) !important;
+            box-shadow: 0 3px 12px rgba(250, 173, 20, 0.5) !important;
+        }
+
+        .slider-blue {
+            background: linear-gradient(135deg, #1a6aff, #3f87ff) !important;
+            box-shadow: 0 3px 12px rgba(26, 106, 255, 0.5) !important;
+        }
+        
+        /* 模态窗口样式 */
+        .modal-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        
+        .modal-container.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: translateY(20px);
+            transition: transform 0.3s;
+        }
+        
+        .modal-container.show .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            text-align: center;
+        }
+        
+        .modal-info {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .order-details {
+            width: 100%;
+            margin-bottom: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 10px;
+        }
+        
+        .detail-row {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .detail-value {
+            color: #333;
+            max-width: 60%;
+            word-break: break-all;
+            text-align: right;
+        }
+        
+        .modal-confirm-btn {
+            background-color: #1a6aff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .modal-confirm-btn:hover {
+            background-color: #0052d9;
+        }
+        
+        .error-modal .modal-content {
+            border-top: 4px solid #ff4d4f;
+        }
+        
+        .error-icon {
+            margin: 10px 0 20px;
+            color: #ff4d4f;
+        }
+        
+        .modal-message {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .error-modal .modal-confirm-btn {
+            background-color: #ff4d4f;
+        }
+        
+        .error-modal .modal-confirm-btn:hover {
+            background-color: #ff1f1f;
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <div class="u-navbar">
+        <div class="u-navbar__content">
+            <div class="u-navbar__content__left">
+                <i class="fas fa-arrow-left u-icon__icon" onclick="window.history.back()"></i>
+            </div>
+            <div class="u-navbar__content__title">{{ strategy.name }}</div>
+            <div class="u-navbar__content__right"></div>
+        </div>
+        </div>
+        
+    <div class="robot-settings">
+        <!-- 顶部资产信息 -->
+        <div class="forms box box-card margin_t2 hover-glow">
+            <div class="top-box">
+                <div class="top-left">
+                    <div class="flex-x">
+                        <span class="available-m">可用资产</span>
+                        <img src="/static/newimg/refresh.png" class="refresh-img" alt="刷新">
+                    </div>
+                    <span class="now-money">{{ strategy.invested }} USDT</span>
+                </div>
+                <div class="top-right">
+                    <img src="https://newrobot.idyyvv.top/image/20210823/ff380e5a4eac6a36fbf7dde5ed153745.png" class="coin-img" alt="交易所">
+                    <div class="flex-x">
+                        <img src="/static/newimg/change.png" class="change-img" alt="切换">
+                        <span class="now-money">Binance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 表单内容 -->
+        <div class="self-forms">
+            <!-- 币种选择 -->
+            <div class="forms-item f-1 box2 hover-glow">
+                <div class="form-item-label flexs" style="width: auto;">
+                    <div class="label flexs">
+                        <span>币种选择</span>
+                        <div class="premium-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-item-input flexs theme-border-color input-border">
+                    <div class="flexs f-1 theme-border-color2">
+                        <div class="input f-1">
+                            <div class="robot-info f-s">
+                                <img src="https://ai.hkd.red/symbolImage/BTC.png" style="height: 32px; width: 32px; object-fit: cover; border-radius: 50%; box-shadow: 0 2px 6px rgba(0,0,0,0.08);" alt="币种图标">
+                                <div class="robot-name">BTC/USDT</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-right">
+                    <div>
+                            <span class="margin_r1" style="color: #1a6aff;"></span>
+                            <span class="myicon icon-Choose" style="color: #1a6aff;"></span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                
+            <!-- 币种选择（隐藏） -->
+            <div class="forms-item f-1 box2" style="display: none;">
+                <div class="form-item-label flexs" style="width: auto;">
+                    <div class="label flexs">
+                        <span>币种选择</span>
+                    </div>
+                    </div>
+                <div class="form-item-input flexs theme-border-color input-border">
+                    <div class="flexs f-1 theme-border-color2">
+                        <div class="input f-1">
+                            <div class="robot-info f-s">
+                                <div class="robot-name">币种</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-right">
+                        <div class="flex-x">
+                            <span>请选择币种</span>
+                            <div class="u-icon u-icon--right">
+                                <span class="u-icon__icon uicon-arrow-right" style="font-size: 14px; line-height: 14px; font-weight: normal; top: 1px; color: rgb(200, 200, 200);"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 预设策略 -->
+            <div class="flex-y margin_b1">
+                <span class="lable-name">预设策略</span>
+                <div class="type-scroll">
+                    <div class="scroll-li-types type-actives">
+                        <div class="li-type-center flex-x-c">保守型</div>
+                    </div>
+                    <div class="scroll-li-types premium-strategy">
+                        <div class="li-type-center flex-x-c">稳健型</div>
+                </div>
+                    <div class="scroll-li-types">
+                        <div class="li-type-center flex-x-c">激进型</div>
+                    </div>
+                    <div class="scroll-li-types">
+                        <div class="li-type-center flex-x-c">自定义</div>
+                </div>
+                    </div>
+            </div>
+            
+            <!-- 策略方向 -->
+            <div class="forms-item f-1 box2 hover-glow">
+                <div class="form-item-label flexs" style="width: auto;">
+                    <div class="label flexs">
+                        <span>策略方向</span>
+                    </div>
+                </div>
+                <div class="form-item-input flexs theme-border-color" style="padding: 0px;">
+                    <div class="flexs f-1 theme-border-color2">
+                        <div class="input f-1">
+                            <div class="type-box flex-x-b box-bg1" style="width: 176px;">
+                                <span class="type-li type-active">做多</span>
+                                <span class="type-li">做空</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-right"></div>
+                </div>
+            </div>
+            
+            <!-- 杠杆调整 -->
+            <div class="forms-item f-1 box2 hover-glow">
+                <div class="form-item-label flexs" style="width: auto;">
+                    <div class="label flexs">
+                        <span>杠杆调整</span>
+                        <div class="icon-box">
+                            <div class="u-icon u-icon--right">
+                                <span class="u-icon__icon uicon-question-circle" style="font-size: 16px; line-height: 16px; font-weight: normal; top: 0px; color: rgb(96, 98, 102);"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="label-right"></div>
+                </div>
+                <div class="form-item-input flexs theme-border-color input-border">
+                    <div class="flexs f-1 theme-border-color2">
+                        <div class="input f-1">
+                            <div class="uni-input-wrapper">
+                                <input disabled="disabled" placeholder="选择杠杆倍数" maxlength="140" step="" enterkeyhint="done" autocomplete="off" type="text" class="uni-input-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-right">
+                        <div>
+                            <div class="u-icon u-icon--right">
+                                <span class="u-icon__icon uicon-arrow-down-fill" style="font-size: 16px; line-height: 16px; font-weight: normal; top: 0px; color: #1a6aff;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 预计投入 -->
+            <div class="forms-item f-1 box2 hover-glow" id="margin-input-container">
+                <div class="form-item-label flexs" style="width: auto;">
+                    <div class="label flexs">
+                        <span>预计投入（保证金）</span>
+                        <div class="icon-box">
+                            <div class="u-icon u-icon--right">
+                                <span class="u-icon__icon uicon-question-circle" style="font-size: 16px; line-height: 16px; font-weight: normal; top: 0px; color: rgb(96, 98, 102);"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="label-right"></div>
+                </div>
+                <div class="form-item-input flexs theme-border-color input-border margin-input">
+                    <div class="flexs f-1 theme-border-color2">
+                        <div class="input f-1">
+                            <div class="uni-input-wrapper">
+                                <input placeholder="输入投入金额" maxlength="140" step="0.01" enterkeyhint="done" autocomplete="off" type="number" class="uni-input-input">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-right">
+                        <div class="margin-value-container">
+                            <span style="font-weight: 500; color: #1a6aff;">USDT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 策略参数设置 -->
+            <div class="settings-card box hover-glow">
+                <div class="settings-title">参数设置 <small style="font-size: 12px; color: #999; font-weight: normal; margin-left: 5px;">专业版</small></div>
+                <div class="settings-row">
+                    <div class="setting-label">网格数量</div>
+                    <div class="setting-value">
+                        <span style="font-weight: 500; color: #262626; margin-right: 5px;">{{ strategy.grid_count }}</span>
+                        <i class="fas fa-chevron-right arrow-right"></i>
+                    </div>
+                </div>
+                <div class="settings-row">
+                    <div class="setting-label">价格区间</div>
+                    <div class="setting-value">
+                        <span style="font-weight: 500; color: #262626; margin-right: 5px;">{{ strategy.price_range }}</span>
+                        <i class="fas fa-chevron-right arrow-right"></i>
+                    </div>
+                </div>
+                <div class="settings-row">
+                    <div class="setting-label">风险等级</div>
+                    <div class="setting-value">
+                        <span style="font-weight: 500; color: #262626; margin-right: 5px;">{{ strategy.risk_level }}</span>
+                        <i class="fas fa-chevron-right arrow-right"></i>
+                    </div>
+                </div>
+
+                <!-- 添加仓位比例控制 -->
+                <div class="settings-row">
+                    <div class="setting-label">仓位比例控制</div>
+                    <div class="setting-value">
+                        <span id="position-value-percent" style="font-weight: 600; color: #1a6aff;">100%</span>
+                    </div>
+                </div>
+                <div class="settings-row position-slider-container">
+                    <div class="gress-box">
+                        <div class="sunny-sliderBar" style="width: 100%; --sliderBarbgc:#f0f0f0; --primaryColor:#1a6aff;">
+                            <div class="sliderBar" style="width: 100%;">
+                                <div class="img-box">
+                                    <div class="move-img" style="left: 0%;">
+                                        <div class="dot-indicator"></div>
+                                        <span class="bili-text">0</span>
+            </div>
+                                    <div class="move-img" style="left: 25%;">
+                                        <div class="dot-indicator"></div>
+                                        <span class="bili-text">25</span>
+                </div>
+                                    <div class="move-img" style="left: 50%;">
+                                        <div class="dot-indicator"></div>
+                                        <span class="bili-text">50</span>
+                    </div>
+                                    <div class="move-img" style="left: 75%;">
+                                        <div class="dot-indicator"></div>
+                                        <span class="bili-text">75</span>
+                        </div>
+                                    <div class="move-img" style="left: 100%;">
+                                        <div class="dot-indicator"></div>
+                                        <span class="bili-text">100</span>
+                        </div>
+                    </div>
+                                <div class="gone" style="width: 100%;"></div>
+                                <div class="slider" id="position-slider-percent" style="transform: translateY(-50%) translateX(100%);">
+                                    <span class="count">100%</span>
+                </div>
+                    </div>
+                        </div>
+                        </div>
+                    </div>
+
+                <div class="settings-row">
+                    <div class="setting-label">策略状态</div>
+                    <div class="setting-value">
+                        <div role="checkbox" class="toggle-wrapper {% if strategy.status == 'running' %}active-lis{% endif %}">
+                            <span class="toggle-background"></span>
+                            <span class="toggle-indicator" style="{% if strategy.status == 'running' %}transform: translateX(28px);{% else %}transform: translateX(0px);{% endif %}"></span>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 底部保存按钮 -->
+    <div class="confirm-bot-btn box">
+        <button class="confirm-btn hover-glow" id="save-strategy-btn">保存设置</button>
+    </div>
+    <!-- 添加策略控制按钮区域 -->
+    <div class="strategy-controls" style="margin-top: 15px;">
+        <button class="confirm-btn hover-glow" id="run-strategy-btn" style="background-color: #52c41a;">运行</button>
+        <button class="confirm-btn hover-glow" id="stop-strategy-btn" style="background-color: #ff4d4f; display: none;">停止策略</button>
+        <!-- 隐藏的保存按钮，保留功能但不显示 -->
+        <button id="save-strategy-btn" style="display: none;"></button>
+    </div>
+    <div id="strategy-status" style="margin-top: 10px; text-align: center; font-size: 14px; color: #8c8c8c;"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化页面
+            initSettingsPage();
+            
+            // 添加页面加载动画
+            document.body.classList.add('page-loaded');
+            
+            // 为保存按钮添加点击事件
+            document.getElementById('save-strategy-btn').addEventListener('click', function() {
+                saveStrategySettings();
+            });
+            
+            // 加载时检查持仓状态并更新按钮
+            checkPositionStatusOnLoad();
+            
+            // 初始化运行策略按钮
+            document.getElementById('run-strategy-btn').addEventListener('click', function() {
+                // 将策略状态设置为运行中
+                strategyRunning = true;
+                updateButtonStatus(chichang, true);
+                
+                // 显示正在运行状态
+                const statusElement = document.getElementById('strategy-status');
+                statusElement.textContent = '策略正在运行中...';
+                statusElement.style.color = '#1a6aff';
+                
+                // 立即检查一次持仓状态
+                checkPositionStatus();
+                
+                // 启动定时器，每15秒检查一次持仓状态
+                strategyInterval = setInterval(function() {
+                    checkPositionStatus();
+                    
+                    // 如果没有持仓，可以尝试下单
+                    if (!chichang) {
+                        const saveBtn = document.getElementById('save-strategy-btn');
+                        // 模拟点击保存按钮，触发下单逻辑
+                        saveBtn.click();
+                    }
+                }, 15000); // 15秒检查一次
+            });
+            
+            // 初始化停止策略按钮
+            document.getElementById('stop-strategy-btn').addEventListener('click', function() {
+                if (chichang) {
+                    // 如果有持仓，提示用户需要平仓
+                    showConfirmDialog(
+                        '停止策略', 
+                        '当前有持仓，需要先平仓才能停止策略。是否继续运行直到平仓完成？',
+                        '继续运行',
+                        '强制停止',
+                        function() {
+                            // 用户选择继续运行，不做任何操作
+                            showToast('策略将继续运行直到平仓完成');
+                        },
+                        function() {
+                            // 用户选择强制停止
+                            clearInterval(strategyInterval);
+                            strategyRunning = false;
+                            updateButtonStatus(chichang, false);
+                            
+                            const statusElement = document.getElementById('strategy-status');
+                            statusElement.textContent = '策略已强制停止，但仍有未平仓的持仓';
+                            statusElement.style.color = '#ff4d4f';
+                            
+                            showToast('策略已强制停止');
+                        }
+                    );
+                } else {
+                    // 没有持仓，直接停止
+                    clearInterval(strategyInterval);
+                    strategyRunning = false;
+                    updateButtonStatus(chichang, false);
+                    
+                    const statusElement = document.getElementById('strategy-status');
+                    statusElement.textContent = '策略已停止';
+                    statusElement.style.color = '#8c8c8c';
+                    
+                    showToast('策略已停止');
+                }
+            });
+        });
+        
+        // 页面加载时检查持仓状态并更新按钮
+        function checkPositionStatusOnLoad() {
+            // 获取当前URL中的策略ID和交易对
+            const urlParams = new URLSearchParams(window.location.search);
+            const strategyId = urlParams.get('id') || '1';
+            
+            // 获取交易对（根据策略ID设置不同的默认交易对）
+            let tradePair = 'BTC-USDT';
+            if (strategyId === '2') {
+                tradePair = 'ETH-USDT';
+            } else if (strategyId === '3') {
+                tradePair = 'SOL-USDT';
+            } else if (strategyId === '4') {
+                tradePair = 'BNB-USDT';
+            } else if (strategyId === '5') {
+                tradePair = 'DOT-USDT';
+            } else if (strategyId === '6') {
+                tradePair = 'ADA-USDT';
+            }
+            
+            // 获取选中的交易方向
+            const directionElements = document.querySelectorAll('.type-box .type-li');
+            let tradeDirection = 'buy'; // 默认做多
+            
+            directionElements.forEach(function(el) {
+                if (el.classList.contains('type-active')) {
+                    tradeDirection = el.textContent.trim() === '做多' ? 'buy' : 'sell';
+                }
+            });
+            
+            // 显示加载状态
+            const statusElement = document.getElementById('strategy-status');
+            statusElement.textContent = '正在检查持仓状态...';
+            
+            // 向后端发送请求获取持仓状态
+            fetch('/api/position/check', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    tradePair: tradePair,
+                    tradeDirection: tradeDirection
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.code === 200) {
+                    const saveBtn = document.getElementById('save-strategy-btn');
+                    
+                    // 检查当前方向是否有持仓
+                    const hasBuyPosition = data.positionStatus && data.positionStatus.buy_flag;
+                    const hasSellPosition = data.positionStatus && data.positionStatus.sell_flag;
+                    
+                    // 初始化全局变量chichang（根据持仓状态）
+                    chichang = hasBuyPosition || hasSellPosition;
+                    
+                    // 初始化运行按钮状态
+                    updateButtonStatus(chichang, strategyRunning);
+                    
+                    // 根据当前交易方向和持仓状态更新按钮
+                    if ((tradeDirection === 'buy' && hasBuyPosition) || 
+                        (tradeDirection === 'sell' && hasSellPosition)) {
+                        // 已有相同方向持仓
+                        saveBtn.textContent = '已持仓中';
+                        saveBtn.classList.add('position-active');
+                        saveBtn.classList.remove('order-success');
+                        
+                        // 更新状态提示
+                        statusElement.textContent = `当前有${hasBuyPosition ? '多头' : ''}${hasSellPosition ? '空头' : ''}持仓`;
+                        statusElement.style.color = '#faad14'; // 黄色警告
+                    } else if ((!hasBuyPosition && !hasSellPosition) && data.hasOrder) {
+                        // 没有持仓但有订单，显示为"已下单"
+                        saveBtn.textContent = '已下单，执行中';
+                        saveBtn.classList.add('order-success');
+                        saveBtn.classList.remove('position-active');
+                        
+                        // 更新状态提示
+                        statusElement.textContent = '订单正在处理中，请稍候...';
+                        statusElement.style.color = '#1a6aff'; // 蓝色信息
+                    } else {
+                        // 无持仓无订单
+                        saveBtn.textContent = '保存设置';
+                        saveBtn.classList.remove('order-success');
+                        saveBtn.classList.remove('position-active');
+                        
+                        // 更新状态提示
+                        statusElement.textContent = '系统准备就绪，点击"运行"开始策略';
+                        statusElement.style.color = '#52c41a'; // 绿色正常
+                    }
+                    
+                    // 添加状态摘要显示 - 如果后端提供了状态摘要
+                    if (data.statusSummary) {
+                        // 在状态元素的下方添加后端状态摘要
+                        const statusDetailElement = document.createElement('div');
+                        statusDetailElement.textContent = `后端状态: ${data.statusSummary}`;
+                        statusDetailElement.style.fontSize = '12px';
+                        statusDetailElement.style.marginTop = '5px';
+                        statusDetailElement.style.color = '#666';
+                        
+                        // 如果已有之前的状态摘要，先移除
+                        const existingDetail = document.querySelector('.status-detail');
+                        if (existingDetail) {
+                            existingDetail.remove();
+                        }
+                        
+                        statusDetailElement.classList.add('status-detail');
+                        statusElement.parentNode.insertBefore(statusDetailElement, statusElement.nextSibling);
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('获取持仓状态失败:', error);
+                statusElement.textContent = '网络错误，无法检查持仓状态';
+                statusElement.style.color = '#ff4d4f'; // 红色错误
+            });
+        }
+        
+        // 保存策略设置函数
+        function saveStrategySettings() {
+            // 获取当前URL中的策略ID
+            const urlParams = new URLSearchParams(window.location.search);
+            const strategyId = urlParams.get('id') || '1';
+            
+            // 获取保证金输入值
+            const marginInput = document.querySelector('.forms-item .uni-input-input[placeholder="输入投入金额"]');
+            const marginValue = marginInput.value || '0';
+            
+            // 获取选中的交易方向
+            const directionElements = document.querySelectorAll('.type-box .type-li');
+            let tradeDirection = 'buy'; // 默认做多
+
+            directionElements.forEach(function(el) {
+                if (el.classList.contains('type-active')) {
+                    tradeDirection = el.textContent.trim() === '做多' ? 'buy' : 'sell';
+                }
+            });
+            
+            // 获取交易对
+            const tradePair = '{{ strategy.trade_pair|default("BTC-USDT") }}';
+            
+            // 在按钮上显示加载状态
+            const saveBtn = document.getElementById('save-strategy-btn');
+            const originalBtnText = saveBtn.textContent;
+            saveBtn.textContent = '处理中...';
+            saveBtn.disabled = true;
+            
+            // 发送AJAX请求
+            fetch('/api/strategy/save', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    strategyId: strategyId,
+                    marginValue: marginValue,
+                    tradePair: tradePair,
+                    tradeDirection: tradeDirection
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // 恢复按钮状态
+                saveBtn.disabled = false;
+                
+                if (data.code === 200) {
+                    // 检查持仓状态，只有在有订单结果且没有已存在的相同方向的持仓时才显示"已下单"
+                    if (data.orderResult) {
+                        // 获取当前交易方向
+                        const dirElements = document.querySelectorAll('.type-box .type-li');
+                        let currentDirection = 'buy'; // 默认方向
+                        dirElements.forEach(function(el) {
+                            if (el.classList.contains('type-active')) {
+                                currentDirection = el.textContent.trim() === '做多' ? 'buy' : 'sell';
+                            }
+                        });
+                        
+                        // 检查是否已经有相同方向的持仓
+                        const hasSameDirectionPosition = 
+                            (currentDirection === 'buy' && data.positionStatus && data.positionStatus.buy_flag) || 
+                            (currentDirection === 'sell' && data.positionStatus && data.positionStatus.sell_flag);
+                        
+                        if (hasSameDirectionPosition) {
+                            // 已有相同方向持仓，显示为"已持仓中"
+                            saveBtn.textContent = '已持仓中';
+                            saveBtn.classList.add('position-active');
+                        } else {
+                            // 无相同方向持仓，显示为"已下单，执行中"
+                            saveBtn.textContent = '已下单，执行中';
+                            saveBtn.classList.add('order-success');
+                        }
+                        
+                        showToast(`策略保存成功! 合约张数: ${data.contractSize}`);
+                        showOrderResultModal(data.orderResult, tradePair);
+                    } else {
+                        // 没有下单，仅保存设置
+                        saveBtn.textContent = '保存设置';
+                        saveBtn.classList.remove('order-success');
+                        saveBtn.classList.remove('position-active');
+                        showToast('设置已成功保存');
+                    }
+                } else if (data.code === 503 || data.code === 504) {
+                    // 网络错误处理
+                    showNetworkErrorModal(data.message);
+                } else {
+                    // 处理错误，保持原有按钮文本
+                    saveBtn.textContent = originalBtnText;
+                    saveBtn.classList.remove('order-success');
+                    saveBtn.classList.remove('position-active');
+                    showNetworkErrorModal(data.message || '保存策略出错，请稍后再试');
+                }
+            })
+            .catch(error => {
+                // 恢复按钮状态
+                saveBtn.disabled = false;
+                
+                // 显示错误提示
+                console.error('请求错误:', error);
+                showNetworkErrorModal('网络请求失败，请检查网络连接');
+            });
+        }
+        
+        function initSettingsPage() {
+            console.log('策略设置页面初始化');
+            
+            // 调整页面标题策略名称显示
+            const urlParams = new URLSearchParams(window.location.search);
+            const strategyId = urlParams.get('id') || '1';
+            let strategyName = '智能网格策略'; // 默认
+            
+            // 根据ID设置不同的策略名称
+            if (strategyId === '1') {
+                strategyName = '智能网格策略';
+            } else if (strategyId === '2') {
+                strategyName = '趋势跟踪策略';
+            } else if (strategyId === '3') {
+                strategyName = 'AI智能预测策略';
+            } else if (strategyId === '4') {
+                strategyName = '蓝龙综合策略';
+            } else if (strategyId === '5') {
+                strategyName = '蓝龙出海';
+            } else if (strategyId === '6') {
+                strategyName = '网格量化';
+            }
+            
+            // 更新页面标题
+            const titleElement = document.querySelector('.u-navbar__content__title');
+            titleElement.textContent = strategyName;
+            
+            // 标题动画效果
+            setTimeout(() => {
+                document.querySelector('.u-navbar').style.transform = 'translateY(0)';
+            }, 100);
+            
+            // 为交易方向选择器添加点击事件
+            const directionButtons = document.querySelectorAll('.type-box .type-li');
+            directionButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // 移除所有按钮的活动状态
+                    directionButtons.forEach(btn => btn.classList.remove('type-active'));
+                    // 添加当前按钮的活动状态
+                    this.classList.add('type-active');
+                    
+                    // 显示反馈
+                    const direction = this.textContent.trim();
+                    showToast(`已选择${direction}方向`);
+                    
+                    // 更新按钮状态
+                    checkPositionStatusOnLoad();
+                });
+            });
+            
+            // 设置状态开关点击事件
+            const statusToggle = document.querySelector('.toggle-wrapper');
+            statusToggle.addEventListener('click', function() {
+                this.classList.toggle('active-lis');
+                const indicator = this.querySelector('.toggle-indicator');
+                
+                if (this.classList.contains('active-lis')) {
+                    indicator.style.transform = 'translateX(28px)';
+                    showToast('策略已启动');
+                } else {
+                    indicator.style.transform = 'translateX(0px)';
+                    showToast('策略已暂停');
+                }
+            });
+            
+            // 设置预设策略点击事件
+            const strategyTypes = document.querySelectorAll('.scroll-li-types');
+            strategyTypes.forEach(type => {
+                type.addEventListener('click', function() {
+                    // 先移除所有active类
+                    strategyTypes.forEach(t => {
+                        t.classList.remove('type-actives');
+                        // 添加淡出效果
+                        t.style.opacity = '0.7';
+                    });
+                    
+                    // 给当前点击元素添加active类
+                    this.classList.add('type-actives');
+                    this.style.opacity = '1';
+                    
+                    // 显示选择了什么策略
+                    const strategyType = this.querySelector('.li-type-center').textContent;
+                    showToast(`已选择${strategyType}策略`);
+                    
+                    // 恢复其他元素的透明度
+                    setTimeout(() => {
+                        strategyTypes.forEach(t => {
+                            t.style.opacity = '1';
+                        });
+                    }, 300);
+                });
+            });
+            
+            // 添加做多做空按钮点击事件
+            const typeLiButtons = document.querySelectorAll('.type-box .type-li');
+            typeLiButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 移除所有按钮的active类
+                    typeLiButtons.forEach(btn => {
+                        btn.classList.remove('type-active');
+                    });
+                    
+                    // 给当前点击按钮添加active类
+                    this.classList.add('type-active');
+                    
+                    // 显示消息
+                    showToast(`已选择${this.textContent}策略`);
+                });
+            });
+            
+            // 添加杠杆调整点击事件
+            const leverageInput = document.querySelector('.forms-item .uni-input-input[placeholder="选择杠杆倍数"]');
+            const leverageContainer = leverageInput.closest('.form-item-input');
+            leverageContainer.addEventListener('click', function() {
+                // 模拟杠杆倍数选择弹窗
+                const leverageOptions = [1, 2, 3, 5, 10, 20, 50, 100];
+                let selectedLeverage = 10; // 默认选择
+                
+                // 创建杠杆选择对话框
+                const createLeverageDialog = () => {
+                    // 如果页面上已有对话框，先移除
+                    const existingDialog = document.querySelector('.leverage-dialog');
+                    if (existingDialog) {
+                        existingDialog.remove();
+                    }
+                    
+                    // 创建对话框容器
+                    const dialog = document.createElement('div');
+                    dialog.className = 'leverage-dialog';
+                    dialog.style.position = 'fixed';
+                    dialog.style.top = '50%';
+                    dialog.style.left = '50%';
+                    dialog.style.transform = 'translate(-50%, -50%)';
+                    dialog.style.width = '80%';
+                    dialog.style.maxWidth = '320px';
+                    dialog.style.backgroundColor = '#fff';
+                    dialog.style.borderRadius = '12px';
+                    dialog.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+                    dialog.style.zIndex = '9999';
+                    dialog.style.overflow = 'hidden';
+                    
+                    // 创建对话框标题
+                    const dialogTitle = document.createElement('div');
+                    dialogTitle.textContent = '选择杠杆倍数';
+                    dialogTitle.style.padding = '16px';
+                    dialogTitle.style.borderBottom = '1px solid #f0f0f0';
+                    dialogTitle.style.fontSize = '16px';
+                    dialogTitle.style.fontWeight = '600';
+                    dialogTitle.style.textAlign = 'center';
+                    dialogTitle.style.color = '#262626';
+                    dialog.appendChild(dialogTitle);
+                    
+                    // 创建选项容器
+                    const optionsContainer = document.createElement('div');
+                    optionsContainer.style.padding = '10px 0';
+                    optionsContainer.style.maxHeight = '300px';
+                    optionsContainer.style.overflowY = 'auto';
+                    dialog.appendChild(optionsContainer);
+                    
+                    // 添加杠杆选项
+                    leverageOptions.forEach(leverage => {
+                        const option = document.createElement('div');
+                        option.className = 'leverage-option';
+                        option.textContent = `${leverage}X`;
+                        option.style.padding = '12px 16px';
+                        option.style.transition = 'all 0.2s ease';
+                        option.style.cursor = 'pointer';
+                        option.style.fontSize = '15px';
+                        
+                        // 高亮当前选中的选项
+                        if (leverage === selectedLeverage) {
+                            option.style.color = '#1a6aff';
+                            option.style.fontWeight = '600';
+                            option.style.backgroundColor = '#f0f7ff';
+                        }
+                        
+                        option.addEventListener('mouseenter', function() {
+                            if (leverage !== selectedLeverage) {
+                                this.style.backgroundColor = '#f9fafc';
+                            }
+                        });
+                        
+                        option.addEventListener('mouseleave', function() {
+                            if (leverage !== selectedLeverage) {
+                                this.style.backgroundColor = 'transparent';
+                            }
+                        });
+                        
+                        option.addEventListener('click', function() {
+                            selectedLeverage = leverage;
+                            leverageInput.value = `${leverage}X`;
+                            
+                            // 更新页面上的保证金值
+                            updateMarginFromLeverage(leverage);
+                            
+                            dialog.remove();
+                            
+                            // 显示杠杆设置消息
+                            showToast(`已设置杠杆倍数: ${leverage}X`);
+                            
+                            // 添加点击动画效果
+                            leverageContainer.classList.add('row-clicked');
+                            setTimeout(() => {
+                                leverageContainer.classList.remove('row-clicked');
+                            }, 300);
+                        });
+                        
+                        optionsContainer.appendChild(option);
+                    });
+                    
+                    // 创建取消按钮
+                    const cancelButton = document.createElement('div');
+                    cancelButton.textContent = '取消';
+                    cancelButton.style.padding = '14px';
+                    cancelButton.style.borderTop = '1px solid #f0f0f0';
+                    cancelButton.style.textAlign = 'center';
+                    cancelButton.style.color = '#8c8c8c';
+                    cancelButton.style.fontSize = '15px';
+                    cancelButton.style.cursor = 'pointer';
+                    cancelButton.style.transition = 'all 0.2s ease';
+                    
+                    cancelButton.addEventListener('mouseenter', function() {
+                        this.style.backgroundColor = '#f9fafc';
+                    });
+                    
+                    cancelButton.addEventListener('mouseleave', function() {
+                        this.style.backgroundColor = 'transparent';
+                    });
+                    
+                    cancelButton.addEventListener('click', function() {
+                        dialog.remove();
+                    });
+                    
+                    dialog.appendChild(cancelButton);
+                    
+                    // 创建遮罩层
+                    const overlay = document.createElement('div');
+                    overlay.className = 'leverage-overlay';
+                    overlay.style.position = 'fixed';
+                    overlay.style.top = '0';
+                    overlay.style.left = '0';
+                    overlay.style.right = '0';
+                    overlay.style.bottom = '0';
+                    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                    overlay.style.zIndex = '9998';
+                    
+                    overlay.addEventListener('click', function() {
+                        dialog.remove();
+                        overlay.remove();
+                    });
+                    
+                    // 将对话框和遮罩添加到页面
+                    document.body.appendChild(overlay);
+                    document.body.appendChild(dialog);
+                    
+                    // 添加动画
+                    dialog.style.opacity = '0';
+                    dialog.style.transform = 'translate(-50%, -60%)';
+                    dialog.style.transition = 'all 0.3s ease';
+                    overlay.style.opacity = '0';
+                    overlay.style.transition = 'opacity 0.3s ease';
+                    
+                    setTimeout(() => {
+                        dialog.style.opacity = '1';
+                        dialog.style.transform = 'translate(-50%, -50%)';
+                        overlay.style.opacity = '1';
+                    }, 10);
+                };
+                
+                // 显示杠杆选择对话框
+                createLeverageDialog();
+            });
+            
+            // 设置币种选择点击事件
+            document.querySelector('.robot-info').parentElement.addEventListener('click', function() {
+                showToast('币种选择功能正在开发中...');
+            });
+            
+            // 设置设置项点击事件
+            const settingItems = document.querySelectorAll('.setting-value .arrow-right');
+            settingItems.forEach(item => {
+                item.parentElement.parentElement.addEventListener('click', function() {
+                    const settingName = this.querySelector('.setting-label').textContent;
+                    showToast(`${settingName}设置页面正在开发中...`);
+                    
+                    // 添加点击动画效果
+                    this.classList.add('row-clicked');
+                    setTimeout(() => {
+                        this.classList.remove('row-clicked');
+                    }, 300);
+                });
+            });
+            
+            // 设置保存按钮事件
+            const saveButton = document.querySelector('.confirm-btn');
+            saveButton.addEventListener('click', function() {
+                // 添加按钮动画
+                this.classList.add('btn-clicked');
+                
+                // 获取保证金值和交易对信息
+                const marginInput = document.querySelector('.uni-input-input[placeholder="输入投入金额"]');
+                const marginValue = marginInput.value;
+                
+                // 获取URL中的策略ID
+                const urlParams = new URLSearchParams(window.location.search);
+                const strategyId = urlParams.get('id') || '1';
+                
+                // 默认交易对，可以根据不同策略ID设置不同交易对
+                let tradePair = 'BTC-USDT';
+                if (strategyId === '2') {
+                    tradePair = 'ETH-USDT';
+                } else if (strategyId === '3') {
+                    tradePair = 'SOL-USDT';
+                } else if (strategyId === '4') {
+                    tradePair = 'BNB-USDT';
+                } else if (strategyId === '5') {
+                    tradePair = 'DOT-USDT';
+                } else if (strategyId === '6') {
+                    tradePair = 'ADA-USDT';
+                }
+                
+                // 发送AJAX请求到后端
+                fetch('/api/strategy/save', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        strategyId: strategyId,
+                        marginValue: marginValue,
+                        tradePair: tradePair
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.code === 200) {
+                        // 仅保存设置成功的默认消息
+                        showToast('设置已成功保存');
+                        
+                        // 显示后端返回的合约张数
+                        if (data.contractSize) {
+                            showToast(`相当于 ${data.contractSize} 张合约`);
+                        }
+                        
+                        // 显示订单结果（如果有）
+                        if (data.orderResult) {
+                            // 创建订单结果弹窗
+                            showOrderResultModal(data.orderResult, tradePair);
+                            
+                            // 获取当前交易方向
+                            const dirElements = document.querySelectorAll('.type-box .type-li');
+                            let currentDirection = 'buy'; // 默认方向
+                            dirElements.forEach(function(el) {
+                                if (el.classList.contains('type-active')) {
+                                    currentDirection = el.textContent.trim() === '做多' ? 'buy' : 'sell';
+                                }
+                            });
+                            
+                            // 检查是否已经有相同方向的持仓
+                            const hasSameDirectionPosition = 
+                                (currentDirection === 'buy' && data.positionStatus && data.positionStatus.buy_flag) || 
+                                (currentDirection === 'sell' && data.positionStatus && data.positionStatus.sell_flag);
+                            
+                            if (hasSameDirectionPosition) {
+                                // 已有相同方向持仓，显示为"已持仓中"
+                                this.textContent = '已持仓中';
+                                this.classList.add('position-active');
+                            } else {
+                                // 无相同方向持仓，显示为"已下单，执行中"
+                                this.textContent = '已下单，执行中';
+                                this.classList.add('order-success');
+                            }
+                        } else {
+                            // 无订单，保持"保存设置"状态
+                            this.textContent = '保存设置';
+                            this.classList.remove('order-success');
+                            this.classList.remove('position-active');
+                        }
+                    } else if (data.code === 503 || data.code === 504) {
+                        // 网络错误处理
+                        showNetworkErrorModal(data.message);
+                    } else {
+                        showToast('保存失败: ' + data.message);
+                    }
+                    this.classList.remove('btn-clicked');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // 网络错误或服务器问题
+                    showNetworkErrorModal('无法连接到服务器，请检查您的网络连接后重试');
+                    this.classList.remove('btn-clicked');
+                });
+            });
+            
+            // 初始化仓位滑动条
+            initPositionSlider();
+            
+            // 初始化百分比控制滑动条
+            initPositionPercentSlider();
+            
+            // 添加页面内各元素的入场动画
+            animateElements();
+            
+            // 投入金额获得焦点时添加高亮效果
+            const marginInput = document.querySelector('.uni-input-input[placeholder="输入投入金额"]');
+            marginInput.addEventListener('focus', function() {
+                document.getElementById('margin-input-container').classList.add('margin-highlight');
+            });
+            
+            marginInput.addEventListener('blur', function() {
+                document.getElementById('margin-input-container').classList.remove('margin-highlight');
+            });
+            
+            // 根据杠杆倍数更新保证金金额
+            function updateMarginFromLeverage(leverage) {
+                // 获取当前百分比值
+                const percentElement = document.getElementById('position-value-percent');
+                const percent = parseInt(percentElement.textContent);
+                
+                // 计算保证金金额（示例计算公式）
+                const baseAmount = 1000;  // 基础金额
+                const calculatedMargin = (baseAmount / leverage) * (percent / 100);
+                
+                // 更新保证金输入框，使用平滑动画
+                const marginInput = document.querySelector('.uni-input-input[placeholder="输入投入金额"]');
+                // 使用toFixed保留两位小数，避免浮点数问题并应用平滑过渡
+                const formattedValue = parseFloat(calculatedMargin.toFixed(2));
+                // 检查值是否有明显变化
+                if (marginInput.value !== formattedValue.toString()) {
+                    // 存储上一次的值，用于动画判断
+                    const prevValue = parseFloat(marginInput.value || '0');
+                    // 如果变化大于一定值，应用过渡动画
+                    if (Math.abs(prevValue - formattedValue) > 10) {
+                        marginInput.classList.add('value-changing');
+                        setTimeout(() => {
+                            marginInput.classList.remove('value-changing');
+                        }, 300);
+                    }
+                    // 设置新值
+                    marginInput.value = formattedValue;
+                }
+                
+                // 显示保证金更新提示
+                showToast(`保证金已更新: ${calculatedMargin.toFixed(2)} USDT`);
+            }
+        }
+        
+        // 显示消息提示
+        function showToast(message) {
+            // 如果已有toast，先移除
+            const existingToast = document.querySelector('.toast-message');
+            if (existingToast) {
+                existingToast.remove();
+            }
+            
+            // 创建新的toast元素
+            const toast = document.createElement('div');
+            toast.className = 'toast-message';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            // 显示toast
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+            
+            // 自动隐藏toast
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 300);
+            }, 2000);
+        }
+        
+        // 显示订单结果模态窗口
+        function showOrderResultModal(orderResult, tradePair) {
+            // 创建模态框容器
+            const modal = document.createElement('div');
+            modal.className = 'modal-container';
+            
+            // 创建模态框内容
+            const modalContent = document.createElement('div');
+            modalContent.className = 'modal-content';
+            modalContent.style.maxWidth = '450px';
+            
+            // 添加标题和成功图标
+            const titleContainer = document.createElement('div');
+            titleContainer.style.display = 'flex';
+            titleContainer.style.alignItems = 'center';
+            titleContainer.style.justifyContent = 'center';
+            titleContainer.style.marginBottom = '15px';
+            
+            const successIcon = document.createElement('div');
+            successIcon.innerHTML = '<svg viewBox="0 0 24 24" width="32" height="32"><path fill="#52c41a" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1.177-7.86l-2.765-2.767L7 12.431l3.119 3.121a1 1 0 001.414 0l5.952-5.95-1.062-1.062-5.6 5.6z"/></svg>';
+            successIcon.style.marginRight = '10px';
+            
+            const title = document.createElement('h3');
+            title.textContent = '下单成功';
+            title.className = 'modal-title';
+            title.style.margin = '0';
+            
+            titleContainer.appendChild(successIcon);
+            titleContainer.appendChild(title);
+            modalContent.appendChild(titleContainer);
+            
+            // 添加交易对信息
+            const pairInfo = document.createElement('div');
+            pairInfo.style.background = 'linear-gradient(135deg, #f0f7ff, #e6f7ff)';
+            pairInfo.style.padding = '12px 15px';
+            pairInfo.style.borderRadius = '8px';
+            pairInfo.style.marginBottom = '15px';
+            pairInfo.style.display = 'flex';
+            pairInfo.style.alignItems = 'center';
+            pairInfo.style.justifyContent = 'space-between';
+            
+            const pairLabel = document.createElement('span');
+            pairLabel.textContent = '交易对:';
+            pairLabel.style.color = '#333';
+            pairLabel.style.fontWeight = '500';
+            
+            const pairValue = document.createElement('span');
+            pairValue.textContent = tradePair;
+            pairValue.style.color = '#1a6aff';
+            pairValue.style.fontWeight = '600';
+            pairValue.style.fontSize = '16px';
+            
+            pairInfo.appendChild(pairLabel);
+            pairInfo.appendChild(pairValue);
+            modalContent.appendChild(pairInfo);
+            
+            // 添加订单详情
+            const orderDetails = document.createElement('div');
+            orderDetails.className = 'order-details';
+            orderDetails.style.background = '#f9fafc';
+            orderDetails.style.border = '1px solid #f0f0f0';
+            orderDetails.style.borderRadius = '8px';
+            orderDetails.style.padding = '15px';
+            
+            // 定义要显示的字段和对应的中文名称
+            const fieldLabels = {
+                'orderId': '订单ID',
+                'status': '状态',
+                'exchangeId': '交易所',
+                'direction': '方向',
+                'contractSize': '合约数量',
+                'margin': '保证金',
+                'tradePair': '交易对',
+                'price': '价格',
+                'time': '时间'
+            };
+            
+            // 按顺序显示字段
+            const fieldsOrder = ['orderId', 'status', 'exchangeId', 'direction', 'contractSize', 'margin', 'price', 'time'];
+            
+            // 格式化并显示订单结果数据
+            fieldsOrder.forEach(key => {
+                if (orderResult[key]) {
+                const detailRow = document.createElement('div');
+                detailRow.className = 'detail-row';
+                
+                const detailLabel = document.createElement('span');
+                    detailLabel.textContent = fieldLabels[key] || key;
+                detailLabel.className = 'detail-label';
+                
+                const detailValue = document.createElement('span');
+                    detailValue.textContent = orderResult[key];
+                detailValue.className = 'detail-value';
+                    
+                    // 为特定字段添加样式
+                    if (key === 'direction') {
+                        detailValue.style.color = orderResult[key] === '做多' ? '#52c41a' : '#ff4d4f';
+                        detailValue.style.fontWeight = '600';
+                    } else if (key === 'status') {
+                        detailValue.style.color = '#52c41a';
+                        detailValue.style.fontWeight = '600';
+                    }
+                
+                detailRow.appendChild(detailLabel);
+                detailRow.appendChild(detailValue);
+                orderDetails.appendChild(detailRow);
+            }
+            });
+            
+            modalContent.appendChild(orderDetails);
+            
+            // 添加操作说明
+            const infoText = document.createElement('p');
+            infoText.textContent = '您的订单已成功提交，可在交易所查看订单详情。';
+            infoText.style.color = '#8c8c8c';
+            infoText.style.fontSize = '14px';
+            infoText.style.textAlign = 'center';
+            infoText.style.margin = '15px 0';
+            modalContent.appendChild(infoText);
+            
+            // 添加确认按钮
+            const confirmButton = document.createElement('button');
+            confirmButton.textContent = '确定';
+            confirmButton.className = 'modal-confirm-btn';
+            confirmButton.style.backgroundColor = '#1a6aff';
+            confirmButton.style.width = '100%';
+            confirmButton.style.height = '40px';
+            confirmButton.style.borderRadius = '20px';
+            confirmButton.style.marginTop = '10px';
+            confirmButton.addEventListener('click', function() {
+                document.body.removeChild(modal);
+            });
+            
+            modalContent.appendChild(confirmButton);
+            modal.appendChild(modalContent);
+            
+            // 添加到body并显示
+            document.body.appendChild(modal);
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+        }
+        
+        // 显示网络错误模态窗口
+        function showNetworkErrorModal(message) {
+            // 创建模态框容器
+            const modal = document.createElement('div');
+            modal.className = 'modal-container error-modal';
+            
+            // 创建模态框内容
+            const modalContent = document.createElement('div');
+            modalContent.className = 'modal-content';
+            
+            // 添加标题
+            const titleEl = document.createElement('h3');
+            titleEl.textContent = '网络连接问题';
+            titleEl.className = 'modal-title';
+            modalContent.appendChild(titleEl);
+            
+            // 添加错误图标
+            const iconEl = document.createElement('div');
+            iconEl.className = 'error-icon';
+            iconEl.innerHTML = '<svg viewBox="0 0 24 24" width="48" height="48"><path fill="#ff4d4f" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-7v2h2v-2h-2zm0-8v6h2V7h-2z"/></svg>';
+            modalContent.appendChild(iconEl);
+            
+            // 添加错误信息
+            const msgEl = document.createElement('p');
+            msgEl.textContent = message;
+            msgEl.className = 'modal-message';
+            modalContent.appendChild(msgEl);
+            
+            // 添加确认按钮
+            const confirmBtn = document.createElement('button');
+            confirmBtn.textContent = '确定';
+            confirmBtn.className = 'modal-confirm-btn';
+            confirmBtn.addEventListener('click', function() {
+                document.body.removeChild(modal);
+            });
+            
+            modalContent.appendChild(confirmBtn);
+            modal.appendChild(modalContent);
+            
+            // 添加到body并显示
+            document.body.appendChild(modal);
+            setTimeout(() => {
+                modal.classList.add('show');
+            }, 10);
+        }
+        
+        // 添加元素入场动画
+        function animateElements() {
+            const elements = document.querySelectorAll('.box, .box2, .forms-item');
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.classList.add('element-animated');
+                }, 100 * index);
+            });
+        }
+        
+        // 初始化百分比控制滑动条
+        function initPositionPercentSlider() {
+            const slider = document.getElementById('position-slider-percent');
+            const sliderBar = slider.parentElement;
+            const positionValue = document.getElementById('position-value-percent');
+            const progressBar = sliderBar.querySelector('.gone');
+            
+            // 获取保证金输入框
+            const marginInput = document.querySelector('.forms-item .uni-input-input[placeholder="输入投入金额"]');
+            // 设置初始保证金值（假设有一个最大值）
+            const maxMargin = 1000; // 假设最大保证金为1000 USDT
+            
+            // 平滑设置初始值
+            setTimeout(() => {
+                const formattedValue = parseFloat(maxMargin.toFixed(2));
+                marginInput.value = formattedValue;
+            }, 300);
+            
+            let isDragging = false;
+            let startX, sliderWidth, sliderLeft;
+            
+            // 平滑更新保证金值函数
+            function updateMarginValue(percent, leverage) {
+                // 计算保证金
+                const marginValue = (percent / 100) * (maxMargin / leverage);
+                // 格式化值，保留2位小数
+                const formattedValue = parseFloat(marginValue.toFixed(2));
+                
+                // 检查值是否有明显变化
+                if (marginInput.value !== formattedValue.toString()) {
+                    // 存储上一次的值，用于动画判断
+                    const prevValue = parseFloat(marginInput.value || '0');
+                    // 如果变化大于一定值，应用过渡动画
+                    if (Math.abs(prevValue - formattedValue) > 10) {
+                        marginInput.classList.add('value-changing');
+                        setTimeout(() => {
+                            marginInput.classList.remove('value-changing');
+                        }, 300);
+                    }
+                    // 设置新值
+                    marginInput.value = formattedValue;
+                }
+            }
+            
+            // 更新滑块位置和值
+            function updateSlider(clientX) {
+                // 计算滑块在轨道上的位置百分比
+                let newLeft = clientX - sliderLeft;
+                newLeft = Math.max(0, Math.min(newLeft, sliderWidth));
+                
+                const percent = Math.round((newLeft / sliderWidth) * 100);
+                
+                // 设置CSS变量记录当前位置，用于动画
+                slider.style.setProperty('--x-pos', `${newLeft}px`);
+                
+                // 更新滑块位置，保持垂直居中
+                slider.style.transform = `translateY(-50%) translateX(${newLeft}px)`;
+                
+                // 更新进度条
+                progressBar.style.width = `${percent}%`;
+                
+                // 更新值显示
+                slider.querySelector('.count').textContent = `${percent}%`;
+                positionValue.textContent = `${percent}%`;
+                
+                // 计算并更新保证金值
+                const leverageInput = document.querySelector('.forms-item .uni-input-input[placeholder="选择杠杆倍数"]');
+                let leverage = 10; // 默认杠杆
+                if (leverageInput.value) {
+                    // 解析杠杆值（例如 "10X" -> 10）
+                    leverage = parseInt(leverageInput.value);
+                    if (isNaN(leverage)) leverage = 10;
+                }
+                
+                // 使用平滑更新函数更新保证金值
+                updateMarginValue(percent, leverage);
+                
+                // 添加滑块动画效果
+                const handleSliderAnimation = (percent) => {
+                    // 移除所有颜色类
+                    progressBar.classList.remove('progress-red', 'progress-yellow', 'progress-blue');
+                    slider.classList.remove('slider-red', 'slider-yellow', 'slider-blue');
+                    
+                    // 根据百分比应用相应的颜色类
+                    if (percent < 30) {
+                        positionValue.style.color = '#ff4d4f';
+                        slider.classList.add('slider-red');
+                        progressBar.classList.add('progress-red');
+                        slider.querySelector('.count').style.backgroundColor = '#ff4d4f';
+                    } else if (percent < 70) {
+                        positionValue.style.color = '#faad14';
+                        slider.classList.add('slider-yellow');
+                        progressBar.classList.add('progress-yellow');
+                        slider.querySelector('.count').style.backgroundColor = '#faad14';
+                    } else {
+                        positionValue.style.color = '#1a6aff';
+                        slider.classList.add('slider-blue');
+                        progressBar.classList.add('progress-blue');
+                        slider.querySelector('.count').style.backgroundColor = '#1a6aff';
+                    }
+                    
+                    // 添加缩放动画效果
+                    if (isDragging) {
+                        // 拖动时不添加脉冲动画
+                        return;
+                    }
+                    
+                    slider.classList.remove('slider-pulse');
+                    // 强制重绘
+                    void slider.offsetWidth;
+                    slider.classList.add('slider-pulse');
+                };
+                
+                handleSliderAnimation(percent);
+                return percent;
+            }
+            
+            // 鼠标/触摸事件处理
+            function onStart(e) {
+                e.preventDefault();
+                const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+                
+                // 获取滑动条的宽度和位置
+                const rect = sliderBar.getBoundingClientRect();
+                sliderWidth = rect.width - 40; // 减去滑块自身宽度，使滑块能够完全移动到边缘
+                sliderLeft = rect.left + 20; // 加上滑块半径，使百分比计算更准确
+                
+                isDragging = true;
+                
+                // 添加激活样式
+                slider.classList.add('slider-active');
+                document.body.style.cursor = 'grabbing';
+                
+                // 更新初始位置
+                updateSlider(clientX);
+                
+                // 添加移动和结束事件监听
+                document.addEventListener('mousemove', onMove);
+                document.addEventListener('touchmove', onMove, { passive: false });
+                document.addEventListener('mouseup', onEnd);
+                document.addEventListener('touchend', onEnd);
+            }
+            
+            function onMove(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                
+                const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+                updateSlider(clientX);
+            }
+            
+            function onEnd() {
+                isDragging = false;
+                
+                // 移除激活样式
+                slider.classList.remove('slider-active');
+                document.body.style.cursor = '';
+                
+                // 移除事件监听
+                document.removeEventListener('mousemove', onMove);
+                document.removeEventListener('touchmove', onMove);
+                document.removeEventListener('mouseup', onEnd);
+                document.removeEventListener('touchend', onEnd);
+                
+                // 添加完成动画
+                slider.classList.add('slider-done');
+                setTimeout(() => {
+                    slider.classList.remove('slider-done');
+                }, 500);
+            }
+            
+            // 为固定点添加点击事件
+            sliderBar.querySelectorAll('.move-img').forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const percent = parseInt(this.style.left);
+                    
+                    // 获取滑动条的宽度
+                    const rect = sliderBar.getBoundingClientRect();
+                    sliderWidth = rect.width - 40;
+                    sliderLeft = rect.left + 20;
+                    
+                    const newPosition = (sliderWidth * percent) / 100;
+                    
+                    // 设置CSS变量记录当前位置，用于动画
+                    slider.style.setProperty('--x-pos', `${newPosition}px`);
+                    
+                    // 添加过渡动画
+                    slider.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    progressBar.style.transition = 'width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                    
+                    // 更新滑块位置，保持垂直居中
+                    slider.style.transform = `translateY(-50%) translateX(${newPosition}px)`;
+                    progressBar.style.width = `${percent}%`;
+                    slider.querySelector('.count').textContent = `${percent}%`;
+                    positionValue.textContent = `${percent}%`;
+                    
+                    // 计算并更新保证金值
+                    const leverageInput = document.querySelector('.forms-item .uni-input-input[placeholder="选择杠杆倍数"]');
+                    let leverage = 10; // 默认杠杆
+                    if (leverageInput.value) {
+                        // 解析杠杆值（例如 "10X" -> 10）
+                        leverage = parseInt(leverageInput.value);
+                        if (isNaN(leverage)) leverage = 10;
+                    }
+                    
+                    // 使用平滑更新函数更新保证金值
+                    updateMarginValue(percent, leverage);
+                    
+                    // 根据百分比改变颜色
+                    if (percent < 30) {
+                        positionValue.style.color = '#ff4d4f';
+                        progressBar.classList.remove('progress-yellow', 'progress-blue');
+                        slider.classList.remove('slider-yellow', 'slider-blue');
+                        progressBar.classList.add('progress-red');
+                        slider.classList.add('slider-red');
+                        slider.querySelector('.count').style.backgroundColor = '#ff4d4f';
+                    } else if (percent < 70) {
+                        positionValue.style.color = '#faad14';
+                        progressBar.classList.remove('progress-red', 'progress-blue');
+                        slider.classList.remove('slider-red', 'slider-blue');
+                        progressBar.classList.add('progress-yellow');
+                        slider.classList.add('slider-yellow');
+                        slider.querySelector('.count').style.backgroundColor = '#faad14';
+                    } else {
+                        positionValue.style.color = '#1a6aff';
+                        progressBar.classList.remove('progress-red', 'progress-yellow');
+                        slider.classList.remove('slider-red', 'slider-yellow');
+                        progressBar.classList.add('progress-blue');
+                        slider.classList.add('slider-blue');
+                        slider.querySelector('.count').style.backgroundColor = '#1a6aff';
+                    }
+                    
+                    // 添加点击高亮动画
+                    this.classList.add('dot-active');
+                    setTimeout(() => {
+                        this.classList.remove('dot-active');
+                    }, 500);
+                    
+                    // 添加完成动画
+                    setTimeout(() => {
+                        slider.classList.remove('slider-done');
+                        // 强制重绘
+                        void slider.offsetWidth;
+                        slider.classList.add('slider-done');
+                    }, 300);
+                    
+                    // 移除过渡动画，以便拖动时不受影响
+                    setTimeout(() => {
+                        slider.style.transition = '';
+                        progressBar.style.transition = '';
+                    }, 500);
+                });
+            });
+            
+            // 为滑动条添加点击事件
+            sliderBar.addEventListener('click', function(e) {
+                // 如果点击的是滑块本身或者固定点，不处理
+                if (e.target === slider || e.target.closest('.move-img')) return;
+                
+                // 获取滑动条的宽度和位置
+                const rect = sliderBar.getBoundingClientRect();
+                sliderWidth = rect.width - 40;
+                sliderLeft = rect.left + 20;
+                
+                const clickX = e.clientX - sliderLeft + 20; // 调整点击位置
+                const percent = Math.round((clickX / sliderWidth) * 100);
+                const adjustedPercent = Math.max(0, Math.min(percent, 100)); // 确保百分比在0-100之间
+                
+                // 设置CSS变量记录当前位置，用于动画
+                const newPosition = (sliderWidth * adjustedPercent) / 100;
+                slider.style.setProperty('--x-pos', `${newPosition}px`);
+                
+                // 添加过渡动画
+                slider.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                progressBar.style.transition = 'width 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                
+                // 更新滑块位置，保持垂直居中
+                slider.style.transform = `translateY(-50%) translateX(${newPosition}px)`;
+                progressBar.style.width = `${adjustedPercent}%`;
+                slider.querySelector('.count').textContent = `${adjustedPercent}%`;
+                positionValue.textContent = `${adjustedPercent}%`;
+                
+                // 计算并更新保证金值
+                const leverageInput = document.querySelector('.forms-item .uni-input-input[placeholder="选择杠杆倍数"]');
+                let leverage = 10; // 默认杠杆
+                if (leverageInput.value) {
+                    leverage = parseInt(leverageInput.value);
+                    if (isNaN(leverage)) leverage = 10;
+                }
+                
+                // 使用平滑更新函数更新保证金值
+                updateMarginValue(adjustedPercent, leverage);
+                
+                // 根据百分比改变颜色
+                if (adjustedPercent < 30) {
+                    positionValue.style.color = '#ff4d4f';
+                    progressBar.classList.remove('progress-yellow', 'progress-blue');
+                    slider.classList.remove('slider-yellow', 'slider-blue');
+                    progressBar.classList.add('progress-red');
+                    slider.classList.add('slider-red');
+                    slider.querySelector('.count').style.backgroundColor = '#ff4d4f';
+                } else if (adjustedPercent < 70) {
+                    positionValue.style.color = '#faad14';
+                    progressBar.classList.remove('progress-red', 'progress-blue');
+                    slider.classList.remove('slider-red', 'slider-blue');
+                    progressBar.classList.add('progress-yellow');
+                    slider.classList.add('slider-yellow');
+                    slider.querySelector('.count').style.backgroundColor = '#faad14';
+                } else {
+                    positionValue.style.color = '#1a6aff';
+                    progressBar.classList.remove('progress-red', 'progress-yellow');
+                    slider.classList.remove('slider-red', 'slider-yellow');
+                    progressBar.classList.add('progress-blue');
+                    slider.classList.add('slider-blue');
+                    slider.querySelector('.count').style.backgroundColor = '#1a6aff';
+                }
+                
+                // 添加完成动画
+                setTimeout(() => {
+                    slider.classList.remove('slider-done');
+                    // 强制重绘
+                    void slider.offsetWidth;
+                    slider.classList.add('slider-done');
+                }, 300);
+                
+                // 移除过渡动画，以便拖动时不受影响
+                setTimeout(() => {
+                    slider.style.transition = '';
+                    progressBar.style.transition = '';
+                }, 500);
+            });
+            
+            // 添加拖动事件监听
+            slider.addEventListener('mousedown', onStart);
+            slider.addEventListener('touchstart', onStart, { passive: false });
+            
+            // 初始化时设置滑块的颜色
+            setTimeout(() => {
+                // 获取初始百分比
+                const percent = parseInt(positionValue.textContent);
+                
+                if (percent < 30) {
+                    positionValue.style.color = '#ff4d4f';
+                    progressBar.classList.remove('progress-yellow', 'progress-blue');
+                    slider.classList.remove('slider-yellow', 'slider-blue');
+                    progressBar.classList.add('progress-red');
+                    slider.classList.add('slider-red');
+                    slider.querySelector('.count').style.backgroundColor = '#ff4d4f';
+                } else if (percent < 70) {
+                    positionValue.style.color = '#faad14';
+                    progressBar.classList.remove('progress-red', 'progress-blue');
+                    slider.classList.remove('slider-red', 'slider-blue');
+                    progressBar.classList.add('progress-yellow');
+                    slider.classList.add('slider-yellow');
+                    slider.querySelector('.count').style.backgroundColor = '#faad14';
+                } else {
+                    positionValue.style.color = '#1a6aff';
+                    progressBar.classList.remove('progress-red', 'progress-yellow');
+                    slider.classList.remove('slider-red', 'slider-yellow');
+                    progressBar.classList.add('progress-blue');
+                    slider.classList.add('slider-blue');
+                    slider.querySelector('.count').style.backgroundColor = '#1a6aff';
+                }
+            }, 500);
+        }
+        
+        // 初始化仓位滑动条
+        function initPositionSlider() {
+            const slider = document.getElementById('position-slider');
+            if (!slider) return; // 防止错误
+            
+            const progressBar = document.getElementById('progress-bar');
+            const positionValue = document.getElementById('position-value');
+            const sliderBar = document.querySelector('.sliderBar');
+            
+            let isDragging = false;
+            let startX, sliderWidth, sliderLeft;
+            
+            // 更新滑块位置和值
+            function updateSlider(clientX) {
+                // 计算滑块在轨道上的位置百分比
+                let newLeft = clientX - sliderLeft;
+                newLeft = Math.max(0, Math.min(newLeft, sliderWidth));
+                
+                const percent = Math.round((newLeft / sliderWidth) * 100);
+                
+                // 设置CSS变量记录当前位置，用于动画
+                slider.style.setProperty('--x-pos', `${newLeft}px`);
+                
+                // 更新滑块位置，保持垂直居中
+                slider.style.transform = `translateY(-50%) translateX(${newLeft}px)`;
+                
+                // 更新进度条
+                progressBar.style.width = `${percent}%`;
+                
+                // 更新值显示
+                slider.querySelector('.count').textContent = `${percent}%`;
+                positionValue.textContent = `${percent}%`;
+                
+                // 计算并更新保证金值
+                const leverageInput = document.querySelector('.forms-item .uni-input-input[placeholder="选择杠杆倍数"]');
+                let leverage = 10; // 默认杠杆
+                if (leverageInput.value) {
+                    // 解析杠杆值（例如 "10X" -> 10）
+                    leverage = parseInt(leverageInput.value);
+                    if (isNaN(leverage)) leverage = 10;
+                }
+                
+                // 计算保证金
+                const marginValue = (percent / 100) * (maxMargin / leverage);
+                marginInput.value = marginValue.toFixed(2);
+                
+                // 添加滑块动画效果
+                const handleSliderAnimation = (percent) => {
+                    // 移除所有颜色类
+                    progressBar.classList.remove('progress-red', 'progress-yellow', 'progress-blue');
+                    slider.classList.remove('slider-red', 'slider-yellow', 'slider-blue');
+                    
+                    // 根据百分比应用相应的颜色类
+                    if (percent < 30) {
+                        positionValue.style.color = '#ff4d4f';
+                        slider.classList.add('slider-red');
+                        progressBar.classList.add('progress-red');
+                        slider.querySelector('.count').style.backgroundColor = '#ff4d4f';
+                    } else if (percent < 70) {
+                        positionValue.style.color = '#faad14';
+                        slider.classList.add('slider-yellow');
+                        progressBar.classList.add('progress-yellow');
+                        slider.querySelector('.count').style.backgroundColor = '#faad14';
+                    } else {
+                        positionValue.style.color = '#1a6aff';
+                        slider.classList.add('slider-blue');
+                        progressBar.classList.add('progress-blue');
+                        slider.querySelector('.count').style.backgroundColor = '#1a6aff';
+                    }
+                    
+                    // 添加缩放动画效果
+                    if (isDragging) {
+                        // 拖动时不添加脉冲动画
+                        return;
+                    }
+                    
+                    slider.classList.remove('slider-pulse');
+                    // 强制重绘
+                    void slider.offsetWidth;
+                    slider.classList.add('slider-pulse');
+                };
+                
+                handleSliderAnimation(percent);
+                return percent;
+            }
+            
+            // 鼠标/触摸事件处理
+            function onStart(e) {
+                e.preventDefault();
+                const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+                
+                // 获取滑动条的宽度和位置
+                const rect = sliderBar.getBoundingClientRect();
+                sliderWidth = rect.width;
+                sliderLeft = rect.left;
+                
+                isDragging = true;
+                
+                // 更新初始位置
+                updateSlider(clientX);
+                
+                // 添加移动和结束事件监听
+                document.addEventListener('mousemove', onMove);
+                document.addEventListener('touchmove', onMove, { passive: false });
+                document.addEventListener('mouseup', onEnd);
+                document.addEventListener('touchend', onEnd);
+            }
+            
+            function onMove(e) {
+                if (!isDragging) return;
+                e.preventDefault();
+                
+                const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+                updateSlider(clientX);
+            }
+            
+            function onEnd() {
+                isDragging = false;
+                
+                // 移除事件监听
+                document.removeEventListener('mousemove', onMove);
+                document.removeEventListener('touchmove', onMove);
+                document.removeEventListener('mouseup', onEnd);
+                document.removeEventListener('touchend', onEnd);
+            }
+            
+            // 为固定点添加点击事件
+            const dotElements = document.querySelectorAll('.move-img');
+            if (dotElements.length > 0) {
+                dotElements.forEach(dot => {
+                    dot.addEventListener('click', function() {
+                        if (this.style.left) {
+                            const percent = parseInt(this.style.left);
+                            slider.style.left = `${percent}%`;
+                            
+                            if (progressBar) {
+                                progressBar.style.width = `${percent}%`;
+                            }
+                            
+                            const countElement = slider.querySelector('.count');
+                            if (countElement) {
+                                countElement.textContent = `${percent}%`;
+                            }
+                            
+                            if (positionValue) {
+                                positionValue.textContent = `${percent}%`;
+                            }
+                        }
+                    });
+                });
+            }
+            
+            // 为滑动条添加点击事件
+            sliderBar.addEventListener('click', function(e) {
+                if (e.target === slider) return;
+                
+                const rect = sliderBar.getBoundingClientRect();
+                const sliderWidth = rect.width;
+                const clickX = e.clientX - rect.left;
+                const percent = Math.round((clickX / sliderWidth) * 100);
+                
+                slider.style.left = `${percent}%`;
+                
+                if (progressBar) {
+                    progressBar.style.width = `${percent}%`;
+                }
+                
+                const countElement = slider.querySelector('.count');
+                if (countElement) {
+                    countElement.textContent = `${percent}%`;
+                }
+                
+                if (positionValue) {
+                    positionValue.textContent = `${percent}%`;
+                }
+            });
+            
+            // 添加拖动事件监听
+            slider.addEventListener('mousedown', onStart);
+            slider.addEventListener('touchstart', onStart, { passive: false });
+        }
+
+        // 全局变量
+        let strategyRunning = false;
+        let strategyInterval = null;
+        let chichang = false;
+
+        // 检查持仓状态函数
+        function checkPositionStatus() {
+            // 获取当前URL中的策略ID和交易对
+            const urlParams = new URLSearchParams(window.location.search);
+            const strategyId = urlParams.get('id') || '1';
+            
+            // 获取交易对（根据策略ID设置不同的默认交易对）
+            let tradePair = 'BTC-USDT';
+            if (strategyId === '2') {
+                tradePair = 'ETH-USDT';
+            } else if (strategyId === '3') {
+                tradePair = 'SOL-USDT';
+            } else if (strategyId === '4') {
+                tradePair = 'BNB-USDT';
+            } else if (strategyId === '5') {
+                tradePair = 'DOT-USDT';
+            } else if (strategyId === '6') {
+                tradePair = 'ADA-USDT';
+            }
+            
+            // 获取选中的交易方向
+            const directionElements = document.querySelectorAll('.type-box .type-li');
+            let tradeDirection = 'buy'; // 默认做多
+            
+            directionElements.forEach(function(el) {
+                if (el.classList.contains('type-active')) {
+                    tradeDirection = el.textContent.trim() === '做多' ? 'buy' : 'sell';
+                }
+            });
+            
+            // 显示加载状态
+            const statusElement = document.getElementById('strategy-status');
+            statusElement.textContent = '正在检查持仓状态...';
+            
+            // 向后端发送请求获取持仓状态
+            fetch('/api/position/check', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    tradePair: tradePair,
+                    tradeDirection: tradeDirection
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.code === 200) {
+                    const saveBtn = document.getElementById('save-strategy-btn');
+                    
+                    // 检查当前方向是否有持仓
+                    const hasBuyPosition = data.positionStatus && data.positionStatus.buy_flag;
+                    const hasSellPosition = data.positionStatus && data.positionStatus.sell_flag;
+                    
+                    // 更新全局持仓状态
+                    chichang = hasBuyPosition || hasSellPosition;
+                    
+                    // 创建更完整的持仓信息对象，包含详细持仓数据
+                    const positionInfo = {
+                        hasBuyPosition: hasBuyPosition,
+                        hasSellPosition: hasSellPosition,
+                        tradePair: tradePair,
+                        timestamp: new Date().getTime(),
+                        positionData: data.positionStatus || {},
+                        details: {
+                            buy: hasBuyPosition ? {
+                                availPos: data.positionStatus.p_Pos_sz || '0',
+                                avgPrice: data.positionStatus.p_cw_avgPx || '0'
+                            } : null,
+                            sell: hasSellPosition ? {
+                                availPos: data.positionStatus.p_Pos_sz_s || '0',
+                                avgPrice: data.positionStatus.p_cw_avgPx_s || '0'
+                            } : null
+                        },
+                        strategy: {
+                            id: strategyId,
+                            direction: tradeDirection
+                        }
+                    };
+                    
+                    // 强制立即保存持仓信息到localStorage
+                    storePositionData(positionInfo, tradePair);
+                    
+                    // 更新按钮状态
+                    updateButtonStatus(chichang, strategyRunning);
+                    
+                    // 根据当前交易方向和持仓状态更新按钮
+                    if ((tradeDirection === 'buy' && hasBuyPosition) || 
+                        (tradeDirection === 'sell' && hasSellPosition)) {
+                        // 已有相同方向持仓
+                        saveBtn.textContent = '已持仓中';
+                        saveBtn.classList.add('position-active');
+                        saveBtn.classList.remove('order-success');
+                        
+                        // 更新状态提示
+                        statusElement.textContent = `当前有${hasBuyPosition ? '多头' : ''}${hasSellPosition ? '空头' : ''}持仓，系统将暂停新订单但继续运行循环`;
+                        statusElement.style.color = '#faad14'; // 黄色警告
+                        
+                        // 显示持仓详情
+                        showPositionDetails(data.positionStatus, tradePair);
+                    } else if ((!hasBuyPosition && !hasSellPosition) && data.hasOrder) {
+                        // 没有持仓但有订单，显示为"已下单"
+                        saveBtn.textContent = '已下单，执行中';
+                        saveBtn.classList.add('order-success');
+                        saveBtn.classList.remove('position-active');
+                        
+                        // 更新状态提示
+                        statusElement.textContent = '订单正在处理中，请稍候...';
+                        statusElement.style.color = '#1a6aff'; // 蓝色信息
+                        
+                        // 清除持仓详情显示
+                        clearPositionDetails();
+                    } else {
+                        // 无持仓无订单
+                        saveBtn.textContent = '保存设置';
+                        saveBtn.classList.remove('order-success');
+                        saveBtn.classList.remove('position-active');
+                        
+                        // 更新状态提示
+                        if (strategyRunning) {
+                            statusElement.textContent = '无持仓，系统准备就绪，等待下单';
+                            statusElement.style.color = '#52c41a'; // 绿色正常
+                        } else {
+                            statusElement.textContent = '系统未运行';
+                            statusElement.style.color = '#8c8c8c'; // 灰色
+                        }
+                        
+                        // 清除持仓详情显示
+                        clearPositionDetails();
+                    }
+                    
+                    // 添加状态摘要显示 - 如果后端提供了状态摘要
+                    if (data.statusSummary) {
+                        // 在状态元素的下方添加后端状态摘要
+                        const statusDetailElement = document.createElement('div');
+                        statusDetailElement.textContent = `后端状态: ${data.statusSummary}`;
+                        statusDetailElement.style.fontSize = '12px';
+                        statusDetailElement.style.marginTop = '5px';
+                        statusDetailElement.style.color = '#666';
+                        
+                        // 如果已有之前的状态摘要，先移除
+                        const existingDetail = document.querySelector('.status-detail');
+                        if (existingDetail) {
+                            existingDetail.remove();
+                        }
+                        
+                        statusDetailElement.classList.add('status-detail');
+                        statusElement.parentNode.insertBefore(statusDetailElement, statusElement.nextSibling);
+                    }
+                } else {
+                    // 请求出错
+                    const statusElement = document.getElementById('strategy-status');
+                    statusElement.textContent = `检查持仓状态失败: ${data.message}`;
+                    statusElement.style.color = '#ff4d4f'; // 红色错误
+                }
+            })
+            .catch(error => {
+                console.error('获取持仓状态失败:', error);
+                const statusElement = document.getElementById('strategy-status');
+                statusElement.textContent = '网络错误，无法检查持仓状态';
+                statusElement.style.color = '#ff4d4f'; // 红色错误
+            });
+        }
+
+        // 保存持仓数据到localStorage
+        function storePositionData(positionInfo, tradePair) {
+            // 获取之前保存的所有持仓信息
+            let allPositions = [];
+            try {
+                const positionsStr = localStorage.getItem('okxPositions');
+                if (positionsStr) {
+                    allPositions = JSON.parse(positionsStr);
+                }
+            } catch (e) {
+                console.error('解析localStorage数据出错:', e);
+                allPositions = [];
+            }
+            
+            // 检查是否已有此交易对的信息，有则更新，无则添加
+            const existingIndex = allPositions.findIndex(p => p.tradePair === tradePair);
+            const hasPosition = positionInfo.hasBuyPosition || positionInfo.hasSellPosition;
+            
+            if (existingIndex >= 0) {
+                if (hasPosition) {
+                    // 更新现有持仓
+                    allPositions[existingIndex] = positionInfo;
+                } else {
+                    // 如果不再有持仓，移除此交易对
+                    allPositions.splice(existingIndex, 1);
+                }
+            } else if (hasPosition) {
+                // 添加新持仓
+                allPositions.push(positionInfo);
+            }
+            
+            // 保存更新后的持仓列表
+            localStorage.setItem('okxPositions', JSON.stringify(allPositions));
+            
+            // 触发自定义事件，通知其他页面更新
+            window.dispatchEvent(new CustomEvent('okxPositionsChanged', {
+                detail: { positions: allPositions }
+            }));
+            
+            // 更新持仓数量
+            updatePositionCount(allPositions.length);
+            
+            // 强制刷新localStorage事件，确保其他标签页能捕获到变化
+            localStorage.setItem('okxPositionCount', allPositions.length.toString());
+            localStorage.setItem('okxPositionsUpdateTime', new Date().getTime().toString());
+            
+            return allPositions;
+        }
+
+        // 更新按钮状态
+        function updateButtonStatus(hasPosition, isRunning) {
+            const runBtn = document.getElementById('run-strategy-btn');
+            const stopBtn = document.getElementById('stop-strategy-btn');
+            
+            if (isRunning) {
+                // 策略正在运行
+                runBtn.textContent = '运行中';
+                runBtn.style.backgroundColor = '#faad14'; // 黄色表示运行中
+                runBtn.disabled = true;
+                stopBtn.style.display = 'inline-block';
+            } else {
+                // 策略未运行
+                runBtn.textContent = '运行';
+                runBtn.style.backgroundColor = '#52c41a'; // 绿色表示可以运行
+                runBtn.disabled = false;
+                stopBtn.style.display = 'none';
+            }
+        }
+
+        // 自定义确认对话框函数
+        function showConfirmDialog(title, message, confirmText, cancelText, onConfirm, onCancel) {
+            // 创建对话框容器
+            const dialogOverlay = document.createElement('div');
+            dialogOverlay.style.position = 'fixed';
+            dialogOverlay.style.top = '0';
+            dialogOverlay.style.left = '0';
+            dialogOverlay.style.width = '100%';
+            dialogOverlay.style.height = '100%';
+            dialogOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+            dialogOverlay.style.zIndex = '9999';
+            dialogOverlay.style.display = 'flex';
+            dialogOverlay.style.justifyContent = 'center';
+            dialogOverlay.style.alignItems = 'center';
+            
+            // 创建对话框内容
+            const dialog = document.createElement('div');
+            dialog.style.backgroundColor = 'white';
+            dialog.style.borderRadius = '8px';
+            dialog.style.width = '300px';
+            dialog.style.maxWidth = '90%';
+            dialog.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+            
+            // 添加标题
+            const titleElement = document.createElement('div');
+            titleElement.textContent = title;
+            titleElement.style.padding = '16px';
+            titleElement.style.borderBottom = '1px solid #f0f0f0';
+            titleElement.style.fontWeight = 'bold';
+            dialog.appendChild(titleElement);
+            
+            // 添加消息
+            const messageElement = document.createElement('div');
+            messageElement.textContent = message;
+            messageElement.style.padding = '16px';
+            messageElement.style.color = '#595959';
+            dialog.appendChild(messageElement);
+            
+            // 添加按钮容器
+            const buttonsContainer = document.createElement('div');
+            buttonsContainer.style.display = 'flex';
+            buttonsContainer.style.borderTop = '1px solid #f0f0f0';
+            
+            // 确认按钮
+            const confirmButton = document.createElement('button');
+            confirmButton.textContent = confirmText;
+            confirmButton.style.flex = '1';
+            confirmButton.style.padding = '12px';
+            confirmButton.style.border = 'none';
+            confirmButton.style.backgroundColor = '#1a6aff';
+            confirmButton.style.color = 'white';
+            confirmButton.style.borderRadius = '0 0 0 8px';
+            confirmButton.style.cursor = 'pointer';
+            confirmButton.addEventListener('click', function() {
+                document.body.removeChild(dialogOverlay);
+                if (onConfirm) onConfirm();
+            });
+            
+            // 取消按钮
+            const cancelButton = document.createElement('button');
+            cancelButton.textContent = cancelText;
+            cancelButton.style.flex = '1';
+            cancelButton.style.padding = '12px';
+            cancelButton.style.border = 'none';
+            cancelButton.style.backgroundColor = '#f5f5f5';
+            cancelButton.style.color = '#595959';
+            cancelButton.style.borderRadius = '0 0 8px 0';
+            cancelButton.style.cursor = 'pointer';
+            cancelButton.addEventListener('click', function() {
+                document.body.removeChild(dialogOverlay);
+                if (onCancel) onCancel();
+            });
+            
+            buttonsContainer.appendChild(confirmButton);
+            buttonsContainer.appendChild(cancelButton);
+            dialog.appendChild(buttonsContainer);
+            
+            dialogOverlay.appendChild(dialog);
+            document.body.appendChild(dialogOverlay);
+        }
+
+        // 更新导航栏中的持仓数量显示
+        function updatePositionCount(count) {
+            // 尝试找到当前页面中的持仓数量显示元素
+            const positionCountElem = document.querySelector('.flex-x.nav-li.active-nav-li.nav-li-p span:nth-child(2)');
+            if (positionCountElem) {
+                positionCountElem.textContent = `(${count})`;
+            }
+            
+            // 尝试发送消息到spot页面（如果有）
+            try {
+                // 将持仓信息广播到其他页面
+                localStorage.setItem('okxPositionCount', count.toString());
+                
+                // 派发自定义事件
+                window.dispatchEvent(new CustomEvent('okxPositionUpdated', {
+                    detail: { count: count }
+                }));
+            } catch (e) {
+                console.error('更新持仓数量出错:', e);
+            }
+            
+            // 创建持仓信息展示区（如果尚未创建）
+            if (!document.getElementById('position-details-container')) {
+                // 在状态显示下方添加持仓详情区域
+                const statusElement = document.getElementById('strategy-status');
+                if (statusElement) {
+                    const detailsContainer = document.createElement('div');
+                    detailsContainer.id = 'position-details-container';
+                    detailsContainer.style.marginTop = '15px';
+                    detailsContainer.style.padding = '15px';
+                    detailsContainer.style.backgroundColor = '#f8f9fa';
+                    detailsContainer.style.borderRadius = '8px';
+                    detailsContainer.style.display = count > 0 ? 'block' : 'none';
+                    statusElement.parentNode.insertBefore(detailsContainer, statusElement.nextSibling);
+                }
+            }
+        }
+
+        // 显示持仓详情
+        function showPositionDetails(positionStatus, tradePair) {
+            const container = document.getElementById('position-details-container');
+            if (!container) return;
+            
+            container.style.display = 'block';
+            container.innerHTML = `<h5 style="font-size: 16px; margin-bottom: 10px;">持仓详情</h5>`;
+            
+            // 显示多头持仓信息
+            if (positionStatus.buy_flag) {
+                const buyInfo = document.createElement('div');
+                buyInfo.classList.add('position-item');
+                buyInfo.style.marginBottom = '10px';
+                buyInfo.style.padding = '10px';
+                buyInfo.style.backgroundColor = '#e6f7ff';
+                buyInfo.style.borderRadius = '4px';
+                buyInfo.style.borderLeft = '3px solid #1890ff';
+                
+                let availPos = '';
+                let avgPrice = '';
+                
+                if (positionStatus.p_Pos_sz) {
+                    availPos = positionStatus.p_Pos_sz;
+                }
+                
+                if (positionStatus.p_cw_avgPx) {
+                    avgPrice = positionStatus.p_cw_avgPx;
+                }
+                
+                buyInfo.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span style="font-weight: 500;">${tradePair} 多头</span>
+                        <span style="color: #52c41a;">${availPos} 张</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>开仓均价</span>
+                        <span>${avgPrice}</span>
+                    </div>
+                `;
+                
+                container.appendChild(buyInfo);
+            }
+            
+            // 显示空头持仓信息
+            if (positionStatus.sell_flag) {
+                const sellInfo = document.createElement('div');
+                sellInfo.classList.add('position-item');
+                sellInfo.style.marginBottom = '10px';
+                sellInfo.style.padding = '10px';
+                sellInfo.style.backgroundColor = '#fff2e8';
+                sellInfo.style.borderRadius = '4px';
+                sellInfo.style.borderLeft = '3px solid #fa541c';
+                
+                let availPos = '';
+                let avgPrice = '';
+                
+                if (positionStatus.p_Pos_sz_s) {
+                    availPos = positionStatus.p_Pos_sz_s;
+                }
+                
+                if (positionStatus.p_cw_avgPx_s) {
+                    avgPrice = positionStatus.p_cw_avgPx_s;
+                }
+                
+                sellInfo.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                        <span style="font-weight: 500;">${tradePair} 空头</span>
+                        <span style="color: #ff4d4f;">${availPos} 张</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>开仓均价</span>
+                        <span>${avgPrice}</span>
+                    </div>
+                `;
+                
+                container.appendChild(sellInfo);
+            }
+        }
+
+        // 清除持仓详情显示
+        function clearPositionDetails() {
+            const container = document.getElementById('position-details-container');
+            if (container) {
+                container.style.display = 'none';
+                container.innerHTML = '';
+            }
+        }
+    </script>
+</body>
+</html> 

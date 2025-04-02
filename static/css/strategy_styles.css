@@ -1,0 +1,86 @@
+/* 订单信息侧边栏样式 */
+.order-info-sidebar {
+    display: none;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    width: 30%;
+    max-width: 350px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 9998;
+    padding: 15px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.order-info-sidebar.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.order-info-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.close-order-info {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #999;
+}
+
+.close-order-info:hover {
+    color: #666;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.detail-label {
+    color: #666;
+}
+
+.detail-value {
+    font-weight: 500;
+}
+
+/* 添加订单信息动画 */
+@keyframes slide-in {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-out {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.order-info-slide-in {
+    animation: slide-in 0.3s forwards;
+}
+
+.order-info-slide-out {
+    animation: slide-out 0.3s forwards;
+} 

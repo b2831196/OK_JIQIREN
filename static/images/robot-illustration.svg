@@ -1,0 +1,48 @@
+<svg width="300" height="220" viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg">
+  <!-- 机器人头部 -->
+  <rect x="110" y="30" width="80" height="70" rx="10" fill="#1890ff" />
+  
+  <!-- 机器人眼睛 -->
+  <circle cx="135" cy="60" r="10" fill="white" />
+  <circle cx="165" cy="60" r="10" fill="white" />
+  <circle cx="135" cy="60" r="5" fill="#001529" />
+  <circle cx="165" cy="60" r="5" fill="#001529" />
+  
+  <!-- 机器人天线 -->
+  <line x1="150" y1="30" x2="150" y2="10" stroke="#001529" stroke-width="3" />
+  <circle cx="150" cy="10" r="5" fill="#ff4d4f" />
+  
+  <!-- 机器人嘴巴 -->
+  <rect x="130" y="80" width="40" height="5" rx="2" fill="white" />
+  
+  <!-- 机器人身体 -->
+  <rect x="100" y="110" width="100" height="80" rx="10" fill="#1890ff" />
+  
+  <!-- 机器人按钮 -->
+  <circle cx="125" cy="130" r="8" fill="#ff4d4f" />
+  <circle cx="150" cy="130" r="8" fill="#faad14" />
+  <circle cx="175" cy="130" r="8" fill="#52c41a" />
+  
+  <!-- 机器人手臂 -->
+  <rect x="70" y="120" width="30" height="10" rx="5" fill="#1890ff" />
+  <rect x="200" y="120" width="30" height="10" rx="5" fill="#1890ff" />
+  
+  <!-- 机器人显示屏 -->
+  <rect x="120" y="150" width="60" height="30" rx="5" fill="#001529" />
+  <path d="M130 165 L140 155 L150 175 L160 160 L170 170" stroke="#52c41a" stroke-width="2" fill="none" />
+  
+  <!-- 机器人腿部 -->
+  <rect x="115" y="190" width="20" height="30" rx="5" fill="#1890ff" />
+  <rect x="165" y="190" width="20" height="30" rx="5" fill="#1890ff" />
+  
+  <!-- 装饰线条和圆圈 -->
+  <circle cx="240" cy="50" r="20" fill="none" stroke="#1890ff" stroke-width="2" />
+  <circle cx="60" cy="180" r="15" fill="none" stroke="#1890ff" stroke-width="2" />
+  <circle cx="250" cy="170" r="12" fill="none" stroke="#1890ff" stroke-width="2" />
+  
+  <line x1="20" y1="100" x2="50" y2="100" stroke="#1890ff" stroke-width="2" />
+  <line x1="250" y1="120" x2="280" y2="120" stroke="#1890ff" stroke-width="2" />
+  
+  <path d="M40 60 Q 50 40, 60 60" stroke="#1890ff" stroke-width="2" fill="none" />
+  <path d="M230 80 Q 240 60, 250 80" stroke="#1890ff" stroke-width="2" fill="none" />
+</svg> 

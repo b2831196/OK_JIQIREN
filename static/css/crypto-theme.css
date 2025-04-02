@@ -1,0 +1,336 @@
+/**
+ * 加密货币交易平台通用主题样式
+ */
+
+:root {
+  /* 主题色 */
+  --primary-color: #3366FF;
+  --primary-light: #5B8FF9;
+  --secondary-color: #6633FF;
+  --secondary-light: #9B58F9;
+  
+  /* 状态色 */
+  --success-color: #26a69a;
+  --success-bg: rgba(38, 166, 154, 0.1);
+  --danger-color: #ef5350;
+  --danger-bg: rgba(239, 83, 80, 0.1);
+  --warning-color: #ffb74d;
+  --warning-bg: rgba(255, 183, 77, 0.1);
+  
+  /* 文本色 */
+  --text-primary: #333333;
+  --text-secondary: #606266;
+  --text-tertiary: #909399;
+  --text-disabled: #C0C4CC;
+  
+  /* 背景色 */
+  --bg-color: #f5f7fa;
+  --bg-lighter: #ffffff;
+  --bg-darker: #e9ecef;
+  
+  /* 边框色 */
+  --border-color: #f0f0f0;
+  --border-darker: #dcdfe6;
+  
+  /* 圆角 */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 15px;
+  
+  /* 阴影 */
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+/* 暗模式主题 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* 文本色 */
+    --text-primary: #e6e6e6;
+    --text-secondary: #b0b0b0;
+    --text-tertiary: #909399;
+    --text-disabled: #606266;
+    
+    /* 背景色 */
+    --bg-color: #1a1a1a;
+    --bg-lighter: #2c2c2c;
+    --bg-darker: #141414;
+    
+    /* 边框色 */
+    --border-color: #333333;
+    --border-darker: #444444;
+  }
+}
+
+/* 基础样式 */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  opacity: 0.9;
+}
+
+/* 卡片样式 */
+.card {
+  background-color: var(--bg-lighter);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.card-title {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  color: var(--text-primary);
+}
+
+/* 按钮样式 */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: 10px 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-light);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: 10px 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+  background-color: var(--secondary-light);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  border-radius: var(--border-radius-sm);
+  padding: 9px 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* 表单元素 */
+.form-control {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--bg-lighter);
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+}
+
+/* 颜色工具类 */
+.text-success { color: var(--success-color) !important; }
+.text-danger { color: var(--danger-color) !important; }
+.text-warning { color: var(--warning-color) !important; }
+.text-primary { color: var(--primary-color) !important; }
+.text-secondary { color: var(--secondary-color) !important; }
+
+.bg-success { background-color: var(--success-bg) !important; }
+.bg-danger { background-color: var(--danger-bg) !important; }
+.bg-warning { background-color: var(--warning-bg) !important; }
+.bg-primary { background-color: var(--primary-color) !important; color: white !important; }
+.bg-secondary { background-color: var(--secondary-color) !important; color: white !important; }
+
+/* 价格变化指示 */
+.price-up {
+  color: var(--success-color);
+}
+
+.price-down {
+  color: var(--danger-color);
+}
+
+/* 响应式工具类 */
+@media (max-width: 768px) {
+  .hidden-mobile {
+    display: none !important;
+  }
+}
+
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: 60px; /* 为底部导航栏留出空间 */
+}
+
+/* 卡片样式 */
+.card {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+/* 币种涨跌样式 */
+.up-text {
+    color: var(--up-color);
+}
+
+.down-text {
+    color: var(--down-color);
+}
+
+.up-bg {
+    background-color: var(--up-color);
+    color: white;
+}
+
+.down-bg {
+    background-color: var(--down-color);
+    color: white;
+}
+
+/* 图表和图标样式 */
+.crypto-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.trend-icon {
+    width: 100%;
+    height: 40px;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.trend-up {
+    background-image: url('/static/images/trend-up.svg');
+}
+
+.trend-down {
+    background-image: url('/static/images/trend-down.svg');
+}
+
+/* 导航图标样式 */
+.nav-icon {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 底部导航栏样式 */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    width: 20%;
+    text-align: center;
+}
+
+.nav-item.active {
+    background-color: rgba(51, 102, 255, 0.1);
+}
+
+.nav-item.active .nav-icon-img {
+    filter: brightness(0) saturate(100%) invert(31%) sepia(95%) saturate(1954%) hue-rotate(213deg) brightness(97%) contrast(106%);
+}
+
+.nav-item.active .nav-name {
+    color: #3366FF;
+}
+
+.nav-icon-img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+    filter: brightness(0) saturate(100%) invert(38%) sepia(0%) saturate(0%) hue-rotate(152deg) brightness(96%) contrast(86%);
+}
+
+.nav-name {
+    font-size: 12px;
+    color: #606266;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

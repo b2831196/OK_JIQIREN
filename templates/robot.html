@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>智能AI助手 - 机器人中心</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/robot.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="app">
+        <!-- 左侧导航栏 -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Logo" class="logo">
+                <h2>智能AI助手</h2>
+            </div>
+            <div class="sidebar-menu">
+                <a href="/dashboard" class="menu-item">
+                    <i class="fa fa-home"></i>
+                    <span>数据概览</span>
+                </a>
+                <a href="/robot" class="menu-item active">
+                    <i class="fa fa-robot"></i>
+                    <span>机器人管理</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fa fa-book"></i>
+                    <span>知识库</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fa fa-comment"></i>
+                    <span>对话记录</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fa fa-users"></i>
+                    <span>客户管理</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fa fa-cog"></i>
+                    <span>系统设置</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- 主内容区 -->
+        <div class="main-content">
+            <!-- 顶部导航 -->
+            <div class="top-nav">
+                <div class="breadcrumb">
+                    <span>机器人管理</span>
+                </div>
+                <div class="user-info">
+                    <div class="notification">
+                        <i class="fa fa-bell"></i>
+                    </div>
+                    <div class="user-dropdown">
+                        <img src="{{ url_for('static', filename='images/avatar.png') }}" alt="用户头像" class="avatar">
+                        <span class="username">{{ session.get('user_id', '用户') }}</span>
+                        <div class="dropdown-content">
+                            <a href="/profile">个人中心</a>
+                            <a href="/logout">退出登录</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 欢迎卡片 -->
+            <div class="welcome-card">
+                <div class="welcome-info">
+                    <h2>欢迎使用智能AI助手</h2>
+                    <p>配置您的专属AI机器人，提升客户体验和工作效率</p>
+                    <button class="create-btn">创建新机器人</button>
+                </div>
+                <div class="welcome-image">
+                    <img src="{{ url_for('static', filename='images/robot-illustration.svg') }}" alt="机器人插图">
+                </div>
+            </div>
+
+            <!-- 机器人列表 -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>我的机器人</h2>
+                    <div class="section-actions">
+                        <div class="search-box">
+                            <input type="text" placeholder="搜索机器人...">
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <button class="add-btn"><i class="fa fa-plus"></i> 添加机器人</button>
+                    </div>
+                </div>
+                <div class="robot-grid">
+                    <div class="robot-card">
+                        <div class="robot-header">
+                            <img src="{{ url_for('static', filename='images/bot1.png') }}" alt="机器人头像" class="robot-avatar">
+                            <div class="robot-status online"></div>
+                        </div>
+                        <div class="robot-body">
+                            <h3>客服机器人</h3>
+                            <p>专业客服，7x24小时在线</p>
+                            <div class="robot-stats">
+                                <div class="robot-stat">
+                                    <i class="fa fa-comment"></i>
+                                    <span>3250次对话</span>
+                                </div>
+                                <div class="robot-stat">
+                                    <i class="fa fa-users"></i>
+                                    <span>125用户</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="robot-footer">
+                            <button class="robot-btn primary">管理</button>
+                            <button class="robot-btn">对话</button>
+                            <button class="robot-btn">分享</button>
+                        </div>
+                    </div>
+
+                    <div class="robot-card">
+                        <div class="robot-header">
+                            <img src="{{ url_for('static', filename='images/bot2.png') }}" alt="机器人头像" class="robot-avatar">
+                            <div class="robot-status online"></div>
+                        </div>
+                        <div class="robot-body">
+                            <h3>销售助手</h3>
+                            <p>智能销售，促进成交</p>
+                            <div class="robot-stats">
+                                <div class="robot-stat">
+                                    <i class="fa fa-comment"></i>
+                                    <span>1420次对话</span>
+                                </div>
+                                <div class="robot-stat">
+                                    <i class="fa fa-users"></i>
+                                    <span>87用户</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="robot-footer">
+                            <button class="robot-btn primary">管理</button>
+                            <button class="robot-btn">对话</button>
+                            <button class="robot-btn">分享</button>
+                        </div>
+                    </div>
+
+                    <div class="robot-card">
+                        <div class="robot-header">
+                            <img src="{{ url_for('static', filename='images/bot3.png') }}" alt="机器人头像" class="robot-avatar">
+                            <div class="robot-status offline"></div>
+                        </div>
+                        <div class="robot-body">
+                            <h3>知识百科</h3>
+                            <p>知识问答，回答各类问题</p>
+                            <div class="robot-stats">
+                                <div class="robot-stat">
+                                    <i class="fa fa-comment"></i>
+                                    <span>875次对话</span>
+                                </div>
+                                <div class="robot-stat">
+                                    <i class="fa fa-users"></i>
+                                    <span>56用户</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="robot-footer">
+                            <button class="robot-btn primary">管理</button>
+                            <button class="robot-btn">对话</button>
+                            <button class="robot-btn">分享</button>
+                        </div>
+                    </div>
+
+                    <div class="robot-card add-robot-card">
+                        <div class="add-robot-icon">
+                            <i class="fa fa-plus-circle"></i>
+                        </div>
+                        <p>创建新机器人</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 机器人模板 -->
+            <div class="section">
+                <div class="section-header">
+                    <h2>推荐模板</h2>
+                    <a href="#" class="view-all">查看全部</a>
+                </div>
+                <div class="template-grid">
+                    <div class="template-card">
+                        <div class="template-icon">
+                            <i class="fa fa-headset"></i>
+                        </div>
+                        <div class="template-info">
+                            <h3>客服机器人</h3>
+                            <p>处理常见问题，提供24/7客户支持</p>
+                        </div>
+                        <button class="template-btn">使用模板</button>
+                    </div>
+                    <div class="template-card">
+                        <div class="template-icon">
+                            <i class="fa fa-shopping-cart"></i>
+                        </div>
+                        <div class="template-info">
+                            <h3>电商助手</h3>
+                            <p>产品推荐，订单查询，售后服务</p>
+                        </div>
+                        <button class="template-btn">使用模板</button>
+                    </div>
+                    <div class="template-card">
+                        <div class="template-icon">
+                            <i class="fa fa-graduation-cap"></i>
+                        </div>
+                        <div class="template-info">
+                            <h3>教育助手</h3>
+                            <p>答疑解惑，知识普及，学习指导</p>
+                        </div>
+                        <button class="template-btn">使用模板</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/robot.js') }}"></script>
+</body>
+</html> 

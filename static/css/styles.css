@@ -1,0 +1,98 @@
+/* 通用样式 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+/* 导航栏样式 */
+.navbar {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #3366ff;
+}
+
+/* 按钮样式 */
+.btn-primary {
+    background-color: #3366ff;
+    border-color: #3366ff;
+}
+
+.btn-primary:hover {
+    background-color: #2952cc;
+    border-color: #2952cc;
+}
+
+.btn-outline-primary {
+    border-color: #3366ff;
+    color: #3366ff;
+}
+
+.btn-outline-primary:hover {
+    background-color: #3366ff;
+    color: white;
+}
+
+/* 卡片样式 */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border: none;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    background-color: rgba(51, 102, 255, 0.05);
+    border-bottom: none;
+    padding: 15px 20px;
+}
+
+/* 图标样式 */
+.icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.icon-circle-primary {
+    background-color: rgba(51, 102, 255, 0.1);
+    color: #3366ff;
+}
+
+.icon-circle-success {
+    background-color: rgba(88, 189, 125, 0.1);
+    color: #58bd7d;
+}
+
+.icon-circle-danger {
+    background-color: rgba(246, 89, 89, 0.1);
+    color: #f65959;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .wallet-action-btns {
+        flex-wrap: wrap;
+    }
+    
+    .wallet-action-btn {
+        width: 33%;
+        margin-bottom: 15px;
+    }
+    
+    .wallet-balance {
+        font-size: 1.5rem;
+    }
+} 

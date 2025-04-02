@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API授权 - 智能交易助手</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/crypto-theme.css">
+    <style>
+        /* API授权页面专用样式 */
+        .authorization {
+            padding: 15px;
+        }
+
+        .box {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .margin_t2 {
+            margin-top: 15px;
+        }
+
+        .top {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            position: relative;
+        }
+
+        .top_text {
+            padding: 15px 25px;
+            position: relative;
+            font-size: 15px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .top_text_a {
+            color: #3366FF;
+            font-weight: 500;
+        }
+
+        .top_text_a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            right: 15px;
+            height: 2px;
+            background-color: #3366FF;
+            border-radius: 2px;
+        }
+
+        .bottom {
+            padding: 10px 0;
+        }
+
+        .list {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .box_bottom_color {
+            border-color: #f5f5f5;
+        }
+
+        .list_left {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+
+        .list_left img {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            border-radius: 8px;
+        }
+
+        .text_box {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .text-color3 {
+            color: #333;
+            font-size: 14px;
+        }
+
+        .list_r {
+            margin-left: 10px;
+        }
+
+        .btn {
+            background-color: #3366FF;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(51, 102, 255, 0.3);
+        }
+
+        /* 头部导航栏样式 */
+        .api-header {
+            background: linear-gradient(120deg, #3366FF, #5B8FF9);
+            color: white;
+            padding: 20px 15px;
+            position: relative;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 15px rgba(51, 102, 255, 0.2);
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .api-header:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            animation: rotate 15s linear infinite;
+            z-index: 0;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .u-navbar {
+            height: 44px;
+            background-color: transparent;
+            position: relative;
+            z-index: 2;
+        }
+
+        .u-navbar__content {
+            display: flex;
+            align-items: center;
+            height: 44px;
+            background-color: transparent;
+            position: relative;
+        }
+
+        .u-navbar__content__left {
+            display: flex;
+            align-items: center;
+            padding-left: 15px;
+        }
+
+        .u-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .uicon-arrow-left {
+            font-size: 20px;
+            color: white;
+        }
+
+        .u-navbar__content__title {
+            flex: 1;
+            text-align: center;
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 弹窗样式 */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-box {
+            width: 90%;
+            max-width: 400px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 18px;
+            color: #999;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .form-input {
+            width: 100%;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 14px;
+        }
+
+        .form-tips {
+            font-size: 12px;
+            color: #999;
+            margin-top: 3px;
+        }
+
+        .action-btns {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .action-btns .btn {
+            width: 48%;
+        }
+
+        .btn-cancel {
+            background-color: #f5f5f5;
+            color: #666;
+        }
+
+        /* 底部导航栏 */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+        }
+        
+        .nav-item.active {
+            background-color: rgba(51, 102, 255, 0.1);
+        }
+        
+        .nav-icon-fa {
+            font-size: 24px;
+            color: #606266;
+            margin-bottom: 4px;
+        }
+        
+        .nav-item.active .nav-icon-fa {
+            color: #3366FF;
+        }
+        
+        .nav-text {
+            font-size: 12px;
+            color: #606266;
+        }
+
+        .back-button {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .back-button:hover {
+            transform: translateX(-3px);
+        }
+
+        .back-button i {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body class="theme-light theme-ud-gar">
+    <div class="api-header">
+        <div class="container">
+            <div class="u-navbar">
+                <div class="u-navbar__content">
+                    <div class="u-navbar__content__left">
+                        <div class="back-button" onclick="history.back()">
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                    </div>
+                    <div class="u-navbar__content__title">API授权</div>
+                    <div class="u-navbar__content__right"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-5 pb-5">
+        <div class="authorization">
+            <div class="box margin_t2">
+                <div class="top">
+                    <div class="top_text top_text_a" onclick="switchTab('api')">API授权</div>
+                    <div class="top_text" onclick="switchTab('exchange')">交易所开户</div>
+                </div>
+                <div id="api-tab" class="bottom">
+                    <div class="list box_bottom_color">
+                        <div class="list_left">
+                            <img src="https://newrobot.idyyvv.top/image/20210823/ff380e5a4eac6a36fbf7dde5ed153745.png" alt="Binance">
+                            <div class="text_box">
+                                <span class="text-color3">交易币币,USDT本位合约交易</span>
+                            </div>
+                        </div>
+                        <div class="list_r">
+                            <div class="btn" onclick="openBindModal('binance')">绑定</div>
+                        </div>
+                    </div>
+                    <div class="list box_bottom_color">
+                        <div class="list_left">
+                            <img src="https://ai.hkd.red/image/20240720/6fb53c51539b47559cf0d122a832cf63.png" alt="OKX">
+                            <div class="text_box">
+                                <span class="text-color3">交易币币,USDT本位合约交易</span>
+                            </div>
+                        </div>
+                        <div class="list_r">
+                            <div class="btn" onclick="openBindModal('okx')">绑定</div>
+                        </div>
+                    </div>
+                    <div class="list box_bottom_color">
+                        <div class="list_left">
+                            <img src="https://newrobot.idyyvv.top/image/20230131/72f73532ad55822dda7de85a2f6a8931.png" alt="Bybit">
+                            <div class="text_box">
+                                <span class="text-color3">交易币币,USDT本位合约交易</span>
+                            </div>
+                        </div>
+                        <div class="list_r">
+                            <div class="btn" onclick="openBindModal('bybit')">绑定</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="exchange-tab" class="bottom" style="display: none;">
+                    <div class="list box_bottom_color">
+                        <div class="list_left">
+                            <img src="https://newrobot.idyyvv.top/image/20210823/ff380e5a4eac6a36fbf7dde5ed153745.png" alt="Binance">
+                            <div class="text_box">
+                                <span class="text-color3">币安交易所 - 全球领先</span>
+                            </div>
+                        </div>
+                        <div class="list_r">
+                            <div class="btn" onclick="openExchangeRegister('binance')">注册</div>
+                        </div>
+                    </div>
+                    <div class="list box_bottom_color">
+                        <div class="list_left">
+                            <img src="https://ai.hkd.red/image/20240720/6fb53c51539b47559cf0d122a832cf63.png" alt="OKX">
+                            <div class="text_box">
+                                <span class="text-color3">欧易交易所 - 专业安全</span>
+                            </div>
+                        </div>
+                        <div class="list_r">
+                            <div class="btn" onclick="openExchangeRegister('okx')">注册</div>
+                        </div>
+                    </div>
+                    <div class="list box_bottom_color">
+                        <div class="list_left">
+                            <img src="https://newrobot.idyyvv.top/image/20230131/72f73532ad55822dda7de85a2f6a8931.png" alt="Bybit">
+                            <div class="text_box">
+                                <span class="text-color3">Bybit交易所 - 稳定可靠</span>
+                            </div>
+                        </div>
+                        <div class="list_r">
+                            <div class="btn" onclick="openExchangeRegister('bybit')">注册</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- API绑定弹窗 -->
+    <div id="bind-modal" class="modal-backdrop" style="display: none;">
+        <div class="modal-box">
+            <div class="modal-title">绑定交易所API</div>
+            <div class="modal-close" onclick="closeBindModal()">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="form-group">
+                <label class="form-label">交易所</label>
+                <input id="exchange-name" class="form-input" type="text" readonly>
+            </div>
+            <div class="form-group">
+                <label class="form-label">API Key</label>
+                <input id="api-key" class="form-input" type="text" placeholder="请输入API Key">
+                <div class="form-tips">请在交易所API管理页面创建API Key</div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Secret Key</label>
+                <input id="secret-key" class="form-input" type="password" placeholder="请输入Secret Key">
+                <div class="form-tips">请确保Secret Key的安全，不要泄露给他人</div>
+            </div>
+            <div class="form-group">
+                <label class="form-label">密码</label>
+                <input id="password" class="form-input" type="password" placeholder="请输入交易密码">
+                <div class="form-tips">用于API交易授权验证</div>
+            </div>
+            <div class="action-btns">
+                <div class="btn btn-cancel" onclick="closeBindModal()">取消</div>
+                <div class="btn" onclick="submitBindApi()">确认</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav">
+        <a href="/dashboard" class="nav-item">
+            <i class="fas fa-home nav-icon-fa"></i>
+            <div class="nav-text">首页</div>
+        </a>
+        <a href="/spot?type=spot" class="nav-item">
+            <i class="fas fa-chart-line nav-icon-fa"></i>
+            <div class="nav-text">现货</div>
+        </a>
+        <a href="/spot?type=contract" class="nav-item">
+            <i class="fas fa-file-contract nav-icon-fa"></i>
+            <div class="nav-text">合约</div>
+        </a>
+        <a href="/wallet" class="nav-item active">
+            <i class="fas fa-user nav-icon-fa" style="color: #3366FF;"></i>
+            <div class="nav-text" style="color: #3366FF;">我的</div>
+        </a>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 当前选中的交易所
+        let currentExchange = '';
+        
+        // 交易所名称映射
+        const exchangeNames = {
+            'binance': '币安 Binance',
+            'okx': '欧易 OKX',
+            'bybit': 'Bybit'
+        };
+
+        // 切换标签页
+        function switchTab(tabName) {
+            const apiTab = document.getElementById('api-tab');
+            const exchangeTab = document.getElementById('exchange-tab');
+            const tabs = document.querySelectorAll('.top_text');
+            
+            if (tabName === 'api') {
+                apiTab.style.display = 'block';
+                exchangeTab.style.display = 'none';
+                tabs[0].classList.add('top_text_a');
+                tabs[1].classList.remove('top_text_a');
+            } else {
+                apiTab.style.display = 'none';
+                exchangeTab.style.display = 'block';
+                tabs[0].classList.remove('top_text_a');
+                tabs[1].classList.add('top_text_a');
+            }
+        }
+
+        // 打开API绑定弹窗
+        function openBindModal(exchange) {
+            currentExchange = exchange;
+            document.getElementById('exchange-name').value = exchangeNames[exchange] || exchange;
+            document.getElementById('bind-modal').style.display = 'flex';
+        }
+
+        // 关闭API绑定弹窗
+        function closeBindModal() {
+            document.getElementById('bind-modal').style.display = 'none';
+            // 清空表单
+            document.getElementById('api-key').value = '';
+            document.getElementById('secret-key').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        // 提交API绑定
+        function submitBindApi() {
+            const apiKey = document.getElementById('api-key').value;
+            const secretKey = document.getElementById('secret-key').value;
+            const password = document.getElementById('password').value;
+            
+            if (!apiKey || !secretKey || !password) {
+                alert('请填写完整信息');
+                return;
+            }
+            
+            // 构造请求数据
+            const requestData = {
+                exchange: currentExchange,
+                api_key: apiKey,
+                secret_key: secretKey,
+                password: password
+            };
+            
+            // 发送绑定请求
+            fetch('/api/exchange/bind', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestData)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.code === 200) {
+                    alert('绑定成功');
+                    closeBindModal();
+                    // 可以在这里更新绑定状态
+                } else {
+                    alert('绑定失败: ' + result.message);
+                }
+            })
+            .catch(error => {
+                console.error('API请求错误:', error);
+                alert('网络错误，请稍后再试');
+            });
+        }
+
+        // 打开交易所注册页面
+        function openExchangeRegister(exchange) {
+            let registerUrl = '';
+            
+            // 根据不同交易所设置注册链接
+            switch(exchange) {
+                case 'binance':
+                    registerUrl = 'https://accounts.binance.com/zh-CN/register?ref=12345678';
+                    break;
+                case 'okx':
+                    registerUrl = 'https://www.okx.com/join/12345678';
+                    break;
+                case 'bybit':
+                    registerUrl = 'https://www.bybit.com/zh-CN/register?ref=12345678';
+                    break;
+                default:
+                    alert('暂不支持该交易所注册');
+                    return;
+            }
+            
+            // 打开新窗口
+            window.open(registerUrl, '_blank');
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web App</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.3.0/echarts.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/pyecharts/1.9.0/pyecharts.min.js"></script>
+    <style>
+
+        html,body {
+            font-family: "Arial", sans-serif;
+            background-color: #262525;
+            margin: 0;
+            padding: 0;
+            height:  100%;
+
+        }
+        .container {
+            display: flex;
+            margin: 50px auto;
+            width: 100%;
+            height:  100%;
+            background-color: #262525;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .info-box {
+            width: 60%;
+            padding: 20px;
+            background-color: #262525;
+            overflow: visible;
+            float: left;
+        }
+        .chart-box{
+            background-color: #d5cdcd;
+        }
+
+        .info-box h2 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            color: #407360;
+        }
+
+        .button-container {
+            width: 40%;
+            padding: 20px;
+            background-color: #262525;
+            float: right;
+        }
+        .button-container label{
+            color: #407360;
+
+        }
+        .button-container h2 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: #407360;
+        }
+        .button-container input[type="text"],
+        .button-container select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .button-container button {
+            padding: 10px 20px;
+            background-color: #407360;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            float: right;
+        }
+        .v-result{
+            color: #c93e76;
+
+        }
+        .x1-result{
+            color: #c93e76;
+        }
+        .x2-result{
+            color: #c93e76;
+        }
+    </style>
+</head>
+<body>
+<script>
+function validateForm(event) {
+event.preventDefault(); // 阻止表单提交
+
+var symbol = document.getElementById("symbol").value;
+var quantity = document.getElementById("quantity").value;
+
+// 验证symbol和quantity是否为空
+if (!symbol || !quantity) {
+document.getElementById("symbol-error").innerHTML = "币种和下单数量不能为空";
+document.getElementById("validation-result").innerHTML = "请重新输入";
+return false;
+}
+
+// 验证symbol是否匹配
+if (!symbol.endsWith('USDT')) {
+var get_symbol = document.getElementById("symbol").innerHTML.value;
+document.getElementById("symbol-error").innerHTML = get_symbol;
+document.getElementById("symbol-error").innerHTML = "币种必须以 'USDT' 结尾";
+document.getElementById("validation-result").innerHTML = "请重新输入";
+document.getElementById("symbol-error").textContent = symbol + "填写错误";
+return false;
+} else {
+document.getElementById("symbol-error").innerHTML = symbol + "填写正确";
+document.getElementById("validation-result").innerHTML = symbol + "填写正确";
+}
+
+// 验证quantity是否合法数字
+if (!/^\d+(\.\d+)?$/.test(quantity)) {
+document.getElementById("quantity-error").innerHTML = "不是合法数字，请输入对应币种的数量";
+document.getElementById("validation-result").innerHTML = "请重新输入";
+return false;
+} else {
+document.getElementById("quantity-error").innerHTML = quantity + "填写正确";
+}
+
+// 如果通过验证，发送AJAX请求
+document.getElementById("validation-result").innerHTML = ""; // 清空验证结果
+document.getElementById("result1").innerHTML = "请求成功，加载中....";
+
+// 发送AJAX请求
+if (symbol || quantity) {
+    document.getElementById("result1").innerHTML = "";
+document.getElementById("result2").innerHTML = "";
+$.ajax({
+url: '/api/flask-data',
+type: 'GET',
+data: { symbol: symbol, quantity: quantity }, // 发送symbol和quantity数据
+success: function(result) {
+// 检查结果中是否有错误消息
+if (result.error) {
+document.getElementById("validation-result").innerHTML = result.error;
+document.getElementById("result1").innerHTML = "";
+document.getElementById("result2").innerHTML = "";
+} else {
+// 将数据输出到信息框
+if (symbol){
+    document.getElementById("validation-result").innerHTML = "";
+    if (result.data.message) {
+document.getElementById("result1").innerHTML = result.data.message;
+} else {
+document.getElementById("result1").innerHTML = result.data.response_order;
+}if (!result.data.message||!result.data.response_order) {document.getElementById("result1").innerHTML ="没有信息返回，可能是网络出错或者其他原因"}
+document.getElementById("result2").innerHTML = result.data.message_ma;
+}else{
+
+    document.getElementById("validation-result").innerHTML = "";
+document.getElementById("result1").innerHTML = result.data.message;
+
+}
+
+}
+},
+error: function(jqXHR, textStatus, errorThrown) {
+// 请求失败回调函数，输出失败原因
+console.error('获取数据失败：', textStatus, errorThrown);
+if (jqXHR.responseJSON && jqXHR.responseJSON.code === -1021) {
+// 服务器时间错误，输出提示信息
+document.getElementById("validation-result").innerHTML = "请检查系统时间设置是否正确";
+} else {
+// 其他错误，输出错误信息
+document.getElementById("result1").innerHTML = "获取数据失败，还有参数填写错了，请重试";
+}
+
+document.getElementById("result2").innerHTML = "";
+}
+});
+
+return false;
+}
+// 阻止表单提交
+}
+function orederdateForm(event) {
+// Prevent the page from refreshing
+event.preventDefault();
+// Get the form values
+var symbol1 = document.getElementById("symbol").value;
+
+// 验证symbol是否匹配
+if (!symbol1.endsWith('USDT')) {
+var get_symbol = document.getElementById("symbol").innerHTML.value;
+document.getElementById("symbol-error").innerHTML = get_symbol;
+document.getElementById("symbol-error").innerHTML = "币种"+symbol1+"必须以 'USDT' 结尾";
+document.getElementById("validation-result").innerHTML = "请重新输入";
+
+return false;
+} else {
+document.getElementById("symbol-error").innerHTML = symbol1 + "填写正确";
+document.getElementById("validation-result").innerHTML = symbol1 + "填写正确";
+}
+
+var symbol = document.getElementById("symbol").value;
+document.getElementById("validation-result").innerHTML = ""; // 清空验证结果
+document.getElementById("result1").innerHTML = "请求成功，查询加载中....";
+document.getElementById("result2").innerHTML = "";
+// Send the AJAX request
+if (symbol) {
+$.ajax({
+    url: '/api/flask-order',
+    type: 'GET',
+    data: { symbol: symbol }, // 发送symbol数据
+    success: function(result) {
+        // 检查结果中是否有错误消息
+        if (result.error) {
+            document.getElementById("validation-result").innerHTML = result.error;
+            document.getElementById("result1").innerHTML = "";
+        } if (result.data === null){
+            document.getElementById("result1").innerHTML = "没有下订单";
+            document.getElementById("result2").innerHTML = "";
+        } else {
+            document.getElementById("validation-result").innerHTML = "";
+            document.getElementById("result1").innerHTML = result.data.message;
+            document.getElementById("result2").innerHTML = result.data.zhisun;
+        }
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+        // 请求失败回调函数，输出失败原因
+        jqXHR.responseJSON = undefined;
+        console.error('获取数据失败：', textStatus, errorThrown);
+        if (jqXHR.status === 500) {
+        // 服务器出错，输出提示信息
+        document.getElementById("result1").innerHTML = "服务器出错，请稍后重试";
+        } else {
+        // 其他错误，输出错误信息
+        document.getElementById("result1").innerHTML = "获取数据失败，少了参数请检查参数是否填写正确";
+        }if (jqXHR.responseJSON && jqXHR.responseJSON.data === null) {
+        // 返回数据为空，显示相应错误信息
+        document.getElementById("result1").innerHTML = "没有获取到数据，请重试";
+        }
+        document.getElementById("validation-result").innerHTML = "";
+        }
+})};
+return false;
+}
+
+function showxuanbi(ev) {
+  var objNode = ev.value;
+  alert(objNode);
+}
+function showxuanbiget() {
+  var celuo = document.getElementById("strategy-select").value;
+  document.getElementById("result1").innerHTML = "";
+  document.getElementById("result1").innerHTML = "选币请求成功，加载中....";
+  document.getElementById("result2").innerHTML = "";
+
+  if (celuo) {
+    $.post("/api/xuan-bi", { celuo: celuo })
+      .done(function(result) {
+        if (result.message === '处理中') {
+          getResult();
+        } else {
+          alert("操作失败");
+        }
+      })
+      .fail(function() {
+        alert("请求失败");
+      });
+  }
+}
+
+function getResult() {
+  $.ajax({
+    url: '/api/xuan-bi/result',
+    type: 'GET',
+    success: function(result) {
+      if (result.data.length > 0) {
+        var data = result.data.join(", ");
+        document.getElementById("result1").innerHTML = data;
+      } else {
+        document.getElementById("result1").innerHTML = "没有返回合适的数据";
+      }
+    }
+  });
+}
+
+</script>
+<div class="container w900 flex">
+    <div id="chart" class="info-box">
+        <div id="chart-container" class="chart-box">{{ chart_code|safe }}</div>
+        <h2>获取运行数据</h2>
+
+{#          {% if error_result %}#}
+{#            <p id="result1">{{ error_result }}</p>#}
+{#          {% else %}#}
+{#        <label>#}
+{#            <textarea class="result" rows="2" id="result1">{{ result }}</textarea>#}
+{#        </label>#}
+        <p id="result1" class="x1-result"></p>
+        <p id="result2" class="x2-result"></p>
+
+{#          {% endif %}#}
+
+    </div>
+    <div class="button-container">
+        <h2>策略选择</h2>
+
+        <form id="form-validation" action="/api/flask-data" method="GET" onsubmit="return validateForm(event)">
+            <label for="symbol">币种:</label>
+            <input type="text" id="symbol" name="symbol" required><br>
+            <span id="symbol-error" style="color:#ff0000"></span><br><br>
+
+            <label for="quantity">下单数量:</label>
+            <input type="text" id="quantity" name="quantity" required><br>
+            <span id="quantity-error" style="color:red"></span><br><br>
+            <div id="validation-result" class="v-result"></div>
+            <div id="result1"></div>
+            <button id="validate-button" type="submit">下单</button>
+        </form>
+        <form id="form-cha-order" action="/api/flask-order" method="GET" onsubmit="return orederdateForm(event)">
+            <button id="cha-order-button" type="submit">查看订单</button>
+        </form>
+        <form id="form-xuan-bi" method="GET" onsubmit="event.preventDefault(); showxuanbiget()">
+              <select id="strategy-select" aria-label="选择交易策略" class="form-control" onchange="showxuanbi(this)">
+                <option value="">请选择选项</option>
+                <option value="option1">日线布林中轨窄口策略</option>
+                <option value="option2">周线布林中轨窄口策略</option>
+                <option value="option3">周线布林中轨宽口策略</option>
+                <option value="option4">日线rsi多单策略</option>
+                <option value="option5">日线rsi空单策略</option>
+                <option value="option6">日线布林窄口空MACD</option>
+                <option value="option7">日线布林中轨宽口空MACD策略</option>
+                <option value="option8">日线布林中轨4h下轨多MACD策略</option>
+                <option value="option17">日线布林上轨4h上轨空MACD策略</option>
+                <option value="option9">周日线强势布林中轨策略</option>
+                <option value="option10">周日线强势布林中和上轨MACD金叉策略</option>
+                <option value="option11">周日线强势布林中轨MACD0上金叉策略</option>
+                <option value="option12">周线rsi单下轨策略</option>
+                <option value="option18">周线rsi空单上轨策略</option>
+                <option value="option13">日线rsi多单下轨开口策略</option>
+                <option value="option14">日线rsi多下轨开口收口策略</option>
+                <option value="option15">日线多MACD0下5日上策略</option>
+                <option value="option71">日线多MACD0上策略</option>
+                <option value="option16">日线多MAcd快慢0下10日线上策略</option>
+                <option value="option19">周线rsi空单震荡策略</option>
+                <option value="option20">周线mfi<20多单策略</option>
+                <option value="option21">周线mfi>80空单策略</option>
+                <option value="option23">日线mfi<20多单策略</option>
+                <option value="option24">日线mfi>80空单策略</option>
+                <option value="option25">4小时mfi<20多单策略</option>
+                <option value="option26">4小时mfi>80空单策略</option>
+                <option value="option22">日线布林上轨张口策略</option>
+                <option value="option32">周线布林上轨张口策略</option>
+                <option value="option27">周线mfi<20多单策略</option>
+                <option value="option49">15分钟rsi<20多单策略</option>
+                <option value="option50">15分钟rsi>80空单策略</option>
+                <option value="option28">4小时rsi<20多单策略</option>
+                <option value="option29">4小时rsi>80空单策略</option>
+                <option value="option30">4小时rsi<10多单策略</option>
+                <option value="option31">4小时rsi>90空单策略</option>
+                <option value="option62">日线rsi<20多单策略</option>
+                <option value="option63">周线rsi<20多单策略</option>
+                <option value="option33">15分钟144均线多单策略</option>
+                <option value="option34">15分钟CCI强涨多单策略</option>
+                <option value="option51">15分钟CCI强涨空单策略</option>
+                <option value="option52">15分钟CCI100多单策略</option>
+                <option value="option53">15分钟CCI100空单策略</option>
+                <option value="option35">1小时CCI强涨多单策略</option>
+                <option value="option62">30分钟CCI强涨多单策略</option>
+                <option value="option36">4小时CCI强涨多单策略</option>
+                <option value="option37">日线CCI强涨多单策略</option>
+                <option value="option38">周线CCI强涨多单策略</option>
+                <option value="option39">月线CCI强涨多单策略</option>
+                <option value="option40">日线CCI震荡空单策略</option>
+                <option value="option41">15分钟CCI100强涨多单策略</option>
+                <option value="option42">1小时CCI100强涨多单策略</option>
+                <option value="option43">4小时CCI100强涨多单策略</option>
+                <option value="option44">日线CCI100强涨多单策略</option>
+                <option value="option45">周线CCI100强涨多单策略</option>
+                <option value="option46">月线CCI100强涨多单策略</option>
+                <option value="option47">周线CCI震荡空单策略</option>
+                <option value="option48">月线CCI震荡空单策略</option>
+                <option value="option54">15分钟KDJ20多单策略</option>
+                <option value="option55">15分钟KDJ20空单策略</option>
+                <option value="option58">30分钟KDJ20多单策略</option>
+                <option value="option59">30分钟KDJ80空单策略</option>
+                <option value="option56">1小时KDJ20多单策略</option>
+                <option value="option57">1小时KDJ80空单策略</option>
+                <option value="option66">4小时KDJ20多单策略</option>
+                <option value="option67">4小时KDJ80空单策略</option>
+                <option value="option60">日线KDJ20多单策略</option>
+                <option value="option61">日线KDJ80空单策略</option>
+                <option value="option64">日线R_KDJ20ma200多单策略</option>
+                <option value="option65">日线R_KDJ80ma200空单策略</option>
+                <option value="option68">日线6神资金翻红策略</option>
+                <option value="option69">日线6神资金空单策略</option>
+                <option value="option70">日线4小时6神回旋多策略</option>
+                <option value="option71">1小时黑马多策略</option>
+                <option value="option72">1小时大黑马多策略</option>
+                <option value="option73">日线黑马多策略</option>
+
+
+
+
+
+              </select>
+              <button type="submit">选币</button>
+            </form>
+     </div>
+</div>
+</body>
+</html>
+
+{#$(document).ready(function() {#}
+{#  // 当按钮被点击时触发事件#}
+{#  $('#click-button').on('click', function() {#}
+{#    // 发送ajax请求#}
+{#    $.ajax({#}
+{#      url: '/api/flask-data', // 后端路由，需要将其在Flask应用中定义#}
+{#      method: 'GET',#}
+{#      success: function(result) { // 成功获取到数据后的回调函数#}
+{#        // 将数据输出到信息框#}
+{#        $('.info-box').html("请求成功，加载中"}
+{#      },#}
+{#      error: function (jqXHR, textStatus, errorThrown) {#}
+{#          // 请求失败回调函数，输出失败原因#}
+{#          console.error('获取数据失败：', textStatus, errorThrown)#}
+{#        }#}
+{#    });#}
+{#  });#}
+
+
+{#if (!symbol1) {#}
+{#   var get_symbol1 = document.getElementById("symbol").innerHTML.value;#}
+{#document.getElementById("symbol-error").innerHTML = get_symbol1;#}
+{#document.getElementById("symbol-error").innerHTML = "币种不能为空";#}
+{#document.getElementById("validation-result").innerHTML = "请重新输入";#}
+{#return false;#}
+
+

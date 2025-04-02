@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>智能AI助手 - 登录</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <div class="app">
+        <div class="login-container">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="智能AI助手" class="logo">
+                <h1 class="title">智能AI助手</h1>
+            </div>
+            
+            <div class="form-container">
+                <h2 class="form-title">账号登录</h2>
+                
+                <div class="test-account-tip" style="margin-bottom: 15px; color: #409EFF; text-align: center; font-size: 14px; cursor: pointer;">
+                    测试账号: 13602958586 / 密码: abcd8312 (点击可自动填充)
+                </div>
+                
+                <div class="form-item">
+                    <div class="input-container">
+                        <input type="text" id="mobile" class="input-field" placeholder="请输入手机号">
+                        <label class="input-label">手机号</label>
+                    </div>
+                </div>
+                
+                <div class="form-item">
+                    <div class="input-container">
+                        <input type="password" id="password" class="input-field" placeholder="请输入密码">
+                        <label class="input-label">密码</label>
+                    </div>
+                </div>
+                
+                <div class="remember-forgot">
+                    <div class="remember">
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me">记住我</label>
+                    </div>
+                    <a href="javascript:void(0)" class="forgot-link">忘记密码？</a>
+                </div>
+                
+                <button id="login-btn" class="login-btn">登录</button>
+                
+                <div class="register-link">
+                    没有账号？<a href="/register">立即注册</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+</body>
+</html> 

@@ -1,0 +1,30 @@
+# Logs
+*.log
+strategy_*.log
+app.log
+
+# Temporary files
+*.pid
+temp.txt
+*.json
+!package.json
+!system_config.json
+
+# Python
+__pycache__/
+*.py[cod]
+.python-version
+
+# Virtual environment
+.venv/
+
+# Node
+node_modules/
+
+# Backups
+backups/
+-p/
+
+# IDE
+.vscode/
+.idea/
